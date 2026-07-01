@@ -53,6 +53,24 @@
 		C26E7C572FF59A4F0001CFFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C552FF598CF0001CFFA /* AppDelegate.swift */; };
 		C26E7C582FF59A720001CFFA /* JAMPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25DB2FF3120E0030E98A /* JAMPanel.swift */; };
 		C26E7C592FF59A800001CFFA /* WindowConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25D92FF311F10030E98A /* WindowConfiguration.swift */; };
+		C26E7C682FF5AC120001CFFA /* JAMSearchBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C672FF5AC100001CFFA /* JAMSearchBadge.swift */; };
+		C26E7C6A2FF5AC830001CFFA /* JAMSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C692FF5AC810001CFFA /* JAMSearchBar.swift */; };
+		C26E7C6C2FF5AC9D0001CFFA /* JAMSearchIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C6B2FF5AC930001CFFA /* JAMSearchIcon.swift */; };
+		C26E7C6E2FF5ACA80001CFFA /* JAMShortcutBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C6D2FF5ACA60001CFFA /* JAMShortcutBadge.swift */; };
+		C26E7C702FF5ACB70001CFFA /* JAMSearchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C6F2FF5ACB50001CFFA /* JAMSearchContainer.swift */; };
+		C26E7C722FF5AE950001CFFA /* JAMSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C712FF5AE930001CFFA /* JAMSearchField.swift */; };
+		C26E7C752FF5AFB30001CFFA /* JAMMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C742FF5AFAE0001CFFA /* JAMMark.swift */; };
+		C26E7C772FF5AFBF0001CFFA /*     JAMBrandBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C762FF5AFBD0001CFFA /*     JAMBrandBadge.swift */; };
+		C26E7C792FF5AFC90001CFFA /* JAMWordmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C782FF5AFC70001CFFA /* JAMWordmark.swift */; };
+		C26E7C7C2FF5B1860001CFFA /* JAMGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C7B2FF5B1840001CFFA /* JAMGlass.swift */; };
+		C26E7C7E2FF5B18F0001CFFA /* JAMGlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C7D2FF5B18D0001CFFA /* JAMGlow.swift */; };
+		C26E7C802FF5B1990001CFFA /* JAMStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C7F2FF5B1970001CFFA /* JAMStroke.swift */; };
+		C26E7C822FF5B1A30001CFFA /* JAMShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C812FF5B1A10001CFFA /* JAMShadow.swift */; };
+		C26E7C842FF5B1B90001CFFA /* JAMAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C832FF5B1B70001CFFA /* JAMAnimation.swift */; };
+		C26E7C872FF5B2230001CFFA /* JAMGlassModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C862FF5B2210001CFFA /* JAMGlassModifier.swift */; };
+		C26E7C892FF5B22C0001CFFA /* JAMShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C882FF5B22A0001CFFA /* JAMShadowModifier.swift */; };
+		C26E7C8B2FF5B2370001CFFA /* JAMInteractiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C8A2FF5B2350001CFFA /* JAMInteractiveModifier.swift */; };
+		C26E7C8D2FF5B3770001CFFA /* JAMSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C8C2FF5B3750001CFFA /* JAMSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +141,24 @@
 		C26E7C372FF45FCD0001CFFA /*  AppSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " AppSearchResult.swift"; sourceTree = "<group>"; };
 		C26E7C392FF45FE70001CFFA /* ApplicationSearchEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSearchEngine.swift; sourceTree = "<group>"; };
 		C26E7C552FF598CF0001CFFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C26E7C672FF5AC100001CFFA /* JAMSearchBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchBadge.swift; sourceTree = "<group>"; };
+		C26E7C692FF5AC810001CFFA /* JAMSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchBar.swift; sourceTree = "<group>"; };
+		C26E7C6B2FF5AC930001CFFA /* JAMSearchIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchIcon.swift; sourceTree = "<group>"; };
+		C26E7C6D2FF5ACA60001CFFA /* JAMShortcutBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMShortcutBadge.swift; sourceTree = "<group>"; };
+		C26E7C6F2FF5ACB50001CFFA /* JAMSearchContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchContainer.swift; sourceTree = "<group>"; };
+		C26E7C712FF5AE930001CFFA /* JAMSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchField.swift; sourceTree = "<group>"; };
+		C26E7C742FF5AFAE0001CFFA /* JAMMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMark.swift; sourceTree = "<group>"; };
+		C26E7C762FF5AFBD0001CFFA /*     JAMBrandBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "    JAMBrandBadge.swift"; sourceTree = "<group>"; };
+		C26E7C782FF5AFC70001CFFA /* JAMWordmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMWordmark.swift; sourceTree = "<group>"; };
+		C26E7C7B2FF5B1840001CFFA /* JAMGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMGlass.swift; sourceTree = "<group>"; };
+		C26E7C7D2FF5B18D0001CFFA /* JAMGlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMGlow.swift; sourceTree = "<group>"; };
+		C26E7C7F2FF5B1970001CFFA /* JAMStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMStroke.swift; sourceTree = "<group>"; };
+		C26E7C812FF5B1A10001CFFA /* JAMShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMShadow.swift; sourceTree = "<group>"; };
+		C26E7C832FF5B1B70001CFFA /* JAMAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMAnimation.swift; sourceTree = "<group>"; };
+		C26E7C862FF5B2210001CFFA /* JAMGlassModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMGlassModifier.swift; sourceTree = "<group>"; };
+		C26E7C882FF5B22A0001CFFA /* JAMShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMShadowModifier.swift; sourceTree = "<group>"; };
+		C26E7C8A2FF5B2350001CFFA /* JAMInteractiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMInteractiveModifier.swift; sourceTree = "<group>"; };
+		C26E7C8C2FF5B3750001CFFA /* JAMSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -224,9 +260,10 @@
 		C22B25A92FF2FA0F0030E98A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7C662FF5AC010001CFFA /* Search */,
 				C22B25CE2FF30A5B0030E98A /* Components */,
-				C22B25C82FF3063D0030E98A /* Views */,
 				C22B25C72FF3062C0030E98A /* Panels */,
+				C22B25C82FF3063D0030E98A /* Views */,
 				C22B25B02FF2FA620030E98A /* Chat */,
 				C22B25AF2FF2FA5A0030E98A /* History */,
 				C22B25AE2FF2FA530030E98A /* Settings */,
@@ -239,6 +276,9 @@
 		C22B25AA2FF2FA1D0030E98A /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7C852FF5B2180001CFFA /* Modifiers */,
+				C26E7C7A2FF5B17B0001CFFA /* Effects */,
+				C26E7C732FF5AF940001CFFA /* Branding */,
 				C26E7C202FF418650001CFFA /* Tokens */,
 				C22B25BE2FF302F50030E98A /* Theme */,
 			);
@@ -400,9 +440,9 @@
 		C22B25CE2FF30A5B0030E98A /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				C26E7C2E2FF4475F0001CFFA /* Suggestions */,
-				C22B25E92FF315780030E98A /* Input */,
 				C22B25D62FF30D5B0030E98A /* Containers */,
+				C22B25E92FF315780030E98A /* Input */,
+				C26E7C2E2FF4475F0001CFFA /* Suggestions */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -545,6 +585,52 @@
 				C26E7C552FF598CF0001CFFA /* AppDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		C26E7C662FF5AC010001CFFA /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C8C2FF5B3750001CFFA /* JAMSearchView.swift */,
+				C26E7C712FF5AE930001CFFA /* JAMSearchField.swift */,
+				C26E7C6F2FF5ACB50001CFFA /* JAMSearchContainer.swift */,
+				C26E7C6D2FF5ACA60001CFFA /* JAMShortcutBadge.swift */,
+				C26E7C6B2FF5AC930001CFFA /* JAMSearchIcon.swift */,
+				C26E7C692FF5AC810001CFFA /* JAMSearchBar.swift */,
+				C26E7C672FF5AC100001CFFA /* JAMSearchBadge.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C26E7C732FF5AF940001CFFA /* Branding */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C782FF5AFC70001CFFA /* JAMWordmark.swift */,
+				C26E7C762FF5AFBD0001CFFA /*     JAMBrandBadge.swift */,
+				C26E7C742FF5AFAE0001CFFA /* JAMMark.swift */,
+			);
+			path = Branding;
+			sourceTree = "<group>";
+		};
+		C26E7C7A2FF5B17B0001CFFA /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C832FF5B1B70001CFFA /* JAMAnimation.swift */,
+				C26E7C812FF5B1A10001CFFA /* JAMShadow.swift */,
+				C26E7C7F2FF5B1970001CFFA /* JAMStroke.swift */,
+				C26E7C7D2FF5B18D0001CFFA /* JAMGlow.swift */,
+				C26E7C7B2FF5B1840001CFFA /* JAMGlass.swift */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
+		C26E7C852FF5B2180001CFFA /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C8A2FF5B2350001CFFA /* JAMInteractiveModifier.swift */,
+				C26E7C882FF5B22A0001CFFA /* JAMShadowModifier.swift */,
+				C26E7C862FF5B2210001CFFA /* JAMGlassModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -697,21 +783,33 @@
 				C26E7C362FF45D490001CFFA /*  AppEntry.swift in Sources */,
 				C26E7C592FF59A800001CFFA /* WindowConfiguration.swift in Sources */,
 				C26E7C3A2FF45FEA0001CFFA /* ApplicationSearchEngine.swift in Sources */,
+				C26E7C792FF5AFC90001CFFA /* JAMWordmark.swift in Sources */,
 				C26E7C062FF40B270001CFFA /* Application.swift in Sources */,
+				C26E7C6C2FF5AC9D0001CFFA /* JAMSearchIcon.swift in Sources */,
+				C26E7C7C2FF5B1860001CFFA /* JAMGlass.swift in Sources */,
+				C26E7C752FF5AFB30001CFFA /* JAMMark.swift in Sources */,
 				C22B25D12FF30CE50030E98A /* JAMMaterials.swift in Sources */,
 				C26E7C142FF410440001CFFA /* ActionExecutor.swift in Sources */,
 				C26E7C222FF419190001CFFA /* AuroraTheme.swift in Sources */,
+				C26E7C772FF5AFBF0001CFFA /*     JAMBrandBadge.swift in Sources */,
 				C22B25C32FF303DB0030E98A /* JAMRadius.swift in Sources */,
 				C22B25C62FF303E90030E98A /* JAMColors.swift in Sources */,
 				C22B25D52FF30D290030E98A /* JAMShadows.swift in Sources */,
+				C26E7C802FF5B1990001CFFA /* JAMStroke.swift in Sources */,
 				C26E7BFF2FF406280001CFFA /*  IntentResolver.swift in Sources */,
 				C26E7C562FF5997F0001CFFA /* WindowManager.swift in Sources */,
+				C26E7C842FF5B1B90001CFFA /* JAMAnimation.swift in Sources */,
 				C26E7C082FF40B4E0001CFFA /* ApplicationMatcher.swift in Sources */,
 				C26E7C0B2FF40F430001CFFA /* JAMIndex.swift in Sources */,
 				C26E7C582FF59A720001CFFA /* JAMPanel.swift in Sources */,
+				C26E7C822FF5B1A30001CFFA /* JAMShadow.swift in Sources */,
+				C26E7C722FF5AE950001CFFA /* JAMSearchField.swift in Sources */,
+				C26E7C872FF5B2230001CFFA /* JAMGlassModifier.swift in Sources */,
 				C26E7C122FF410370001CFFA /* Action.swift in Sources */,
+				C26E7C8D2FF5B3770001CFFA /* JAMSearchView.swift in Sources */,
 				C26E7C1E2FF414160001CFFA /* ApplicationSuggestionProvider.swift in Sources */,
 				C22B25D32FF30D120030E98A /* JAMMotion.swift in Sources */,
+				C26E7C892FF5B22C0001CFFA /* JAMShadowModifier.swift in Sources */,
 				C26E7C242FF41D2A0001CFFA /* JAMWindow.swift in Sources */,
 				C26E7C572FF59A4F0001CFFA /* AppDelegate.swift in Sources */,
 				C26E7C292FF43FB50001CFFA /* GhostTextOverlay.swift in Sources */,
@@ -720,23 +818,29 @@
 				C26E7C022FF406BC0001CFFA /*  ApplicationService.swift in Sources */,
 				C22B25E62FF3142A0030E98A /* Intent.swift in Sources */,
 				C26E7C322FF4477C0001CFFA /* SuggestionRow.swift in Sources */,
+				C26E7C8B2FF5B2370001CFFA /* JAMInteractiveModifier.swift in Sources */,
 				C26E7C272FF421930001CFFA /* SuggestionProvider.swift in Sources */,
 				C22B25C52FF303E50030E98A /* JAMTypography.swift in Sources */,
 				C26E7C302FF4476E0001CFFA /* SuggestionList.swift in Sources */,
 				C22B25DF2FF313970030E98A /* ApplicationsDomain.swift in Sources */,
+				C26E7C7E2FF5B18F0001CFFA /* JAMGlow.swift in Sources */,
+				C26E7C6E2FF5ACA80001CFFA /* JAMShortcutBadge.swift in Sources */,
 				C26E7C2B2FF442520001CFFA /* JAMNativeTextField.swift in Sources */,
 				C26E7C0F2FF40F5B0001CFFA /* IndexBuilder.swift in Sources */,
 				C26E7C0D2FF40F510001CFFA /* IndexItem.swift in Sources */,
 				C26E7C042FF4095E0001CFFA /* ApplicationRegistry.swift in Sources */,
 				C22B25BD2FF2FE9E0030E98A /* JAMApplication.swift in Sources */,
+				C26E7C682FF5AC120001CFFA /* JAMSearchBadge.swift in Sources */,
 				C22B25E22FF3140C0030E98A /* Command.swift in Sources */,
 				C26E7C342FF456CC0001CFFA /* AppIcon.swift in Sources */,
 				C22B25D82FF30D720030E98A /* PanelContainer.swift in Sources */,
 				C22B25E82FF314350030E98A /* Verb.swift in Sources */,
 				C26E7C172FF410C10001CFFA /* OpenApplicationAction.swift in Sources */,
+				C26E7C6A2FF5AC830001CFFA /* JAMSearchBar.swift in Sources */,
 				C22B25C42FF303E00030E98A /* JAMSpacing.swift in Sources */,
 				C26E7C1A2FF413710001CFFA /* Suggestion.swift in Sources */,
 				C26E7C382FF45FD00001CFFA /*  AppSearchResult.swift in Sources */,
+				C26E7C702FF5ACB70001CFFA /* JAMSearchContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
