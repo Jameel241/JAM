@@ -3,16 +3,15 @@ import SwiftUI
 @main
 struct JAMApp: App {
 
-    init() {
-        JAMApplication.shared.start()
-    }
+    @NSApplicationDelegateAdaptor(AppDelegate.self)
+    private var appDelegate
 
     var body: some Scene {
 
-        WindowGroup {
-            ContentView()
+        Settings {
+            EmptyView()
         }
-        .windowStyle(.hiddenTitleBar)
-        .windowResizability(.contentSize)
+
     }
+
 }

@@ -49,6 +49,10 @@
 		C26E7C362FF45D490001CFFA /*  AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C352FF45D470001CFFA /*  AppEntry.swift */; };
 		C26E7C382FF45FD00001CFFA /*  AppSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C372FF45FCD0001CFFA /*  AppSearchResult.swift */; };
 		C26E7C3A2FF45FEA0001CFFA /* ApplicationSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C392FF45FE70001CFFA /* ApplicationSearchEngine.swift */; };
+		C26E7C562FF5997F0001CFFA /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25CC2FF308430030E98A /* WindowManager.swift */; };
+		C26E7C572FF59A4F0001CFFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C552FF598CF0001CFFA /* AppDelegate.swift */; };
+		C26E7C582FF59A720001CFFA /* JAMPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25DB2FF3120E0030E98A /* JAMPanel.swift */; };
+		C26E7C592FF59A800001CFFA /* WindowConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25D92FF311F10030E98A /* WindowConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +122,7 @@
 		C26E7C352FF45D470001CFFA /*  AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " AppEntry.swift"; sourceTree = "<group>"; };
 		C26E7C372FF45FCD0001CFFA /*  AppSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " AppSearchResult.swift"; sourceTree = "<group>"; };
 		C26E7C392FF45FE70001CFFA /* ApplicationSearchEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSearchEngine.swift; sourceTree = "<group>"; };
+		C26E7C552FF598CF0001CFFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -166,6 +171,7 @@
 		C22B25742FF2F9930030E98A = {
 			isa = PBXGroup;
 			children = (
+				C26E7C542FF598C50001CFFA /* Application */,
 				C22B25CF2FF30B050030E98A /* Shared */,
 				C22B25BA2FF2FC890030E98A /* Services */,
 				C22B25AB2FF2FA240030E98A /* Resources */,
@@ -533,6 +539,14 @@
 			path = Suggestions;
 			sourceTree = "<group>";
 		};
+		C26E7C542FF598C50001CFFA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C552FF598CF0001CFFA /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -681,6 +695,7 @@
 				C22B25E42FF314170030E98A /* CommandParser.swift in Sources */,
 				C22B25CA2FF306AF0030E98A /* CommandPanelView.swift in Sources */,
 				C26E7C362FF45D490001CFFA /*  AppEntry.swift in Sources */,
+				C26E7C592FF59A800001CFFA /* WindowConfiguration.swift in Sources */,
 				C26E7C3A2FF45FEA0001CFFA /* ApplicationSearchEngine.swift in Sources */,
 				C26E7C062FF40B270001CFFA /* Application.swift in Sources */,
 				C22B25D12FF30CE50030E98A /* JAMMaterials.swift in Sources */,
@@ -690,12 +705,15 @@
 				C22B25C62FF303E90030E98A /* JAMColors.swift in Sources */,
 				C22B25D52FF30D290030E98A /* JAMShadows.swift in Sources */,
 				C26E7BFF2FF406280001CFFA /*  IntentResolver.swift in Sources */,
+				C26E7C562FF5997F0001CFFA /* WindowManager.swift in Sources */,
 				C26E7C082FF40B4E0001CFFA /* ApplicationMatcher.swift in Sources */,
 				C26E7C0B2FF40F430001CFFA /* JAMIndex.swift in Sources */,
+				C26E7C582FF59A720001CFFA /* JAMPanel.swift in Sources */,
 				C26E7C122FF410370001CFFA /* Action.swift in Sources */,
 				C26E7C1E2FF414160001CFFA /* ApplicationSuggestionProvider.swift in Sources */,
 				C22B25D32FF30D120030E98A /* JAMMotion.swift in Sources */,
 				C26E7C242FF41D2A0001CFFA /* JAMWindow.swift in Sources */,
+				C26E7C572FF59A4F0001CFFA /* AppDelegate.swift in Sources */,
 				C26E7C292FF43FB50001CFFA /* GhostTextOverlay.swift in Sources */,
 				C26E7C2D2FF442BB0001CFFA /* JAMTextField.swift in Sources */,
 				C22B25EB2FF315890030E98A /* JAMCommandField.swift in Sources */,

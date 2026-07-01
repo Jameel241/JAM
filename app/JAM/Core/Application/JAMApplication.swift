@@ -1,10 +1,5 @@
 import Foundation
 
-/// The central coordinator of JAM.
-///
-/// Every part of the application starts here.
-/// This object is responsible for initializing
-/// the application's core systems.
 final class JAMApplication {
 
     static let shared = JAMApplication()
@@ -12,6 +7,11 @@ final class JAMApplication {
     private init() {}
 
     func start() {
-        print(" JAM is starting...")
+
+        print("🚀 JAM is starting...")
+
+        WindowManager.shared.showCommandPanel()
+
     }
+
 }
