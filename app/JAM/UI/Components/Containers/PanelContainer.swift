@@ -8,30 +8,50 @@ struct PanelContainer<Content: View>: View {
     var body: some View {
 
         content
-            .padding(52)
-            .background(JAMMaterials.panel)
-            .clipShape(
+            .padding(JAMSpacing.xxl)
+            .background {
+
                 RoundedRectangle(
-                    cornerRadius: JAMRadius.floating,
+                    cornerRadius: JAMRadius.panel,
                     style: .continuous
                 )
-            )
+                .fill(JAMMaterials.panel)
+
+                RoundedRectangle(
+                    cornerRadius: JAMRadius.panel,
+                    style: .continuous
+                )
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color.white.opacity(0.06),
+                            Color.white.opacity(0.015)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+
+            }
             .overlay {
 
                 RoundedRectangle(
-                    cornerRadius: JAMRadius.floating,
+                    cornerRadius: JAMRadius.panel,
                     style: .continuous
                 )
                 .strokeBorder(
-                    Color.white.opacity(0.08),
-                    lineWidth: 0.5
+                    Color.white.opacity(0.10),
+                    lineWidth: 0.6
                 )
 
             }
             .shadow(
-                color: .black.opacity(0.18),
-                radius: JAMShadows.panelShadow,
+                color: .black.opacity(JAMShadows.panelOpacity),
+                radius: JAMShadows.panelRadius,
+                x: 0,
                 y: JAMShadows.panelY
             )
+
     }
+
 }

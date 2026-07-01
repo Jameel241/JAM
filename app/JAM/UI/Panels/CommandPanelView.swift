@@ -1,41 +1,129 @@
 import SwiftUI
+import AppKit
 
-struct FloatingPanelView: View {
+struct CommandPanelView: View {
 
-    @State private var command = ""
-    @FocusState private var isFocused: Bool
+    @State private var commandText = ""
+    @State private var suggestions: [Suggestion] = []
+    @State private var selectedIndex = 0
+
+    private let suggestionEngine = SuggestionEngine()
+
+    private let parser = CommandParser()
+    private let intentResolver = IntentResolver()
+    private let actionExecutor = ActionExecutor()
 
     var body: some View {
 
-        VStack(alignment: .leading, spacing: JAMSpacing.lg) {
+        PanelContainer {
 
-            Text(greeting)
-                .font(JAMTypography.title)
+            VStack(alignment: .leading, spacing: JAMSpacing.lg) {
 
-            Text("What would you like to do?")
-                .font(JAMTypography.body)
-                .foregroundStyle(JAMColors.secondaryText)
+                Text(greeting)
+                    .font(JAMTypography.title)
 
-            TextField("", text: $command)
-                .textFieldStyle(.plain)
-                .focused($isFocused)
-                .padding(JAMSpacing.md)
-                .background(.regularMaterial)
-                .clipShape(
-                    RoundedRectangle(
-                        cornerRadius: JAMRadius.medium,
-                        style: .continuous
-                    )
+                Text("What would you like to do?")
+                    .font(JAMTypography.body)
+                    .foregroundStyle(JAMColors.secondaryText)
+
+                JAMCommandField(
+
+                    text: $commandText,
+
+                    onSubmit: {
+
+                        if suggestions.indices.contains(selectedIndex),
+                           let url = suggestions[selectedIndex].url {
+
+                            NSWorkspace.shared.open(url)
+                            return
+                        }
+
+                        let parsed = parser.parse(commandText)
+
+                        if let action = intentResolver.resolve(parsed) {
+                            actionExecutor.execute(action)
+                        }
+
+                    },
+
+                    onUpArrow: {
+
+                        guard !suggestions.isEmpty else { return }
+                        selectedIndex = max(0, selectedIndex - 1)
+
+                    },
+
+                    onDownArrow: {
+
+                        guard !suggestions.isEmpty else { return }
+                        selectedIndex = min(
+                            suggestions.count - 1,
+                            selectedIndex + 1
+                        )
+
+                    },
+
+                    onTab: {
+
+                        guard suggestions.indices.contains(selectedIndex) else {
+                            return
+                        }
+
+                        commandText = suggestions[selectedIndex]
+                            .displayText
+                            .lowercased()
+
+                    },
+
+                    onEscape: {
+
+                        commandText = ""
+                        suggestions.removeAll()
+                        selectedIndex = 0
+
+                    }
+
                 )
+                .onChange(of: commandText) { _, newValue in
+
+                    print("Typed:", newValue)
+
+                    let results = suggestionEngine.suggestions(for: newValue)
+
+                    print("Results:", results.count)
+
+                    suggestions = results
+
+                    print("State:", suggestions.count)
+
+                    selectedIndex = 0
+
+                }
+
+                if !suggestions.isEmpty {
+
+                    SuggestionList(
+                        suggestions: suggestions,
+                        selectedIndex: selectedIndex
+                    )
+
+                }
+
+            }
+            .frame(
+                minWidth: 620,
+                idealWidth: 720,
+                maxWidth: 860
+            )
+
         }
-        .padding(40)
-        .frame(minWidth: 620,
-               idealWidth: 720,
-               maxWidth: 860)
-        .onAppear {
-            isFocused = true
-        }
+
     }
+
+        }
+
+
 
     private var greeting: String {
 
@@ -54,10 +142,13 @@ struct FloatingPanelView: View {
 
         default:
             return "Good night, Jameel."
+
         }
+
     }
-}
+
+
 
 #Preview {
-    FloatingPanelView()
+    CommandPanelView()
 }

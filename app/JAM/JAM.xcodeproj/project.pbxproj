@@ -17,6 +17,38 @@
 		C22B25D32FF30D120030E98A /* JAMMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25D22FF30D100030E98A /* JAMMotion.swift */; };
 		C22B25D52FF30D290030E98A /* JAMShadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25D42FF30D270030E98A /* JAMShadows.swift */; };
 		C22B25D82FF30D720030E98A /* PanelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25D72FF30D6E0030E98A /* PanelContainer.swift */; };
+		C22B25DF2FF313970030E98A /* ApplicationsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25DE2FF313950030E98A /* ApplicationsDomain.swift */; };
+		C22B25E22FF3140C0030E98A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25E12FF314080030E98A /* Command.swift */; };
+		C22B25E42FF314170030E98A /* CommandParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25E32FF314150030E98A /* CommandParser.swift */; };
+		C22B25E62FF3142A0030E98A /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25E52FF3141F0030E98A /* Intent.swift */; };
+		C22B25E82FF314350030E98A /* Verb.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25E72FF314320030E98A /* Verb.swift */; };
+		C22B25EB2FF315890030E98A /* JAMCommandField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25EA2FF315820030E98A /* JAMCommandField.swift */; };
+		C26E7BFF2FF406280001CFFA /*  IntentResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7BFE2FF406260001CFFA /*  IntentResolver.swift */; };
+		C26E7C022FF406BC0001CFFA /*  ApplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C012FF406680001CFFA /*  ApplicationService.swift */; };
+		C26E7C042FF4095E0001CFFA /* ApplicationRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C032FF4095C0001CFFA /* ApplicationRegistry.swift */; };
+		C26E7C062FF40B270001CFFA /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C052FF40B250001CFFA /* Application.swift */; };
+		C26E7C082FF40B4E0001CFFA /* ApplicationMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C072FF40B4B0001CFFA /* ApplicationMatcher.swift */; };
+		C26E7C0B2FF40F430001CFFA /* JAMIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C0A2FF40F410001CFFA /* JAMIndex.swift */; };
+		C26E7C0D2FF40F510001CFFA /* IndexItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C0C2FF40F4C0001CFFA /* IndexItem.swift */; };
+		C26E7C0F2FF40F5B0001CFFA /* IndexBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C0E2FF40F590001CFFA /* IndexBuilder.swift */; };
+		C26E7C122FF410370001CFFA /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C112FF410350001CFFA /* Action.swift */; };
+		C26E7C142FF410440001CFFA /* ActionExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C132FF410420001CFFA /* ActionExecutor.swift */; };
+		C26E7C172FF410C10001CFFA /* OpenApplicationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C162FF410BD0001CFFA /* OpenApplicationAction.swift */; };
+		C26E7C1A2FF413710001CFFA /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C192FF4136F0001CFFA /* Suggestion.swift */; };
+		C26E7C1C2FF4137E0001CFFA /* SuggestionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C1B2FF413780001CFFA /* SuggestionEngine.swift */; };
+		C26E7C1E2FF414160001CFFA /* ApplicationSuggestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C1D2FF414140001CFFA /* ApplicationSuggestionProvider.swift */; };
+		C26E7C222FF419190001CFFA /* AuroraTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C212FF419160001CFFA /* AuroraTheme.swift */; };
+		C26E7C242FF41D2A0001CFFA /* JAMWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C232FF41D280001CFFA /* JAMWindow.swift */; };
+		C26E7C272FF421930001CFFA /* SuggestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C262FF421910001CFFA /* SuggestionProvider.swift */; };
+		C26E7C292FF43FB50001CFFA /* GhostTextOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C282FF43FB30001CFFA /* GhostTextOverlay.swift */; };
+		C26E7C2B2FF442520001CFFA /* JAMNativeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C2A2FF442500001CFFA /* JAMNativeTextField.swift */; };
+		C26E7C2D2FF442BB0001CFFA /* JAMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C2C2FF442B80001CFFA /* JAMTextField.swift */; };
+		C26E7C302FF4476E0001CFFA /* SuggestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C2F2FF4476C0001CFFA /* SuggestionList.swift */; };
+		C26E7C322FF4477C0001CFFA /* SuggestionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C312FF447790001CFFA /* SuggestionRow.swift */; };
+		C26E7C342FF456CC0001CFFA /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C332FF456C60001CFFA /* AppIcon.swift */; };
+		C26E7C362FF45D490001CFFA /*  AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C352FF45D470001CFFA /*  AppEntry.swift */; };
+		C26E7C382FF45FD00001CFFA /*  AppSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C372FF45FCD0001CFFA /*  AppSearchResult.swift */; };
+		C26E7C3A2FF45FEA0001CFFA /* ApplicationSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C392FF45FE70001CFFA /* ApplicationSearchEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +83,41 @@
 		C22B25D22FF30D100030E98A /* JAMMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMotion.swift; sourceTree = "<group>"; };
 		C22B25D42FF30D270030E98A /* JAMShadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMShadows.swift; sourceTree = "<group>"; };
 		C22B25D72FF30D6E0030E98A /* PanelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContainer.swift; sourceTree = "<group>"; };
+		C22B25D92FF311F10030E98A /* WindowConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowConfiguration.swift; sourceTree = "<group>"; };
+		C22B25DA2FF312000030E98A /* WindowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowStyle.swift; sourceTree = "<group>"; };
+		C22B25DB2FF3120E0030E98A /* JAMPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMPanel.swift; sourceTree = "<group>"; };
+		C22B25DE2FF313950030E98A /* ApplicationsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsDomain.swift; sourceTree = "<group>"; };
+		C22B25E12FF314080030E98A /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		C22B25E32FF314150030E98A /* CommandParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandParser.swift; sourceTree = "<group>"; };
+		C22B25E52FF3141F0030E98A /* Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intent.swift; sourceTree = "<group>"; };
+		C22B25E72FF314320030E98A /* Verb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verb.swift; sourceTree = "<group>"; };
+		C22B25EA2FF315820030E98A /* JAMCommandField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMCommandField.swift; sourceTree = "<group>"; };
+		C26E7BFE2FF406260001CFFA /*  IntentResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " IntentResolver.swift"; sourceTree = "<group>"; };
+		C26E7C012FF406680001CFFA /*  ApplicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ApplicationService.swift"; sourceTree = "<group>"; };
+		C26E7C032FF4095C0001CFFA /* ApplicationRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRegistry.swift; sourceTree = "<group>"; };
+		C26E7C052FF40B250001CFFA /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		C26E7C072FF40B4B0001CFFA /* ApplicationMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMatcher.swift; sourceTree = "<group>"; };
+		C26E7C0A2FF40F410001CFFA /* JAMIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMIndex.swift; sourceTree = "<group>"; };
+		C26E7C0C2FF40F4C0001CFFA /* IndexItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexItem.swift; sourceTree = "<group>"; };
+		C26E7C0E2FF40F590001CFFA /* IndexBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexBuilder.swift; sourceTree = "<group>"; };
+		C26E7C112FF410350001CFFA /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		C26E7C132FF410420001CFFA /* ActionExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionExecutor.swift; sourceTree = "<group>"; };
+		C26E7C162FF410BD0001CFFA /* OpenApplicationAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenApplicationAction.swift; sourceTree = "<group>"; };
+		C26E7C192FF4136F0001CFFA /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
+		C26E7C1B2FF413780001CFFA /* SuggestionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEngine.swift; sourceTree = "<group>"; };
+		C26E7C1D2FF414140001CFFA /* ApplicationSuggestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSuggestionProvider.swift; sourceTree = "<group>"; };
+		C26E7C212FF419160001CFFA /* AuroraTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraTheme.swift; sourceTree = "<group>"; };
+		C26E7C232FF41D280001CFFA /* JAMWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMWindow.swift; sourceTree = "<group>"; };
+		C26E7C262FF421910001CFFA /* SuggestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionProvider.swift; sourceTree = "<group>"; };
+		C26E7C282FF43FB30001CFFA /* GhostTextOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostTextOverlay.swift; sourceTree = "<group>"; };
+		C26E7C2A2FF442500001CFFA /* JAMNativeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMNativeTextField.swift; sourceTree = "<group>"; };
+		C26E7C2C2FF442B80001CFFA /* JAMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMTextField.swift; sourceTree = "<group>"; };
+		C26E7C2F2FF4476C0001CFFA /* SuggestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionList.swift; sourceTree = "<group>"; };
+		C26E7C312FF447790001CFFA /* SuggestionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionRow.swift; sourceTree = "<group>"; };
+		C26E7C332FF456C60001CFFA /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		C26E7C352FF45D470001CFFA /*  AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " AppEntry.swift"; sourceTree = "<group>"; };
+		C26E7C372FF45FCD0001CFFA /*  AppSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " AppSearchResult.swift"; sourceTree = "<group>"; };
+		C26E7C392FF45FE70001CFFA /* ApplicationSearchEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSearchEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -133,6 +200,10 @@
 		C22B25A82FF2FA020030E98A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7C182FF413640001CFFA /* Suggestions */,
+				C26E7C092FF40F360001CFFA /* Index */,
+				C22B25E02FF313F50030E98A /* CommandEngine */,
+				C22B25DC2FF3136C0030E98A /* Domains */,
 				C22B25BB2FF2FD100030E98A /* Application */,
 				C22B25B62FF2FAAD0030E98A /* Router */,
 				C22B25B52FF2FAA30030E98A /* Memory */,
@@ -162,6 +233,7 @@
 		C22B25AA2FF2FA1D0030E98A /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7C202FF418650001CFFA /* Tokens */,
 				C22B25BE2FF302F50030E98A /* Theme */,
 			);
 			path = Design;
@@ -212,6 +284,9 @@
 		C22B25B12FF2FA820030E98A /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7C152FF410B30001CFFA /* Applications */,
+				C26E7C132FF410420001CFFA /* ActionExecutor.swift */,
+				C26E7C112FF410350001CFFA /* Action.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -268,6 +343,7 @@
 		C22B25BA2FF2FC890030E98A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7C002FF406590001CFFA /* Application */,
 				C22B25CB2FF308300030E98A /* Window */,
 			);
 			path = Services;
@@ -284,13 +360,7 @@
 		C22B25BE2FF302F50030E98A /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				C22B25D42FF30D270030E98A /* JAMShadows.swift */,
-				C22B25D22FF30D100030E98A /* JAMMotion.swift */,
-				C22B25D02FF30CE30030E98A /* JAMMaterials.swift */,
-				C22B25C22FF3033E0030E98A /* JAMRadius.swift */,
-				C22B25C12FF3032E0030E98A /* JAMSpacing.swift */,
-				C22B25C02FF303170030E98A /* JAMTypography.swift */,
-				C22B25BF2FF303010030E98A /* JAMColors.swift */,
+				C26E7C212FF419160001CFFA /* AuroraTheme.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -313,6 +383,9 @@
 		C22B25CB2FF308300030E98A /* Window */ = {
 			isa = PBXGroup;
 			children = (
+				C22B25DB2FF3120E0030E98A /* JAMPanel.swift */,
+				C22B25DA2FF312000030E98A /* WindowStyle.swift */,
+				C22B25D92FF311F10030E98A /* WindowConfiguration.swift */,
 				C22B25CC2FF308430030E98A /* WindowManager.swift */,
 			);
 			path = Window;
@@ -321,6 +394,8 @@
 		C22B25CE2FF30A5B0030E98A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7C2E2FF4475F0001CFFA /* Suggestions */,
+				C22B25E92FF315780030E98A /* Input */,
 				C22B25D62FF30D5B0030E98A /* Containers */,
 			);
 			path = Components;
@@ -341,6 +416,121 @@
 				C22B25D72FF30D6E0030E98A /* PanelContainer.swift */,
 			);
 			path = Containers;
+			sourceTree = "<group>";
+		};
+		C22B25DC2FF3136C0030E98A /* Domains */ = {
+			isa = PBXGroup;
+			children = (
+				C22B25DD2FF3137A0030E98A /* Application */,
+			);
+			path = Domains;
+			sourceTree = "<group>";
+		};
+		C22B25DD2FF3137A0030E98A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C072FF40B4B0001CFFA /* ApplicationMatcher.swift */,
+				C26E7C052FF40B250001CFFA /* Application.swift */,
+				C22B25DE2FF313950030E98A /* ApplicationsDomain.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C22B25E02FF313F50030E98A /* CommandEngine */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7BFE2FF406260001CFFA /*  IntentResolver.swift */,
+				C22B25E72FF314320030E98A /* Verb.swift */,
+				C22B25E52FF3141F0030E98A /* Intent.swift */,
+				C22B25E32FF314150030E98A /* CommandParser.swift */,
+				C22B25E12FF314080030E98A /* Command.swift */,
+			);
+			path = CommandEngine;
+			sourceTree = "<group>";
+		};
+		C22B25E92FF315780030E98A /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C2C2FF442B80001CFFA /* JAMTextField.swift */,
+				C26E7C2A2FF442500001CFFA /* JAMNativeTextField.swift */,
+				C26E7C282FF43FB30001CFFA /* GhostTextOverlay.swift */,
+				C22B25EA2FF315820030E98A /* JAMCommandField.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		C26E7C002FF406590001CFFA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C032FF4095C0001CFFA /* ApplicationRegistry.swift */,
+				C26E7C012FF406680001CFFA /*  ApplicationService.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C26E7C092FF40F360001CFFA /* Index */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C392FF45FE70001CFFA /* ApplicationSearchEngine.swift */,
+				C26E7C372FF45FCD0001CFFA /*  AppSearchResult.swift */,
+				C26E7C352FF45D470001CFFA /*  AppEntry.swift */,
+				C26E7C0E2FF40F590001CFFA /* IndexBuilder.swift */,
+				C26E7C0C2FF40F4C0001CFFA /* IndexItem.swift */,
+				C26E7C0A2FF40F410001CFFA /* JAMIndex.swift */,
+			);
+			path = Index;
+			sourceTree = "<group>";
+		};
+		C26E7C152FF410B30001CFFA /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C162FF410BD0001CFFA /* OpenApplicationAction.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		C26E7C182FF413640001CFFA /* Suggestions */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C262FF421910001CFFA /* SuggestionProvider.swift */,
+				C26E7C1F2FF415530001CFFA /* Providers */,
+				C26E7C1B2FF413780001CFFA /* SuggestionEngine.swift */,
+				C26E7C192FF4136F0001CFFA /* Suggestion.swift */,
+			);
+			path = Suggestions;
+			sourceTree = "<group>";
+		};
+		C26E7C1F2FF415530001CFFA /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C1D2FF414140001CFFA /* ApplicationSuggestionProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		C26E7C202FF418650001CFFA /* Tokens */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C232FF41D280001CFFA /* JAMWindow.swift */,
+				C22B25D42FF30D270030E98A /* JAMShadows.swift */,
+				C22B25D22FF30D100030E98A /* JAMMotion.swift */,
+				C22B25D02FF30CE30030E98A /* JAMMaterials.swift */,
+				C22B25C22FF3033E0030E98A /* JAMRadius.swift */,
+				C22B25C12FF3032E0030E98A /* JAMSpacing.swift */,
+				C22B25C02FF303170030E98A /* JAMTypography.swift */,
+				C22B25BF2FF303010030E98A /* JAMColors.swift */,
+			);
+			path = Tokens;
+			sourceTree = "<group>";
+		};
+		C26E7C2E2FF4475F0001CFFA /* Suggestions */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7C332FF456C60001CFFA /* AppIcon.swift */,
+				C26E7C312FF447790001CFFA /* SuggestionRow.swift */,
+				C26E7C2F2FF4476C0001CFFA /* SuggestionList.swift */,
+			);
+			path = Suggestions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,16 +677,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26E7C1C2FF4137E0001CFFA /* SuggestionEngine.swift in Sources */,
+				C22B25E42FF314170030E98A /* CommandParser.swift in Sources */,
 				C22B25CA2FF306AF0030E98A /* CommandPanelView.swift in Sources */,
+				C26E7C362FF45D490001CFFA /*  AppEntry.swift in Sources */,
+				C26E7C3A2FF45FEA0001CFFA /* ApplicationSearchEngine.swift in Sources */,
+				C26E7C062FF40B270001CFFA /* Application.swift in Sources */,
 				C22B25D12FF30CE50030E98A /* JAMMaterials.swift in Sources */,
+				C26E7C142FF410440001CFFA /* ActionExecutor.swift in Sources */,
+				C26E7C222FF419190001CFFA /* AuroraTheme.swift in Sources */,
 				C22B25C32FF303DB0030E98A /* JAMRadius.swift in Sources */,
 				C22B25C62FF303E90030E98A /* JAMColors.swift in Sources */,
 				C22B25D52FF30D290030E98A /* JAMShadows.swift in Sources */,
+				C26E7BFF2FF406280001CFFA /*  IntentResolver.swift in Sources */,
+				C26E7C082FF40B4E0001CFFA /* ApplicationMatcher.swift in Sources */,
+				C26E7C0B2FF40F430001CFFA /* JAMIndex.swift in Sources */,
+				C26E7C122FF410370001CFFA /* Action.swift in Sources */,
+				C26E7C1E2FF414160001CFFA /* ApplicationSuggestionProvider.swift in Sources */,
 				C22B25D32FF30D120030E98A /* JAMMotion.swift in Sources */,
+				C26E7C242FF41D2A0001CFFA /* JAMWindow.swift in Sources */,
+				C26E7C292FF43FB50001CFFA /* GhostTextOverlay.swift in Sources */,
+				C26E7C2D2FF442BB0001CFFA /* JAMTextField.swift in Sources */,
+				C22B25EB2FF315890030E98A /* JAMCommandField.swift in Sources */,
+				C26E7C022FF406BC0001CFFA /*  ApplicationService.swift in Sources */,
+				C22B25E62FF3142A0030E98A /* Intent.swift in Sources */,
+				C26E7C322FF4477C0001CFFA /* SuggestionRow.swift in Sources */,
+				C26E7C272FF421930001CFFA /* SuggestionProvider.swift in Sources */,
 				C22B25C52FF303E50030E98A /* JAMTypography.swift in Sources */,
+				C26E7C302FF4476E0001CFFA /* SuggestionList.swift in Sources */,
+				C22B25DF2FF313970030E98A /* ApplicationsDomain.swift in Sources */,
+				C26E7C2B2FF442520001CFFA /* JAMNativeTextField.swift in Sources */,
+				C26E7C0F2FF40F5B0001CFFA /* IndexBuilder.swift in Sources */,
+				C26E7C0D2FF40F510001CFFA /* IndexItem.swift in Sources */,
+				C26E7C042FF4095E0001CFFA /* ApplicationRegistry.swift in Sources */,
 				C22B25BD2FF2FE9E0030E98A /* JAMApplication.swift in Sources */,
+				C22B25E22FF3140C0030E98A /* Command.swift in Sources */,
+				C26E7C342FF456CC0001CFFA /* AppIcon.swift in Sources */,
 				C22B25D82FF30D720030E98A /* PanelContainer.swift in Sources */,
+				C22B25E82FF314350030E98A /* Verb.swift in Sources */,
+				C26E7C172FF410C10001CFFA /* OpenApplicationAction.swift in Sources */,
 				C22B25C42FF303E00030E98A /* JAMSpacing.swift in Sources */,
+				C26E7C1A2FF413710001CFFA /* Suggestion.swift in Sources */,
+				C26E7C382FF45FD00001CFFA /*  AppSearchResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,9 +878,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -686,9 +907,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
