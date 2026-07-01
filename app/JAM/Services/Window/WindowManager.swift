@@ -13,15 +13,11 @@ final class WindowManager {
             rootView: CommandPanelView()
         )
 
-        hostingView.frame = panel.contentView!.bounds
-        hostingView.autoresizingMask = [.width, .height]
-
-        panel.contentView?.addSubview(hostingView)
+        panel.contentView = hostingView
 
         return panel
 
     }()
-
     func showCommandPanel() {
 
         commandPanel.center()

@@ -21,7 +21,6 @@ final class JAMPanel: NSPanel {
             ),
             styleMask: [
                 .borderless,
-                .nonactivatingPanel,
                 .fullSizeContentView
             ],
             backing: .buffered,

@@ -19,8 +19,10 @@ struct JAMNativeTextField: NSViewRepresentable {
     func makeNSView(context: Context) -> NSTextField {
 
         let field = JAMTextField()
-
+      
         field.delegate = context.coordinator
+        field.target = context.coordinator
+        field.action = #selector(Coordinator.submit)
 
         field.onUpArrow = {
             self.onUpArrow?()
@@ -76,6 +78,14 @@ struct JAMNativeTextField: NSViewRepresentable {
             }
 
             parent.text = field.stringValue
+
+        }
+        @objc
+        func submit() {
+
+            print("submit action")
+
+            parent.onSubmit()
 
         }
 

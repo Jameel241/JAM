@@ -31,7 +31,7 @@ struct CommandPanelView: View {
                     text: $commandText,
 
                     onSubmit: {
-
+                       
                         if suggestions.indices.contains(selectedIndex),
                            let url = suggestions[selectedIndex].url {
 

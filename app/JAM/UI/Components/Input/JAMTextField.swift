@@ -9,7 +9,7 @@ final class JAMTextField: NSTextField {
     var onReturn: (() -> Void)?
 
     override func keyDown(with event: NSEvent) {
-
+     
         switch event.keyCode {
 
         case 48: // Tab
@@ -33,5 +33,6 @@ final class JAMTextField: NSTextField {
         }
 
     }
+   
 
 }
