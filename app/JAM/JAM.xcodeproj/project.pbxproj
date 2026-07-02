@@ -79,6 +79,8 @@
 		C26E7CA82FF6B44B0001CFFA /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = C26E7CA72FF6B44B0001CFFA /* KeyboardShortcuts */; };
 		C26E7CAA2FF6B5CC0001CFFA /* KeyboardShortcutNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CA92FF6B5090001CFFA /* KeyboardShortcutNames.swift */; };
 		C26E7CAC2FF6BC380001CFFA /* SearchFieldRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CAB2FF6BC360001CFFA /* SearchFieldRegistry.swift */; };
+		C26E7CAF2FF6F5320001CFFA /* JAMMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */; };
+		C26E7CB32FF706F00001CFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C26E7CB22FF706F00001CFFA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +176,8 @@
 		C26E7CA42FF684960001CFFA /* JAMMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMetrics.swift; sourceTree = "<group>"; };
 		C26E7CA92FF6B5090001CFFA /* KeyboardShortcutNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutNames.swift; sourceTree = "<group>"; };
 		C26E7CAB2FF6BC360001CFFA /* SearchFieldRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldRegistry.swift; sourceTree = "<group>"; };
+		C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMenuBar.swift; sourceTree = "<group>"; };
+		C26E7CB22FF706F00001CFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -223,6 +227,7 @@
 		C22B25742FF2F9930030E98A = {
 			isa = PBXGroup;
 			children = (
+				C26E7CB22FF706F00001CFFA /* Assets.xcassets */,
 				C26E7C542FF598C50001CFFA /* Application */,
 				C22B25CF2FF30B050030E98A /* Shared */,
 				C22B25BA2FF2FC890030E98A /* Services */,
@@ -276,6 +281,7 @@
 		C22B25A92FF2FA0F0030E98A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7CAD2FF6F4F80001CFFA /* MenuBar */,
 				C26E7C662FF5AC010001CFFA /* Search */,
 				C22B25CE2FF30A5B0030E98A /* Components */,
 				C22B25C72FF3062C0030E98A /* Panels */,
@@ -656,6 +662,14 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		C26E7CAD2FF6F4F80001CFFA /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -780,6 +794,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26E7CB32FF706F00001CFFA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,6 +826,7 @@
 				C26E7C362FF45D490001CFFA /*  AppEntry.swift in Sources */,
 				C26E7CA12FF67EB70001CFFA /* JAMSearchSurface.swift in Sources */,
 				C26E7C592FF59A800001CFFA /* WindowConfiguration.swift in Sources */,
+				C26E7CAF2FF6F5320001CFFA /* JAMMenuBar.swift in Sources */,
 				C26E7C3A2FF45FEA0001CFFA /* ApplicationSearchEngine.swift in Sources */,
 				C26E7C792FF5AFC90001CFFA /* JAMWordmark.swift in Sources */,
 				C26E7C062FF40B270001CFFA /* Application.swift in Sources */,

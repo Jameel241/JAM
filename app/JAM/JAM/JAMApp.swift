@@ -8,8 +8,12 @@ struct JAMApp: App {
 
     var body: some Scene {
 
+        JAMMenuBar()
+
         Settings {
+
             EmptyView()
+
         }
 
     }
