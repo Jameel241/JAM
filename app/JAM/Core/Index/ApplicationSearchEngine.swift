@@ -46,6 +46,14 @@ final class ApplicationSearchEngine {
 
             }
 
+            if entry.displayName.lowercased().contains("youtube") {
+
+                print("-------------")
+                print("DISPLAY:", entry.displayName)
+                print("ALIASES:", entry.aliases)
+
+            }
+
             if score > 0 {
 
                 results.append(

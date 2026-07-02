@@ -1,44 +1,54 @@
 import SwiftUI
 
-struct JAMSearchBadge: View  {
+struct JAMSearchBadge: View {
 
     var body: some View {
 
-        Text("JAM")
-            .font(.system(size: 16, weight: .bold, design: .rounded))
-            .foregroundStyle(.white)
-            .frame(width: 54, height: 44)
-            .background {
+        ZStack {
 
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color.white.opacity(0.08),
-                                Color.white.opacity(0.03)
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
+            RoundedRectangle(
+                cornerRadius: 12,
+                style: .continuous
+            )
+            .fill(
+                LinearGradient(
+                    colors: [
+                        Color.white.opacity(0.08),
+                        Color.white.opacity(0.03)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
 
-            }
-            .overlay {
+            RoundedRectangle(
+                cornerRadius: 12,
+                style: .continuous
+            )
+            .strokeBorder(
+                Color.white.opacity(0.08),
+                lineWidth: 0.7
+            )
 
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .strokeBorder(
-                        Color.white.opacity(0.12),
-                        lineWidth: 0.8
-                    )
+            Text("J")
+                .font(.system(size: 18, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
 
-            }
+        }
+        .frame(width: 42, height: 42)
 
     }
 
 }
 
 #Preview {
-    JAMSearchBadge()
-        .padding()
-        .background(.black)
+
+    ZStack {
+
+        Color.black
+
+        JAMSearchBadge()
+
+    }
+
 }

@@ -7,19 +7,24 @@ struct SuggestionList: View {
 
     var body: some View {
 
-        VStack(spacing: 8) {
+        ScrollView(.vertical, showsIndicators: false) {
 
-            ForEach(suggestions.indices, id: \.self) { index in
+            LazyVStack(spacing: 8) {
 
-                SuggestionRow(
-                    suggestion: suggestions[index],
-                    isSelected: index == selectedIndex
-                )
+                ForEach(suggestions.indices, id: \.self) { index in
+
+                    SuggestionRow(
+                        suggestion: suggestions[index],
+                        isSelected: index == selectedIndex
+                    )
+
+                }
 
             }
+            .padding(8)
 
         }
-        .padding(8)
+        .frame(maxHeight: 320)
         .background(.ultraThinMaterial)
         .clipShape(
             RoundedRectangle(cornerRadius: 18)

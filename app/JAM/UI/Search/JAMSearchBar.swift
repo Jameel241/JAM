@@ -21,9 +21,9 @@ struct JAMSearchBar: View {
 
             JAMSearchBadge()
 
-            Divider()
-                .frame(height: 28)
-                .overlay(Color.white.opacity(0.08))
+            Rectangle()
+                .fill(Color.white.opacity(0.12))
+                .frame(width: 1, height: 30)
 
             JAMSearchIcon()
 
@@ -32,7 +32,9 @@ struct JAMSearchBar: View {
                 if text.isEmpty {
 
                     Text("Search apps, files, or commands...")
-                        .foregroundStyle(JAMColors.secondaryText)
+                        .foregroundStyle(
+                            Color.white.opacity(0.60)
+                        )
                         .font(JAMTypography.body)
                         .allowsHitTesting(false)
                         .transition(.opacity)
@@ -53,54 +55,10 @@ struct JAMSearchBar: View {
             .animation(JAMAnimation.search, value: text.isEmpty)
             .frame(maxWidth: .infinity)
 
-            JAMShortcutBadge(
-                isSearching: isSearching
-            )
-
+            JAMShortcutBadge()
         }
         .padding(.horizontal, 18)
-        .frame(height: 68)
-        .background {
-
-            RoundedRectangle(
-                cornerRadius: 34,
-                style: .continuous
-            )
-            .fill(JAMMaterials.commandField)
-
-            RoundedRectangle(
-                cornerRadius: 34,
-                style: .continuous
-            )
-            .fill(
-                LinearGradient(
-                    colors: [
-                        Color.white.opacity(0.08),
-                        Color.white.opacity(0.02)
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-            )
-
-        }
-        .overlay {
-
-            RoundedRectangle(
-                cornerRadius: 34,
-                style: .continuous
-            )
-            .strokeBorder(
-                Color.white.opacity(0.12),
-                lineWidth: 0.8
-            )
-
-        }
-        .shadow(
-            color: Color.purple.opacity(0.08),
-            radius: 30,
-            y: 18
-        )
+        .frame(height: JAMMetrics.searchBarHeight)
 
     }
 

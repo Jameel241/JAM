@@ -1,4 +1,5 @@
 import Foundation
+import KeyboardShortcuts
 
 final class JAMApplication {
 
@@ -9,6 +10,12 @@ final class JAMApplication {
     func start() {
 
         print("🚀 JAM is starting...")
+
+        KeyboardShortcuts.onKeyUp(for: .toggleJAM) {
+
+            WindowManager.shared.toggleCommandPanel()
+
+        }
 
         WindowManager.shared.showCommandPanel()
 

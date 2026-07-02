@@ -13,15 +13,36 @@ final class WindowManager {
             rootView: CommandPanelView()
         )
 
+        hostingView.autoresizingMask = [
+            .width,
+            .height
+        ]
+
         panel.contentView = hostingView
 
         return panel
 
     }()
+
     func showCommandPanel() {
 
-        commandPanel.center()
+        NSApp.activate(ignoringOtherApps: true)
+
+        if !commandPanel.isVisible {
+            commandPanel.center()
+        }
+
         commandPanel.makeKeyAndOrderFront(nil)
+
+        DispatchQueue.main.async {
+
+            guard let textField = SearchFieldRegistry.shared.textField else {
+                return
+            }
+
+            self.commandPanel.makeFirstResponder(textField)
+
+        }
 
     }
 

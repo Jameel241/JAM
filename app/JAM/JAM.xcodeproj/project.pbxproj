@@ -57,7 +57,6 @@
 		C26E7C6A2FF5AC830001CFFA /* JAMSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C692FF5AC810001CFFA /* JAMSearchBar.swift */; };
 		C26E7C6C2FF5AC9D0001CFFA /* JAMSearchIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C6B2FF5AC930001CFFA /* JAMSearchIcon.swift */; };
 		C26E7C6E2FF5ACA80001CFFA /* JAMShortcutBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C6D2FF5ACA60001CFFA /* JAMShortcutBadge.swift */; };
-		C26E7C702FF5ACB70001CFFA /* JAMSearchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C6F2FF5ACB50001CFFA /* JAMSearchContainer.swift */; };
 		C26E7C722FF5AE950001CFFA /* JAMSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C712FF5AE930001CFFA /* JAMSearchField.swift */; };
 		C26E7C752FF5AFB30001CFFA /* JAMMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C742FF5AFAE0001CFFA /* JAMMark.swift */; };
 		C26E7C772FF5AFBF0001CFFA /*     JAMBrandBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C762FF5AFBD0001CFFA /*     JAMBrandBadge.swift */; };
@@ -71,6 +70,15 @@
 		C26E7C892FF5B22C0001CFFA /* JAMShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C882FF5B22A0001CFFA /* JAMShadowModifier.swift */; };
 		C26E7C8B2FF5B2370001CFFA /* JAMInteractiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C8A2FF5B2350001CFFA /* JAMInteractiveModifier.swift */; };
 		C26E7C8D2FF5B3770001CFFA /* JAMSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C8C2FF5B3750001CFFA /* JAMSearchView.swift */; };
+		C26E7C9B2FF676940001CFFA /* JAMKeycap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C9A2FF676930001CFFA /* JAMKeycap.swift */; };
+		C26E7C9D2FF679070001CFFA /* JAMBackdrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C9C2FF679050001CFFA /* JAMBackdrop.swift */; };
+		C26E7C9F2FF6791B0001CFFA /* JAMGreetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C9E2FF6791A0001CFFA /* JAMGreetingCard.swift */; };
+		C26E7CA12FF67EB70001CFFA /* JAMSearchSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CA02FF67EB50001CFFA /* JAMSearchSurface.swift */; };
+		C26E7CA32FF67FE00001CFFA /* JAMResultsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CA22FF67FDE0001CFFA /* JAMResultsContainer.swift */; };
+		C26E7CA52FF684980001CFFA /* JAMMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CA42FF684960001CFFA /* JAMMetrics.swift */; };
+		C26E7CA82FF6B44B0001CFFA /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = C26E7CA72FF6B44B0001CFFA /* KeyboardShortcuts */; };
+		C26E7CAA2FF6B5CC0001CFFA /* KeyboardShortcutNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CA92FF6B5090001CFFA /* KeyboardShortcutNames.swift */; };
+		C26E7CAC2FF6BC380001CFFA /* SearchFieldRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CAB2FF6BC360001CFFA /* SearchFieldRegistry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,7 +153,6 @@
 		C26E7C692FF5AC810001CFFA /* JAMSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchBar.swift; sourceTree = "<group>"; };
 		C26E7C6B2FF5AC930001CFFA /* JAMSearchIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchIcon.swift; sourceTree = "<group>"; };
 		C26E7C6D2FF5ACA60001CFFA /* JAMShortcutBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMShortcutBadge.swift; sourceTree = "<group>"; };
-		C26E7C6F2FF5ACB50001CFFA /* JAMSearchContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchContainer.swift; sourceTree = "<group>"; };
 		C26E7C712FF5AE930001CFFA /* JAMSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchField.swift; sourceTree = "<group>"; };
 		C26E7C742FF5AFAE0001CFFA /* JAMMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMark.swift; sourceTree = "<group>"; };
 		C26E7C762FF5AFBD0001CFFA /*     JAMBrandBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "    JAMBrandBadge.swift"; sourceTree = "<group>"; };
@@ -159,6 +166,14 @@
 		C26E7C882FF5B22A0001CFFA /* JAMShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMShadowModifier.swift; sourceTree = "<group>"; };
 		C26E7C8A2FF5B2350001CFFA /* JAMInteractiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMInteractiveModifier.swift; sourceTree = "<group>"; };
 		C26E7C8C2FF5B3750001CFFA /* JAMSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchView.swift; sourceTree = "<group>"; };
+		C26E7C9A2FF676930001CFFA /* JAMKeycap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMKeycap.swift; sourceTree = "<group>"; };
+		C26E7C9C2FF679050001CFFA /* JAMBackdrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMBackdrop.swift; sourceTree = "<group>"; };
+		C26E7C9E2FF6791A0001CFFA /* JAMGreetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMGreetingCard.swift; sourceTree = "<group>"; };
+		C26E7CA02FF67EB50001CFFA /* JAMSearchSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMSearchSurface.swift; sourceTree = "<group>"; };
+		C26E7CA22FF67FDE0001CFFA /* JAMResultsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMResultsContainer.swift; sourceTree = "<group>"; };
+		C26E7CA42FF684960001CFFA /* JAMMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMetrics.swift; sourceTree = "<group>"; };
+		C26E7CA92FF6B5090001CFFA /* KeyboardShortcutNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutNames.swift; sourceTree = "<group>"; };
+		C26E7CAB2FF6BC360001CFFA /* SearchFieldRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldRegistry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -184,6 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26E7CA82FF6B44B0001CFFA /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +398,8 @@
 		C22B25B92FF2FAEB0030E98A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7CAB2FF6BC360001CFFA /* SearchFieldRegistry.swift */,
+				C26E7CA92FF6B5090001CFFA /* KeyboardShortcutNames.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -557,6 +575,7 @@
 		C26E7C202FF418650001CFFA /* Tokens */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7CA42FF684960001CFFA /* JAMMetrics.swift */,
 				C26E7C232FF41D280001CFFA /* JAMWindow.swift */,
 				C22B25D42FF30D270030E98A /* JAMShadows.swift */,
 				C22B25D22FF30D100030E98A /* JAMMotion.swift */,
@@ -590,9 +609,12 @@
 		C26E7C662FF5AC010001CFFA /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7CA22FF67FDE0001CFFA /* JAMResultsContainer.swift */,
+				C26E7CA02FF67EB50001CFFA /* JAMSearchSurface.swift */,
+				C26E7C9E2FF6791A0001CFFA /* JAMGreetingCard.swift */,
+				C26E7C9A2FF676930001CFFA /* JAMKeycap.swift */,
 				C26E7C8C2FF5B3750001CFFA /* JAMSearchView.swift */,
 				C26E7C712FF5AE930001CFFA /* JAMSearchField.swift */,
-				C26E7C6F2FF5ACB50001CFFA /* JAMSearchContainer.swift */,
 				C26E7C6D2FF5ACA60001CFFA /* JAMShortcutBadge.swift */,
 				C26E7C6B2FF5AC930001CFFA /* JAMSearchIcon.swift */,
 				C26E7C692FF5AC810001CFFA /* JAMSearchBar.swift */,
@@ -614,6 +636,7 @@
 		C26E7C7A2FF5B17B0001CFFA /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				C26E7C9C2FF679050001CFFA /* JAMBackdrop.swift */,
 				C26E7C832FF5B1B70001CFFA /* JAMAnimation.swift */,
 				C26E7C812FF5B1A10001CFFA /* JAMShadow.swift */,
 				C26E7C7F2FF5B1970001CFFA /* JAMStroke.swift */,
@@ -653,6 +676,7 @@
 			);
 			name = JAM;
 			packageProductDependencies = (
+				C26E7CA72FF6B44B0001CFFA /* KeyboardShortcuts */,
 			);
 			productName = JAM;
 			productReference = C22B257D2FF2F9940030E98A /* JAM.app */;
@@ -736,6 +760,9 @@
 			);
 			mainGroup = C22B25742FF2F9930030E98A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C26E7CA62FF6B44B0001CFFA /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C22B257E2FF2F9940030E98A /* Products */;
 			projectDirPath = "";
@@ -779,12 +806,15 @@
 			files = (
 				C26E7C1C2FF4137E0001CFFA /* SuggestionEngine.swift in Sources */,
 				C22B25E42FF314170030E98A /* CommandParser.swift in Sources */,
+				C26E7CA52FF684980001CFFA /* JAMMetrics.swift in Sources */,
 				C22B25CA2FF306AF0030E98A /* CommandPanelView.swift in Sources */,
 				C26E7C362FF45D490001CFFA /*  AppEntry.swift in Sources */,
+				C26E7CA12FF67EB70001CFFA /* JAMSearchSurface.swift in Sources */,
 				C26E7C592FF59A800001CFFA /* WindowConfiguration.swift in Sources */,
 				C26E7C3A2FF45FEA0001CFFA /* ApplicationSearchEngine.swift in Sources */,
 				C26E7C792FF5AFC90001CFFA /* JAMWordmark.swift in Sources */,
 				C26E7C062FF40B270001CFFA /* Application.swift in Sources */,
+				C26E7CAA2FF6B5CC0001CFFA /* KeyboardShortcutNames.swift in Sources */,
 				C26E7C6C2FF5AC9D0001CFFA /* JAMSearchIcon.swift in Sources */,
 				C26E7C7C2FF5B1860001CFFA /* JAMGlass.swift in Sources */,
 				C26E7C752FF5AFB30001CFFA /* JAMMark.swift in Sources */,
@@ -807,6 +837,7 @@
 				C26E7C872FF5B2230001CFFA /* JAMGlassModifier.swift in Sources */,
 				C26E7C122FF410370001CFFA /* Action.swift in Sources */,
 				C26E7C8D2FF5B3770001CFFA /* JAMSearchView.swift in Sources */,
+				C26E7C9B2FF676940001CFFA /* JAMKeycap.swift in Sources */,
 				C26E7C1E2FF414160001CFFA /* ApplicationSuggestionProvider.swift in Sources */,
 				C22B25D32FF30D120030E98A /* JAMMotion.swift in Sources */,
 				C26E7C892FF5B22C0001CFFA /* JAMShadowModifier.swift in Sources */,
@@ -814,6 +845,7 @@
 				C26E7C572FF59A4F0001CFFA /* AppDelegate.swift in Sources */,
 				C26E7C292FF43FB50001CFFA /* GhostTextOverlay.swift in Sources */,
 				C26E7C2D2FF442BB0001CFFA /* JAMTextField.swift in Sources */,
+				C26E7CA32FF67FE00001CFFA /* JAMResultsContainer.swift in Sources */,
 				C22B25EB2FF315890030E98A /* JAMCommandField.swift in Sources */,
 				C26E7C022FF406BC0001CFFA /*  ApplicationService.swift in Sources */,
 				C22B25E62FF3142A0030E98A /* Intent.swift in Sources */,
@@ -821,9 +853,12 @@
 				C26E7C8B2FF5B2370001CFFA /* JAMInteractiveModifier.swift in Sources */,
 				C26E7C272FF421930001CFFA /* SuggestionProvider.swift in Sources */,
 				C22B25C52FF303E50030E98A /* JAMTypography.swift in Sources */,
+				C26E7C9F2FF6791B0001CFFA /* JAMGreetingCard.swift in Sources */,
 				C26E7C302FF4476E0001CFFA /* SuggestionList.swift in Sources */,
+				C26E7CAC2FF6BC380001CFFA /* SearchFieldRegistry.swift in Sources */,
 				C22B25DF2FF313970030E98A /* ApplicationsDomain.swift in Sources */,
 				C26E7C7E2FF5B18F0001CFFA /* JAMGlow.swift in Sources */,
+				C26E7C9D2FF679070001CFFA /* JAMBackdrop.swift in Sources */,
 				C26E7C6E2FF5ACA80001CFFA /* JAMShortcutBadge.swift in Sources */,
 				C26E7C2B2FF442520001CFFA /* JAMNativeTextField.swift in Sources */,
 				C26E7C0F2FF40F5B0001CFFA /* IndexBuilder.swift in Sources */,
@@ -840,7 +875,6 @@
 				C22B25C42FF303E00030E98A /* JAMSpacing.swift in Sources */,
 				C26E7C1A2FF413710001CFFA /* Suggestion.swift in Sources */,
 				C26E7C382FF45FD00001CFFA /*  AppSearchResult.swift in Sources */,
-				C26E7C702FF5ACB70001CFFA /* JAMSearchContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1166,6 +1200,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C26E7CA62FF6B44B0001CFFA /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C26E7CA72FF6B44B0001CFFA /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C26E7CA62FF6B44B0001CFFA /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C22B25752FF2F9930030E98A /* Project object */;
 }

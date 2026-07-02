@@ -19,6 +19,7 @@ struct JAMNativeTextField: NSViewRepresentable {
     func makeNSView(context: Context) -> NSTextField {
 
         let field = JAMTextField()
+        SearchFieldRegistry.shared.textField = field
       
         field.delegate = context.coordinator
         field.target = context.coordinator
@@ -55,11 +56,16 @@ struct JAMNativeTextField: NSViewRepresentable {
         return field
     }
 
-    func updateNSView(_ nsView: NSTextField, context: Context) {
+    func updateNSView(
+        _ nsView: NSTextField,
+        context: Context
+    ) {
 
         if nsView.stringValue != text {
             nsView.stringValue = text
         }
+
+        SearchFieldRegistry.shared.textField = nsView
 
     }
 
