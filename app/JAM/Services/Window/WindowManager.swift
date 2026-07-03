@@ -4,6 +4,8 @@ import SwiftUI
 final class WindowManager {
 
     static let shared = WindowManager()
+  
+   
     private var appWindow: NSWindow?
 
     private lazy var commandPanel: JAMPanel = {
@@ -82,6 +84,11 @@ final class WindowManager {
         )
 
         window.title = "JAM"
+
+        window.appearance = AppearanceManager.appearance(
+            for: AppearanceSettingsManager.shared.selectedTheme
+        )
+
         window.isReleasedWhenClosed = false
 
         window.center()
@@ -114,5 +121,14 @@ final class WindowManager {
         }
 
     }
+    func updateAppearance() {
 
+        let appearance = AppearanceManager.appearance(
+            for: AppearanceSettingsManager.shared.selectedTheme
+        )
+
+        appWindow?.appearance = appearance
+
+    }
 }
+

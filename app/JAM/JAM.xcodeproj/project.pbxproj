@@ -23,6 +23,9 @@
 		C22B25E62FF3142A0030E98A /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25E52FF3141F0030E98A /* Intent.swift */; };
 		C22B25E82FF314350030E98A /* Verb.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25E72FF314320030E98A /* Verb.swift */; };
 		C22B25EB2FF315890030E98A /* JAMCommandField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25EA2FF315820030E98A /* JAMCommandField.swift */; };
+		C25FA6DC2FF7FC5C00A3BC85 /* AppearanceSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FA6DB2FF7FC5A00A3BC85 /* AppearanceSettingsManager.swift */; };
+		C25FA6DE2FF7FC8400A3BC85 /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FA6DD2FF7FC7900A3BC85 /* AppearanceView.swift */; };
+		C25FA6E12FF8007A00A3BC85 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FA6E02FF8007500A3BC85 /* AppearanceManager.swift */; };
 		C26E7BFF2FF406280001CFFA /*  IntentResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7BFE2FF406260001CFFA /*  IntentResolver.swift */; };
 		C26E7C022FF406BC0001CFFA /*  ApplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C012FF406680001CFFA /*  ApplicationService.swift */; };
 		C26E7C042FF4095E0001CFFA /* ApplicationRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7C032FF4095C0001CFFA /* ApplicationRegistry.swift */; };
@@ -132,6 +135,9 @@
 		C22B25E52FF3141F0030E98A /* Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intent.swift; sourceTree = "<group>"; };
 		C22B25E72FF314320030E98A /* Verb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verb.swift; sourceTree = "<group>"; };
 		C22B25EA2FF315820030E98A /* JAMCommandField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMCommandField.swift; sourceTree = "<group>"; };
+		C25FA6DB2FF7FC5A00A3BC85 /* AppearanceSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingsManager.swift; sourceTree = "<group>"; };
+		C25FA6DD2FF7FC7900A3BC85 /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
+		C25FA6E02FF8007500A3BC85 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		C26E7BFE2FF406260001CFFA /*  IntentResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " IntentResolver.swift"; sourceTree = "<group>"; };
 		C26E7C012FF406680001CFFA /*  ApplicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ApplicationService.swift"; sourceTree = "<group>"; };
 		C26E7C032FF4095C0001CFFA /* ApplicationRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRegistry.swift; sourceTree = "<group>"; };
@@ -492,6 +498,7 @@
 		C22B25CF2FF30B050030E98A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C25FA6DF2FF8006900A3BC85 /* Appearance */,
 				C2D80E982FF7C23100926E79 /* Settings  */,
 				C22B25B82FF2FACD0030E98A /* Extensions */,
 				C22B25B92FF2FAEB0030E98A /* Utilities */,
@@ -546,6 +553,14 @@
 				C22B25EA2FF315820030E98A /* JAMCommandField.swift */,
 			);
 			path = Input;
+			sourceTree = "<group>";
+		};
+		C25FA6DF2FF8006900A3BC85 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				C25FA6E02FF8007500A3BC85 /* AppearanceManager.swift */,
+			);
+			path = Appearance;
 			sourceTree = "<group>";
 		};
 		C26E7C002FF406590001CFFA /* Application */ = {
@@ -693,6 +708,7 @@
 		C2D80E982FF7C23100926E79 /* Settings  */ = {
 			isa = PBXGroup;
 			children = (
+				C25FA6DB2FF7FC5A00A3BC85 /* AppearanceSettingsManager.swift */,
 				C2D80EA92FF7D96300926E79 /* SearchSettingsManager.swift */,
 				C2D80E992FF7C23D00926E79 /* SettingsManager.swift */,
 			);
@@ -710,6 +726,7 @@
 		C2D80EA02FF7CEA000926E79 /* Windows */ = {
 			isa = PBXGroup;
 			children = (
+				C25FA6DD2FF7FC7900A3BC85 /* AppearanceView.swift */,
 				C2D80EA72FF7D83B00926E79 /* SearchView.swift */,
 				C2D80EA52FF7D5D900926E79 /*  AboutView.swift */,
 				C2D80EA32FF7D49B00926E79 /* GeneralView.swift */,
@@ -880,6 +897,7 @@
 				C26E7C792FF5AFC90001CFFA /* JAMWordmark.swift in Sources */,
 				C26E7C062FF40B270001CFFA /* Application.swift in Sources */,
 				C26E7CAA2FF6B5CC0001CFFA /* KeyboardShortcutNames.swift in Sources */,
+				C25FA6DE2FF7FC8400A3BC85 /* AppearanceView.swift in Sources */,
 				C26E7C6C2FF5AC9D0001CFFA /* JAMSearchIcon.swift in Sources */,
 				C26E7C7C2FF5B1860001CFFA /* JAMGlass.swift in Sources */,
 				C26E7C752FF5AFB30001CFFA /* JAMMark.swift in Sources */,
@@ -908,7 +926,9 @@
 				C26E7C8D2FF5B3770001CFFA /* JAMSearchView.swift in Sources */,
 				C26E7C9B2FF676940001CFFA /* JAMKeycap.swift in Sources */,
 				C26E7C1E2FF414160001CFFA /* ApplicationSuggestionProvider.swift in Sources */,
+				C25FA6E12FF8007A00A3BC85 /* AppearanceManager.swift in Sources */,
 				C22B25D32FF30D120030E98A /* JAMMotion.swift in Sources */,
+				C25FA6DC2FF7FC5C00A3BC85 /* AppearanceSettingsManager.swift in Sources */,
 				C26E7C892FF5B22C0001CFFA /* JAMShadowModifier.swift in Sources */,
 				C26E7C242FF41D2A0001CFFA /* JAMWindow.swift in Sources */,
 				C26E7C572FF59A4F0001CFFA /* AppDelegate.swift in Sources */,

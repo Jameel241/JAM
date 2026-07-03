@@ -61,7 +61,7 @@ struct JAMWindows: View {
 
             case .appearance:
 
-                Text("Appearance")
+                AppearanceView()
 
             case .plugins:
 
