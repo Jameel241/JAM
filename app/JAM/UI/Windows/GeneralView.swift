@@ -74,7 +74,7 @@ struct GeneralView: View {
 
                 LabeledContent("Version") {
 
-                    Text("0.1.0")
+                    Text(AppInfo.version)
 
                 }
 

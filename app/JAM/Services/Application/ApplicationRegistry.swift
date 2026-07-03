@@ -1,16 +1,40 @@
 import Foundation
+import Combine
 
-final class ApplicationRegistry {
+@MainActor
+final class ApplicationRegistry: ObservableObject {
 
     static let shared = ApplicationRegistry()
 
+    @Published
     private(set) var entries: [AppEntry] = []
-    private init() {
-        print("🚀 ApplicationRegistry initialized")
-        loadApplications()
-    }
 
-    private func loadApplications() {
+    @Published
+    private(set) var isIndexing = false
+
+    @Published
+    private(set) var lastIndexed: Date?
+
+    @Published
+    private(set) var lastError: Error?
+
+    private init() {
+
+        print("🚀 ApplicationRegistry initialized")
+
+        Task {
+
+            await rebuild()
+
+        }
+
+    }
+    func rebuild() async {
+        
+        isIndexing = true
+        lastError = nil
+
+        entries.removeAll()
 
         let folders: [URL] = [
 
@@ -34,6 +58,8 @@ final class ApplicationRegistry {
                 continue
             }
 
+            print("Found \(contents.count) items in \(folder.lastPathComponent)")
+
             for url in contents where url.pathExtension == "app" {
 
                 let displayName = url
@@ -50,12 +76,14 @@ final class ApplicationRegistry {
                         category: "Application"
                     )
                 )
-
                 print("Indexed:", displayName)
-
             }
 
         }
+        print("Entries count:", entries.count)
+
+        lastIndexed = Date()
+        isIndexing = false
 
         print("Loaded \(entries.count) applications.")
 

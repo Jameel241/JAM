@@ -41,8 +41,9 @@ struct AIView: View {
                 }
 
             }
-
-            SettingsCard(
+           
+            
+           SettingsCard(
                 title: "Authentication",
                 systemImage: "key.fill"
             ) {

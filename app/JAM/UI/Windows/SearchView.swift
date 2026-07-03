@@ -5,6 +5,8 @@ struct SearchView: View {
 
     @StateObject
     private var settings = SearchSettingsManager.shared
+    @StateObject
+    private var registry = ApplicationRegistry.shared
 
     var body: some View {
 
@@ -47,17 +49,50 @@ struct SearchView: View {
 
                 LabeledContent("Index Status") {
 
-                    Label(
-                        "Ready",
-                        systemImage: "checkmark.circle.fill"
-                    )
-                    .foregroundStyle(.green)
+                    if registry.isIndexing {
+
+                        Label(
+                            "Indexing",
+                            systemImage: "arrow.triangle.2.circlepath"
+                        )
+                        .foregroundStyle(.orange)
+
+                    } else {
+
+                        Label(
+                            "Ready",
+                            systemImage: "checkmark.circle.fill"
+                        )
+                        .foregroundStyle(.green)
+
+                    }
 
                 }
 
                 LabeledContent("Applications Indexed") {
 
-                    Text("352")
+                    Text("\(registry.entries.count)")
+
+                }
+                
+                Divider()
+
+                LabeledContent("Last Indexed") {
+
+                    if let date = registry.lastIndexed {
+
+                        Text(
+                            date.formatted(
+                                date: .abbreviated,
+                                time: .shortened
+                            )
+                        )
+
+                    } else {
+
+                        Text("Never")
+
+                    }
 
                 }
 
@@ -71,9 +106,26 @@ struct SearchView: View {
 
             Section("Advanced") {
 
-                Button("Rebuild Search Index") {
+                Button {
+
+                    Task {
+
+                        await registry.rebuild()
+
+                    }
+
+                } label: {
+
+                    Label(
+
+                        "Rebuild Search Index",
+
+                        systemImage: "arrow.clockwise"
+
+                    )
 
                 }
+                .disabled(registry.isIndexing)
 
             }
 

@@ -27,10 +27,24 @@ struct JAMMenu: View {
         Divider()
 
         Button("Settings...") {
+
             WindowManager.shared.showAppWindow()
+
+            NotificationCenter.default.post(
+                name: .openGeneralSettings,
+                object: nil
+            )
+
         }
 
         Button("About JAM") {
+
+            WindowManager.shared.showAppWindow()
+
+            NotificationCenter.default.post(
+                name: .openAboutSettings,
+                object: nil
+            )
 
         }
 

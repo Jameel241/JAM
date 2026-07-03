@@ -37,7 +37,7 @@ struct AboutView: View {
                     Text("Version")
                         .foregroundStyle(.secondary)
 
-                    Text("0.1.0")
+                    Text(AppInfo.version)
 
                 }
 
@@ -46,7 +46,7 @@ struct AboutView: View {
                     Text("Build")
                         .foregroundStyle(.secondary)
 
-                    Text("1")
+                    Text(AppInfo.build)
 
                 }
 
