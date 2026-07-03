@@ -17,10 +17,16 @@ final class SettingsManager: ObservableObject {
 
     @Published var launchAtLogin: Bool {
         didSet {
+
             UserDefaults.standard.set(
                 launchAtLogin,
                 forKey: "launchAtLogin"
             )
+
+            LaunchAtLoginManager.shared.update(
+                enabled: launchAtLogin
+            )
+
         }
     }
 

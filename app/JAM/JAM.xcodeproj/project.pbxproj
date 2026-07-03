@@ -83,6 +83,7 @@
 		C26E7CB32FF706F00001CFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C26E7CB22FF706F00001CFFA /* Assets.xcassets */; };
 		C2D80E9A2FF7C23F00926E79 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E992FF7C23D00926E79 /* SettingsManager.swift */; };
 		C2D80E9C2FF7C86000926E79 /* JAMMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E9B2FF7C85E00926E79 /* JAMMenu.swift */; };
+		C2D80E9F2FF7C9F400926E79 /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E9E2FF7C9F200926E79 /* LaunchAtLoginManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +183,7 @@
 		C26E7CB22FF706F00001CFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2D80E992FF7C23D00926E79 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		C2D80E9B2FF7C85E00926E79 /* JAMMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMenu.swift; sourceTree = "<group>"; };
+		C2D80E9E2FF7C9F200926E79 /* LaunchAtLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -417,6 +419,7 @@
 		C22B25BA2FF2FC890030E98A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C2D80E9D2FF7C9E900926E79 /* Login */,
 				C26E7C002FF406590001CFFA /* Application */,
 				C22B25CB2FF308300030E98A /* Window */,
 			);
@@ -684,6 +687,14 @@
 			path = "Settings ";
 			sourceTree = "<group>";
 		};
+		C2D80E9D2FF7C9E900926E79 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C2D80E9E2FF7C9F200926E79 /* LaunchAtLoginManager.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -853,6 +864,7 @@
 				C26E7C222FF419190001CFFA /* AuroraTheme.swift in Sources */,
 				C26E7C772FF5AFBF0001CFFA /*     JAMBrandBadge.swift in Sources */,
 				C22B25C32FF303DB0030E98A /* JAMRadius.swift in Sources */,
+				C2D80E9F2FF7C9F400926E79 /* LaunchAtLoginManager.swift in Sources */,
 				C22B25C62FF303E90030E98A /* JAMColors.swift in Sources */,
 				C22B25D52FF30D290030E98A /* JAMShadows.swift in Sources */,
 				C26E7C802FF5B1990001CFFA /* JAMStroke.swift in Sources */,
