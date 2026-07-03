@@ -56,8 +56,7 @@ struct JAMWindows: View {
                 SearchView()
                 
             case .ai:
-
-                Text("AI")
+                AIView()
 
             case .appearance:
 

@@ -20,7 +20,7 @@ struct AboutView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
 
-                Text("Native AI Launcher for macOS")
+                Text("Native Assistant for macOS")
                     .foregroundStyle(.secondary)
 
             }

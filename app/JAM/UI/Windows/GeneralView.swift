@@ -9,35 +9,46 @@ struct GeneralView: View {
 
         Form {
 
-            Section("Application") {
+            PageHeader(
+                title: "General",
+                subtitle: "Manage how JAM behaves.",
+                systemImage: "gearshape"
+            )
+
+            SettingsCard(
+                title: "Application",
+                systemImage: "gearshape"
+            ) {
 
                 Toggle(
                     isOn: $settings.launcherShortcutEnabled
                 ) {
 
-                    Label("Global Shortcut", systemImage: "keyboard")
+                    Label(
+                        "Global Shortcut",
+                        systemImage: "keyboard"
+                    )
 
                 }
+
+                Divider()
 
                 Toggle(
                     isOn: $settings.launchAtLogin
                 ) {
 
-                    Label("Launch at Login", systemImage: "power")
-
-                }
-
-                Toggle(
-                    isOn: $settings.animationsEnabled
-                ) {
-
-                    Label("Animations", systemImage: "sparkles")
+                    Label(
+                        "Launch at Login",
+                        systemImage: "power"
+                    )
 
                 }
 
             }
-
-            Section("Keyboard") {
+            SettingsCard(
+                title: "Keyboard",
+                systemImage: "command"
+            ) {
 
                 LabeledContent {
 
@@ -47,34 +58,35 @@ struct GeneralView: View {
 
                 } label: {
 
-                    Label("Shortcut", systemImage: "command")
+                    Label(
+                        "Shortcut",
+                        systemImage: "keyboard"
+                    )
 
                 }
 
             }
 
-            Section("About") {
+            SettingsCard(
+                title: "About",
+                systemImage: "info.circle"
+            ) {
 
-                LabeledContent {
+                LabeledContent("Version") {
 
                     Text("0.1.0")
 
-                } label: {
-
-                    Label("Version", systemImage: "number")
-
                 }
-                LabeledContent {
 
-                    Label(
-                        "Running",
-                        systemImage: "checkmark.circle.fill"
+                Divider()
+
+                LabeledContent("Status") {
+
+                    StatusBadge(
+                        title: "Running",
+                        systemImage: "checkmark.circle.fill",
+                        color: .green
                     )
-                    .foregroundStyle(.green)
-
-                } label: {
-
-                    Label("Status", systemImage: "bolt.fill")
 
                 }
 

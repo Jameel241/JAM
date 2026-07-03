@@ -7,7 +7,7 @@ struct JAMMenu: View {
 
     var body: some View {
 
-        Button("Open Launcher") {
+        Button("Open Assistant") {
             WindowManager.shared.showCommandPanel()
         }
         .keyboardShortcut("j", modifiers: [.option])

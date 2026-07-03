@@ -65,7 +65,7 @@ struct AppearanceView: View {
 
                             .font(.title2.bold())
 
-                        Text("Native AI Launcher")
+                        Text("Native Assistant")
 
                             .foregroundStyle(.secondary)
 
