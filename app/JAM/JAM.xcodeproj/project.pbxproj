@@ -81,6 +81,7 @@
 		C26E7CAC2FF6BC380001CFFA /* SearchFieldRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CAB2FF6BC360001CFFA /* SearchFieldRegistry.swift */; };
 		C26E7CAF2FF6F5320001CFFA /* JAMMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */; };
 		C26E7CB32FF706F00001CFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C26E7CB22FF706F00001CFFA /* Assets.xcassets */; };
+		C2D80E9A2FF7C23F00926E79 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E992FF7C23D00926E79 /* SettingsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +179,7 @@
 		C26E7CAB2FF6BC360001CFFA /* SearchFieldRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldRegistry.swift; sourceTree = "<group>"; };
 		C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMenuBar.swift; sourceTree = "<group>"; };
 		C26E7CB22FF706F00001CFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C2D80E992FF7C23D00926E79 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -474,6 +476,7 @@
 		C22B25CF2FF30B050030E98A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C2D80E982FF7C23100926E79 /* Settings  */,
 				C22B25B82FF2FACD0030E98A /* Extensions */,
 				C22B25B92FF2FAEB0030E98A /* Utilities */,
 			);
@@ -668,6 +671,14 @@
 				C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */,
 			);
 			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		C2D80E982FF7C23100926E79 /* Settings  */ = {
+			isa = PBXGroup;
+			children = (
+				C2D80E992FF7C23D00926E79 /* SettingsManager.swift */,
+			);
+			path = "Settings ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -888,6 +899,7 @@
 				C22B25E82FF314350030E98A /* Verb.swift in Sources */,
 				C26E7C172FF410C10001CFFA /* OpenApplicationAction.swift in Sources */,
 				C26E7C6A2FF5AC830001CFFA /* JAMSearchBar.swift in Sources */,
+				C2D80E9A2FF7C23F00926E79 /* SettingsManager.swift in Sources */,
 				C22B25C42FF303E00030E98A /* JAMSpacing.swift in Sources */,
 				C26E7C1A2FF413710001CFFA /* Suggestion.swift in Sources */,
 				C26E7C382FF45FD00001CFFA /*  AppSearchResult.swift in Sources */,
