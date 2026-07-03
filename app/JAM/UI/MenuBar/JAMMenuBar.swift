@@ -10,8 +10,9 @@ struct JAMMenuBar: Scene {
 
         } label: {
 
-            Image("JAMMark")
-                .renderingMode(.template)
+            Image(systemName: "sparkles")
+
+                .symbolVariant(.fill)
 
         }
 

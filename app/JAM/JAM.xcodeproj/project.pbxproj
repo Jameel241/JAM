@@ -84,6 +84,11 @@
 		C2D80E9A2FF7C23F00926E79 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E992FF7C23D00926E79 /* SettingsManager.swift */; };
 		C2D80E9C2FF7C86000926E79 /* JAMMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E9B2FF7C85E00926E79 /* JAMMenu.swift */; };
 		C2D80E9F2FF7C9F400926E79 /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E9E2FF7C9F200926E79 /* LaunchAtLoginManager.swift */; };
+		C2D80EA22FF7CEB100926E79 /* JAMWindows.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80EA12FF7CEAF00926E79 /* JAMWindows.swift */; };
+		C2D80EA42FF7D49D00926E79 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80EA32FF7D49B00926E79 /* GeneralView.swift */; };
+		C2D80EA62FF7D5DB00926E79 /*  AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80EA52FF7D5D900926E79 /*  AboutView.swift */; };
+		C2D80EA82FF7D83D00926E79 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80EA72FF7D83B00926E79 /* SearchView.swift */; };
+		C2D80EAA2FF7D96500926E79 /* SearchSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80EA92FF7D96300926E79 /* SearchSettingsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +189,11 @@
 		C2D80E992FF7C23D00926E79 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		C2D80E9B2FF7C85E00926E79 /* JAMMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMenu.swift; sourceTree = "<group>"; };
 		C2D80E9E2FF7C9F200926E79 /* LaunchAtLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginManager.swift; sourceTree = "<group>"; };
+		C2D80EA12FF7CEAF00926E79 /* JAMWindows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMWindows.swift; sourceTree = "<group>"; };
+		C2D80EA32FF7D49B00926E79 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
+		C2D80EA52FF7D5D900926E79 /*  AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " AboutView.swift"; sourceTree = "<group>"; };
+		C2D80EA72FF7D83B00926E79 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		C2D80EA92FF7D96300926E79 /* SearchSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -287,6 +297,7 @@
 		C22B25A92FF2FA0F0030E98A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C2D80EA02FF7CEA000926E79 /* Windows */,
 				C26E7CAD2FF6F4F80001CFFA /* MenuBar */,
 				C26E7C662FF5AC010001CFFA /* Search */,
 				C22B25CE2FF30A5B0030E98A /* Components */,
@@ -682,6 +693,7 @@
 		C2D80E982FF7C23100926E79 /* Settings  */ = {
 			isa = PBXGroup;
 			children = (
+				C2D80EA92FF7D96300926E79 /* SearchSettingsManager.swift */,
 				C2D80E992FF7C23D00926E79 /* SettingsManager.swift */,
 			);
 			path = "Settings ";
@@ -693,6 +705,17 @@
 				C2D80E9E2FF7C9F200926E79 /* LaunchAtLoginManager.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		C2D80EA02FF7CEA000926E79 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				C2D80EA72FF7D83B00926E79 /* SearchView.swift */,
+				C2D80EA52FF7D5D900926E79 /*  AboutView.swift */,
+				C2D80EA32FF7D49B00926E79 /* GeneralView.swift */,
+				C2D80EA12FF7CEAF00926E79 /* JAMWindows.swift */,
+			);
+			path = Windows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -845,6 +868,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C26E7C1C2FF4137E0001CFFA /* SuggestionEngine.swift in Sources */,
+				C2D80EA62FF7D5DB00926E79 /*  AboutView.swift in Sources */,
 				C22B25E42FF314170030E98A /* CommandParser.swift in Sources */,
 				C26E7CA52FF684980001CFFA /* JAMMetrics.swift in Sources */,
 				C22B25CA2FF306AF0030E98A /* CommandPanelView.swift in Sources */,
@@ -862,10 +886,13 @@
 				C22B25D12FF30CE50030E98A /* JAMMaterials.swift in Sources */,
 				C26E7C142FF410440001CFFA /* ActionExecutor.swift in Sources */,
 				C26E7C222FF419190001CFFA /* AuroraTheme.swift in Sources */,
+				C2D80EA82FF7D83D00926E79 /* SearchView.swift in Sources */,
 				C26E7C772FF5AFBF0001CFFA /*     JAMBrandBadge.swift in Sources */,
 				C22B25C32FF303DB0030E98A /* JAMRadius.swift in Sources */,
+				C2D80EA22FF7CEB100926E79 /* JAMWindows.swift in Sources */,
 				C2D80E9F2FF7C9F400926E79 /* LaunchAtLoginManager.swift in Sources */,
 				C22B25C62FF303E90030E98A /* JAMColors.swift in Sources */,
+				C2D80EA42FF7D49D00926E79 /* GeneralView.swift in Sources */,
 				C22B25D52FF30D290030E98A /* JAMShadows.swift in Sources */,
 				C26E7C802FF5B1990001CFFA /* JAMStroke.swift in Sources */,
 				C26E7BFF2FF406280001CFFA /*  IntentResolver.swift in Sources */,
@@ -916,6 +943,7 @@
 				C26E7C172FF410C10001CFFA /* OpenApplicationAction.swift in Sources */,
 				C26E7C6A2FF5AC830001CFFA /* JAMSearchBar.swift in Sources */,
 				C2D80E9A2FF7C23F00926E79 /* SettingsManager.swift in Sources */,
+				C2D80EAA2FF7D96500926E79 /* SearchSettingsManager.swift in Sources */,
 				C22B25C42FF303E00030E98A /* JAMSpacing.swift in Sources */,
 				C26E7C1A2FF413710001CFFA /* Suggestion.swift in Sources */,
 				C26E7C382FF45FD00001CFFA /*  AppSearchResult.swift in Sources */,

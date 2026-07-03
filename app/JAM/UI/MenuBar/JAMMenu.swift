@@ -27,7 +27,7 @@ struct JAMMenu: View {
         Divider()
 
         Button("Settings...") {
-
+            WindowManager.shared.showAppWindow()
         }
 
         Button("About JAM") {

@@ -4,8 +4,10 @@ import SwiftUI
 final class WindowManager {
 
     static let shared = WindowManager()
+    private var appWindow: NSWindow?
 
     private lazy var commandPanel: JAMPanel = {
+       
 
         let panel = JAMPanel()
 
@@ -43,6 +45,57 @@ final class WindowManager {
             self.commandPanel.makeFirstResponder(textField)
 
         }
+
+    }
+    func showAppWindow() {
+
+        NSApp.activate(ignoringOtherApps: true)
+
+        if let window = appWindow {
+
+            window.makeKeyAndOrderFront(nil)
+
+            return
+
+        }
+
+        let window = NSWindow(
+
+            contentRect: NSRect(
+                x: 0,
+                y: 0,
+                width: 900,
+                height: 600
+            ),
+
+            styleMask: [
+                .titled,
+                .closable,
+                .miniaturizable,
+                .resizable
+            ],
+
+            backing: .buffered,
+
+            defer: false
+
+        )
+
+        window.title = "JAM"
+        window.isReleasedWhenClosed = false
+
+        window.center()
+
+        window.contentView = NSHostingView(
+
+            rootView: JAMWindows()
+
+        )
+
+        self.appWindow = window
+
+        window.makeKeyAndOrderFront(nil)
+        window.orderFrontRegardless()
 
     }
 
