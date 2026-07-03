@@ -82,6 +82,7 @@
 		C26E7CAF2FF6F5320001CFFA /* JAMMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */; };
 		C26E7CB32FF706F00001CFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C26E7CB22FF706F00001CFFA /* Assets.xcassets */; };
 		C2D80E9A2FF7C23F00926E79 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E992FF7C23D00926E79 /* SettingsManager.swift */; };
+		C2D80E9C2FF7C86000926E79 /* JAMMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E9B2FF7C85E00926E79 /* JAMMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +181,7 @@
 		C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMenuBar.swift; sourceTree = "<group>"; };
 		C26E7CB22FF706F00001CFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2D80E992FF7C23D00926E79 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		C2D80E9B2FF7C85E00926E79 /* JAMMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -668,6 +670,7 @@
 		C26E7CAD2FF6F4F80001CFFA /* MenuBar */ = {
 			isa = PBXGroup;
 			children = (
+				C2D80E9B2FF7C85E00926E79 /* JAMMenu.swift */,
 				C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */,
 			);
 			path = MenuBar;
@@ -881,6 +884,7 @@
 				C26E7C272FF421930001CFFA /* SuggestionProvider.swift in Sources */,
 				C22B25C52FF303E50030E98A /* JAMTypography.swift in Sources */,
 				C26E7C9F2FF6791B0001CFFA /* JAMGreetingCard.swift in Sources */,
+				C2D80E9C2FF7C86000926E79 /* JAMMenu.swift in Sources */,
 				C26E7C302FF4476E0001CFFA /* SuggestionList.swift in Sources */,
 				C26E7CAC2FF6BC380001CFFA /* SearchFieldRegistry.swift in Sources */,
 				C22B25DF2FF313970030E98A /* ApplicationsDomain.swift in Sources */,

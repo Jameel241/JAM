@@ -13,6 +13,10 @@ final class JAMApplication {
 
         KeyboardShortcuts.onKeyUp(for: .toggleJAM) {
 
+            guard SettingsManager.shared.launcherShortcutEnabled else {
+                return
+            }
+
             WindowManager.shared.toggleCommandPanel()
 
         }

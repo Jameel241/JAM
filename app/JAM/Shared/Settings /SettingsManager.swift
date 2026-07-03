@@ -1,20 +1,49 @@
 import SwiftUI
+import Combine
 
 @MainActor
-
-final class SettingsManager  {
+final class SettingsManager: ObservableObject {
 
     static let shared = SettingsManager()
 
-    @AppStorage("launcherEnabled")
-    var launcherEnabled = true
+    @Published var launcherShortcutEnabled: Bool {
+        didSet {
+            UserDefaults.standard.set(
+                launcherShortcutEnabled,
+                forKey: "launcherShortcutEnabled"
+            )
+        }
+    }
 
-    @AppStorage("launchAtLogin")
-    var launchAtLogin = true
+    @Published var launchAtLogin: Bool {
+        didSet {
+            UserDefaults.standard.set(
+                launchAtLogin,
+                forKey: "launchAtLogin"
+            )
+        }
+    }
 
-    @AppStorage("animationsEnabled")
-    var animationsEnabled = true
+    @Published var animationsEnabled: Bool {
+        didSet {
+            UserDefaults.standard.set(
+                animationsEnabled,
+                forKey: "animationsEnabled"
+            )
+        }
+    }
 
-    private init() { }
+    private init() {
+
+        launcherShortcutEnabled =
+            UserDefaults.standard.object(forKey: "launcherShortcutEnabled") as? Bool ?? true
+
+        launchAtLogin =
+            UserDefaults.standard.object(forKey: "launchAtLogin") as? Bool ?? true
+
+        animationsEnabled =
+            UserDefaults.standard.object(forKey: "animationsEnabled") as? Bool ?? true
+
+    }
 
 }
