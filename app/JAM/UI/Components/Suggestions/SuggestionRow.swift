@@ -9,7 +9,7 @@ struct SuggestionRow: View {
 
         HStack(spacing: 16) {
 
-            AppIcon(url: suggestion.url)
+            suggestionIcon
 
             VStack(alignment: .leading) {
 
@@ -32,5 +32,38 @@ struct SuggestionRow: View {
                 ? Color.white.opacity(0.10)
                 : Color.clear
         )
+
     }
+
+    @ViewBuilder
+    private var suggestionIcon: some View {
+
+        switch suggestion.kind {
+
+        case .application:
+
+            AppIcon(url: suggestion.url)
+
+        case .folder:
+
+            Image(systemName: "folder.fill")
+                .font(.title2)
+                .frame(width: 32, height: 32)
+
+        case .file:
+
+            Image(systemName: "doc.fill")
+                .font(.title2)
+                .frame(width: 32, height: 32)
+
+        case .command:
+
+            Image(systemName: "terminal.fill")
+                .font(.title2)
+                .frame(width: 32, height: 32)
+
+        }
+
+    }
+
 }

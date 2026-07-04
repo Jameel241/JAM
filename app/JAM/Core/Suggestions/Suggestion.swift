@@ -3,6 +3,8 @@ import Foundation
 struct Suggestion: Identifiable, Equatable {
 
     let id = UUID()
+    
+    let kind: SuggestionKind
 
     let displayText: String
 

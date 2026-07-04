@@ -6,7 +6,8 @@ final class SuggestionEngine {
 
     init(
         providers: [SuggestionProvider] = [
-            ApplicationSuggestionProvider()
+            ApplicationSuggestionProvider(),
+            LocalSuggestionProvider()
         ]
     ) {
         self.providers = providers

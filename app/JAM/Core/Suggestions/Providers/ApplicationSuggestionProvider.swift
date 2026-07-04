@@ -28,7 +28,7 @@ final class ApplicationSuggestionProvider: SuggestionProvider {
             .map { result in
 
                 Suggestion(
-                    displayText: result.entry.displayName,
+                    kind: .application,                    displayText: result.entry.displayName,
                     completion: result.entry.displayName.lowercased(),
                     confidence: Double(result.score) / 1000.0,
                     url: result.entry.url,
