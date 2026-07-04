@@ -53,7 +53,7 @@ struct JAMSearchView: View {
 
                             SuggestionList(
                                 suggestions: suggestions,
-                                visibleStartIndex: visibleStartIndex,
+                                visibleStartIndex: $visibleStartIndex,
                                 highlightSlot: highlightSlot
                             )
                         }

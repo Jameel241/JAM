@@ -1,10 +1,16 @@
 import SwiftUI
+import AppKit
 
 struct SuggestionList: View {
 
     let suggestions: [Suggestion]
-    let visibleStartIndex: Int
+
+    @Binding var visibleStartIndex: Int
+
     let highlightSlot: Int
+
+    @State private var trackpadOffset: CGFloat = 0
+    @State private var lastMouseScrollTime: TimeInterval = 0
 
     private let rowHeight: CGFloat = 72
     private let rowSpacing: CGFloat = 6
@@ -12,6 +18,10 @@ struct SuggestionList: View {
 
     private var rowStep: CGFloat {
         rowHeight + rowSpacing
+    }
+
+    private var maximumStartIndex: Int {
+        max(0, suggestions.count - visibleRowCount)
     }
 
     private let navigationAnimation =
@@ -26,6 +36,22 @@ struct SuggestionList: View {
         GeometryReader { geometry in
 
             ZStack(alignment: .top) {
+
+                JAMScrollEventMonitor {
+                    deltaY,
+                    isPrecise,
+                    phase in
+
+                    handleScroll(
+                        deltaY,
+                        isPrecise: isPrecise,
+                        phase: phase
+                    )
+                }
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity
+                )
 
                 // MARK: - Moving Suggestions
 
@@ -47,8 +73,9 @@ struct SuggestionList: View {
                 .padding(.vertical, 10)
                 .offset(
                     y:
-                        -CGFloat(visibleStartIndex)
-                        * rowStep
+                        -CGFloat(visibleStartIndex) * rowStep
+                        +
+                        trackpadOffset
                 )
                 .animation(
                     navigationAnimation,
@@ -77,8 +104,7 @@ struct SuggestionList: View {
                         y:
                             10
                             +
-                            CGFloat(highlightSlot)
-                            * rowStep
+                            CGFloat(highlightSlot) * rowStep
                     )
                     .animation(
                         navigationAnimation,
@@ -95,11 +121,9 @@ struct SuggestionList: View {
         }
         .frame(
             height:
-                CGFloat(visibleRowCount)
-                * rowHeight
+                CGFloat(visibleRowCount) * rowHeight
                 +
-                CGFloat(visibleRowCount - 1)
-                * rowSpacing
+                CGFloat(visibleRowCount - 1) * rowSpacing
                 +
                 20
         )
@@ -107,5 +131,152 @@ struct SuggestionList: View {
         .clipShape(
             RoundedRectangle(cornerRadius: 18)
         )
+    }
+
+    // MARK: - Scroll Handling
+
+    private func handleScroll(
+        _ deltaY: CGFloat,
+        isPrecise: Bool,
+        phase: NSEvent.Phase
+    ) {
+
+        if isPrecise {
+
+            handleTrackpadScroll(
+                deltaY,
+                phase: phase
+            )
+
+        } else {
+
+            handleMouseScroll(deltaY)
+        }
+    }
+
+  
+
+    // MARK: - Trackpad
+
+    private func handleTrackpadScroll(
+        _ deltaY: CGFloat,
+        phase: NSEvent.Phase
+    ) {
+
+        // Hard stop at upper boundary
+        if visibleStartIndex == 0 && deltaY > 0 {
+
+            trackpadOffset = 0
+            return
+        }
+
+        // Hard stop at lower boundary
+        if visibleStartIndex == maximumStartIndex && deltaY < 0 {
+
+            trackpadOffset = 0
+            return
+        }
+
+        trackpadOffset += deltaY
+
+        while trackpadOffset <= -rowStep {
+
+            guard visibleStartIndex < maximumStartIndex else {
+
+                trackpadOffset = 0
+                return
+            }
+
+            visibleStartIndex += 1
+            trackpadOffset += rowStep
+        }
+
+        while trackpadOffset >= rowStep {
+
+            guard visibleStartIndex > 0 else {
+
+                trackpadOffset = 0
+                return
+            }
+
+            visibleStartIndex -= 1
+            trackpadOffset -= rowStep
+        }
+
+        if phase == .ended ||
+            phase == .cancelled {
+
+            settleTrackpad()
+        }
+    }
+
+    private func settleTrackpad() {
+
+        let threshold = rowStep * 0.35
+
+        if trackpadOffset <= -threshold {
+
+            if visibleStartIndex < maximumStartIndex {
+
+                visibleStartIndex += 1
+            }
+
+        } else if trackpadOffset >= threshold {
+
+            if visibleStartIndex > 0 {
+
+                visibleStartIndex -= 1
+            }
+        }
+
+        withAnimation(
+            .interactiveSpring(
+                response: 0.28,
+                dampingFraction: 0.92,
+                blendDuration: 0.12
+            )
+        ) {
+
+            trackpadOffset = 0
+        }
+    }
+
+
+    // MARK: - Mouse Wheel
+
+    private func handleMouseScroll(
+        _ deltaY: CGFloat
+    ) {
+
+        guard deltaY != 0 else {
+            return
+        }
+
+        let currentTime = ProcessInfo.processInfo.systemUptime
+
+        let minimumInterval: TimeInterval = 0.055
+
+        guard currentTime - lastMouseScrollTime >= minimumInterval else {
+            return
+        }
+
+        lastMouseScrollTime = currentTime
+
+        if deltaY < 0 {
+
+            guard visibleStartIndex < maximumStartIndex else {
+                return
+            }
+
+            visibleStartIndex += 1
+
+        } else {
+
+            guard visibleStartIndex > 0 else {
+                return
+            }
+
+            visibleStartIndex -= 1
+        }
     }
 }
