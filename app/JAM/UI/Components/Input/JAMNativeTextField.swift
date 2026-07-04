@@ -62,7 +62,17 @@ struct JAMNativeTextField: NSViewRepresentable {
     ) {
 
         if nsView.stringValue != text {
+
             nsView.stringValue = text
+
+            if text.isEmpty,
+               let editor = nsView.currentEditor() {
+
+                editor.selectedRange = NSRange(
+                    location: 0,
+                    length: 0
+                )
+            }
         }
 
         SearchFieldRegistry.shared.textField = nsView

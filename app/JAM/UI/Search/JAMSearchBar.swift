@@ -52,8 +52,7 @@ struct JAMSearchBar: View {
 
             }
             .frame(maxWidth: .infinity)
-            .animation(JAMAnimation.search, value: text.isEmpty)
-            .frame(maxWidth: .infinity)
+         
 
             JAMShortcutBadge()
         }
