@@ -86,6 +86,40 @@ struct JAMNativeTextField: NSViewRepresentable {
             parent.text = field.stringValue
 
         }
+        func control(
+            _ control: NSControl,
+            textView: NSTextView,
+            doCommandBy commandSelector: Selector
+        ) -> Bool {
+
+            switch commandSelector {
+
+            case #selector(NSResponder.moveUp(_:)):
+                parent.onUpArrow?()
+                return true
+
+            case #selector(NSResponder.moveDown(_:)):
+                parent.onDownArrow?()
+                return true
+
+            case #selector(NSResponder.insertTab(_:)):
+                parent.onTab?()
+                return true
+
+            case #selector(NSResponder.cancelOperation(_:)):
+                parent.onEscape?()
+                return true
+
+            case #selector(NSResponder.insertNewline(_:)):
+                parent.onSubmit()
+                return true
+
+            default:
+                return false
+
+            }
+
+        }
         @objc
         func submit() {
 

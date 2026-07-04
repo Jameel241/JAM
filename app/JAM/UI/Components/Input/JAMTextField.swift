@@ -8,31 +8,32 @@ final class JAMTextField: NSTextField {
     var onDownArrow: (() -> Void)?
     var onReturn: (() -> Void)?
 
-    override func keyDown(with event: NSEvent) {
-     
-        switch event.keyCode {
+    override func doCommand(
+        by selector: Selector
+    ) {
 
-        case 48: // Tab
-            onTab?()
+        switch selector {
 
-        case 53: // Escape
-            onEscape?()
-
-        case 126: // ↑
+        case #selector(NSResponder.moveUp(_:)):
             onUpArrow?()
 
-        case 125: // ↓
+        case #selector(NSResponder.moveDown(_:)):
             onDownArrow?()
 
-        case 36: // Return
+        case #selector(NSResponder.insertTab(_:)):
+            onTab?()
+
+        case #selector(NSResponder.cancelOperation(_:)):
+            onEscape?()
+
+        case #selector(NSResponder.insertNewline(_:)):
             onReturn?()
 
         default:
-            super.keyDown(with: event)
+            super.doCommand(by: selector)
 
         }
 
     }
-   
 
 }

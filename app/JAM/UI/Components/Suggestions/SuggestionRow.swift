@@ -5,13 +5,19 @@ struct SuggestionRow: View {
     let suggestion: Suggestion
     let isSelected: Bool
 
+    var onHover: (() -> Void)?
+    var onClick: (() -> Void)?
+
     var body: some View {
 
         HStack(spacing: 16) {
 
             suggestionIcon
 
-            VStack(alignment: .leading) {
+            VStack(
+                alignment: .leading,
+                spacing: 2
+            ) {
 
                 Text(suggestion.displayText)
                     .foregroundStyle(.white)
@@ -26,12 +32,21 @@ struct SuggestionRow: View {
             Spacer()
 
         }
-        .padding()
-        .background(
-            isSelected
-                ? Color.white.opacity(0.10)
-                : Color.clear
-        )
+        .padding(.horizontal, 16)
+        .frame(height: 72)
+        .contentShape(Rectangle())
+        .onHover { hovering in
+
+            if hovering {
+                onHover?()
+            }
+
+        }
+        .onTapGesture {
+
+            onClick?()
+
+        }
 
     }
 

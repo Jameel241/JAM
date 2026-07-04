@@ -5,29 +5,36 @@ struct JAMSearchView: View {
 
     @State private var searchText = ""
     @State private var suggestions: [Suggestion] = []
+
     @State private var selectedIndex = 0
+    @State private var visibleStartIndex = 0
+    @State private var highlightSlot = 0
 
     private let suggestionEngine = SuggestionEngine()
 
+    private let visibleRowCount = 4
+
     private var isSearching: Bool {
-        !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        !searchText
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .isEmpty
     }
 
     var body: some View {
 
         PanelContainer {
-            
+
             VStack(spacing: 20) {
-                
+
                 JAMGreetingCard(
                     greeting: greeting
                 )
                 .opacity(isSearching ? 0 : 1)
-                
+
                 JAMSearchSurface(text: $searchText) {
-                    
+
                     VStack(spacing: 0) {
-                        
+
                         JAMSearchBar(
                             text: $searchText,
                             onSubmit: launchSelectedApplication,
@@ -36,37 +43,99 @@ struct JAMSearchView: View {
                             onTab: autocompleteSelection,
                             onEscape: clearSearch
                         )
-                        
+
                         if !suggestions.isEmpty {
-                            
+
                             Divider()
-                                .overlay(Color.white.opacity(0.08))
-                            
+                                .overlay(
+                                    Color.white.opacity(0.08)
+                                )
+
                             SuggestionList(
                                 suggestions: suggestions,
-                                selectedIndex: selectedIndex
+                                visibleStartIndex: visibleStartIndex,
+                                highlightSlot: highlightSlot
                             )
                         }
-                        
+
                     }
-                 
+
                     Spacer()
                 }
-               
-                
                 .onChange(of: searchText) { _, value in
-                    
+
                     print("Typed:", value)
-                    
-                    suggestions = suggestionEngine.suggestions(for: value)
-                    
-                    print("Suggestions:", suggestions.map(\.displayText))
-                    
-                    selectedIndex = 0
-                    
+
+                    suggestions =
+                        suggestionEngine.suggestions(
+                            for: value
+                        )
+
+                    print(
+                        "Suggestions:",
+                        suggestions.map(\.displayText)
+                    )
+
+                    resetNavigation()
                 }
-                
             }
+        }
+    }
+
+    // MARK: - Navigation
+
+    private func moveSelectionDown() {
+
+        guard !suggestions.isEmpty else {
+            return
+        }
+
+        guard selectedIndex < suggestions.count - 1 else {
+            return
+        }
+
+        selectedIndex += 1
+
+        if highlightSlot < visibleRowCount - 1 {
+
+            highlightSlot += 1
+
+        } else {
+
+            let maximumStartIndex = max(
+                0,
+                suggestions.count - visibleRowCount
+            )
+
+            visibleStartIndex = min(
+                visibleStartIndex + 1,
+                maximumStartIndex
+            )
+        }
+    }
+
+    private func moveSelectionUp() {
+
+        guard !suggestions.isEmpty else {
+            return
+        }
+
+        guard selectedIndex > 0 else {
+            return
+        }
+
+        selectedIndex -= 1
+
+        if highlightSlot > 0 {
+
+            highlightSlot -= 1
+
+        } else {
+
+            visibleStartIndex = max(
+                0,
+                visibleStartIndex - 1
+            )
         }
     }
 
@@ -74,8 +143,10 @@ struct JAMSearchView: View {
 
     private func launchSelectedApplication() {
 
-        guard suggestions.indices.contains(selectedIndex),
-              let url = suggestions[selectedIndex].url else {
+        guard
+            suggestions.indices.contains(selectedIndex),
+            let url = suggestions[selectedIndex].url
+        else {
             return
         }
 
@@ -88,31 +159,7 @@ struct JAMSearchView: View {
         ) {
 
             WindowManager.shared.hideCommandPanel()
-
         }
-
-    }
-
-    private func moveSelectionUp() {
-
-        guard !suggestions.isEmpty else { return }
-
-        selectedIndex = max(
-            0,
-            selectedIndex - 1
-        )
-
-    }
-
-    private func moveSelectionDown() {
-
-        guard !suggestions.isEmpty else { return }
-
-        selectedIndex = min(
-            suggestions.count - 1,
-            selectedIndex + 1
-        )
-
     }
 
     private func autocompleteSelection() {
@@ -124,22 +171,31 @@ struct JAMSearchView: View {
         searchText = suggestions[selectedIndex]
             .displayText
             .lowercased()
-
     }
 
     private func clearSearch() {
 
         searchText = ""
         suggestions.removeAll()
-        selectedIndex = 0
 
+        resetNavigation()
+    }
+
+    private func resetNavigation() {
+
+        selectedIndex = 0
+        visibleStartIndex = 0
+        highlightSlot = 0
     }
 
     // MARK: - Greeting
 
     private var greeting: String {
 
-        let hour = Calendar.current.component(.hour, from: Date())
+        let hour = Calendar.current.component(
+            .hour,
+            from: Date()
+        )
 
         switch hour {
 
@@ -154,11 +210,8 @@ struct JAMSearchView: View {
 
         default:
             return "Good night, Jameel."
-
         }
-
     }
-
 }
 
 #Preview {
