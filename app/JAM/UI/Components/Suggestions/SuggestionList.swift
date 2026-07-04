@@ -5,12 +5,17 @@ struct SuggestionList: View {
 
     let suggestions: [Suggestion]
 
-    @Binding var visibleStartIndex: Int
+    @State private var isScrollIndicatorVisible = false
+    @State private var scrollIndicatorHideTask: DispatchWorkItem?
 
-    let highlightSlot: Int
+    @Binding var selectedIndex: Int
+    @Binding var visibleStartIndex: Int
+    @Binding var navigationSource: NavigationSource
+
+    let onOpenSuggestion: (Int) -> Void
 
     @State private var trackpadOffset: CGFloat = 0
-    @State private var lastMouseScrollTime: TimeInterval = 0
+    @State private var mouseAccumulator: CGFloat = 0
 
     private let rowHeight: CGFloat = 72
     private let rowSpacing: CGFloat = 6
@@ -21,21 +26,31 @@ struct SuggestionList: View {
     }
 
     private var maximumStartIndex: Int {
-        max(0, suggestions.count - visibleRowCount)
+        max(
+            0,
+            suggestions.count - visibleRowCount
+        )
     }
 
-    private let navigationAnimation =
-        Animation.interactiveSpring(
-            response: 0.30,
-            dampingFraction: 0.90,
-            blendDuration: 0.15
-        )
+    // MARK: - Scroll Indicator Values
+
+    private var scrollProgress: CGFloat {
+
+        guard maximumStartIndex > 0 else {
+            return 0
+        }
+
+        return CGFloat(visibleStartIndex)
+            / CGFloat(maximumStartIndex)
+    }
 
     var body: some View {
 
         GeometryReader { geometry in
 
             ZStack(alignment: .top) {
+
+                // MARK: - Scroll Event Monitor
 
                 JAMScrollEventMonitor {
                     deltaY,
@@ -53,64 +68,161 @@ struct SuggestionList: View {
                     maxHeight: .infinity
                 )
 
-                // MARK: - Moving Suggestions
+                // MARK: - Moving Content Layer
 
-                VStack(spacing: rowSpacing) {
+                ZStack(alignment: .top) {
 
-                    ForEach(
-                        suggestions.indices,
-                        id: \.self
-                    ) { index in
+                    // MARK: Highlight
 
-                        SuggestionRow(
-                            suggestion: suggestions[index],
-                            isSelected: false
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(
+                            Color.white.opacity(0.17)
                         )
+                        .overlay {
+
+                            RoundedRectangle(
+                                cornerRadius: 14
+                            )
+                            .stroke(
+                                Color.white.opacity(0.10),
+                                lineWidth: 1
+                            )
+                        }
                         .frame(height: rowHeight)
+                        .padding(.horizontal, 12)
+                        .offset(
+                            y:
+                                10
+                                +
+                                CGFloat(selectedIndex)
+                                * rowStep
+                        )
+                        .allowsHitTesting(false)
+
+                    // MARK: Suggestions
+
+                    VStack(spacing: rowSpacing) {
+
+                        ForEach(
+                            suggestions.indices,
+                            id: \.self
+                        ) { index in
+
+                            SuggestionRow(
+                                suggestion: suggestions[index],
+                                isSelected: false
+                            )
+                            .frame(height: rowHeight)
+                            .contentShape(
+                                RoundedRectangle(
+                                    cornerRadius: 14
+                                )
+                            )
+                            .onTapGesture(count: 2) {
+
+                                navigationSource = .click
+
+                                onOpenSuggestion(index)
+                            }
+                            .simultaneousGesture(
+
+                                TapGesture(count: 1)
+                                    .onEnded {
+
+                                        navigationSource = .click
+
+                                        var transaction =
+                                            Transaction()
+
+                                        transaction.disablesAnimations = true
+
+                                        withTransaction(transaction) {
+
+                                            selectedIndex = index
+                                        }
+                                    }
+                            )
+                        }
                     }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 10)
                 }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 10)
                 .offset(
                     y:
-                        -CGFloat(visibleStartIndex) * rowStep
+                        -CGFloat(visibleStartIndex)
+                        * rowStep
                         +
                         trackpadOffset
                 )
-                .animation(
-                    navigationAnimation,
-                    value: visibleStartIndex
-                )
 
-                // MARK: - Highlight
+                // MARK: - Scroll Indicator
 
-                RoundedRectangle(cornerRadius: 14)
-                    .fill(
-                        Color.white.opacity(0.17)
+                if suggestions.count > visibleRowCount {
+
+                    let verticalPadding: CGFloat = 10
+
+                    let trackHeight =
+                        geometry.size.height
+                        -
+                        (verticalPadding * 2)
+
+                    let viewportRatio =
+                        CGFloat(visibleRowCount)
+                        /
+                        CGFloat(suggestions.count)
+
+                    let thumbHeight = max(
+                        32,
+                        trackHeight * viewportRatio
                     )
-                    .overlay {
 
-                        RoundedRectangle(
-                            cornerRadius: 14
+                    let maximumThumbOffset = max(
+                        0,
+                        trackHeight - thumbHeight
+                    )
+
+                    let thumbOffset =
+                        min(
+                            max(
+                                scrollProgress
+                                * maximumThumbOffset,
+                                0
+                            ),
+                            maximumThumbOffset
                         )
-                        .stroke(
-                            Color.white.opacity(0.10),
-                            lineWidth: 1
+
+                    Capsule()
+                        .fill(
+                            Color.white.opacity(0.34)
                         )
-                    }
-                    .frame(height: rowHeight)
-                    .padding(.horizontal, 12)
-                    .offset(
-                        y:
-                            10
-                            +
-                            CGFloat(highlightSlot) * rowStep
-                    )
-                    .animation(
-                        navigationAnimation,
-                        value: highlightSlot
-                    )
-                    .allowsHitTesting(false)
+                        .frame(
+                            width: 3,
+                            height: thumbHeight
+                        )
+                        .position(
+                            x: geometry.size.width - 8,
+                            y:
+                                verticalPadding
+                                +
+                                (thumbHeight / 2)
+                                +
+                                thumbOffset
+                        )
+                        .opacity(
+                            isScrollIndicatorVisible
+                                ? 1
+                                : 0
+                        )
+                        .animation(
+                            .easeOut(duration: 0.14),
+                            value: isScrollIndicatorVisible
+                        )
+                        .animation(
+                            .smooth(duration: 0.18),
+                            value: visibleStartIndex
+                        )
+                        .allowsHitTesting(false)
+                }
             }
             .frame(
                 width: geometry.size.width,
@@ -121,9 +233,11 @@ struct SuggestionList: View {
         }
         .frame(
             height:
-                CGFloat(visibleRowCount) * rowHeight
+                CGFloat(visibleRowCount)
+                * rowHeight
                 +
-                CGFloat(visibleRowCount - 1) * rowSpacing
+                CGFloat(visibleRowCount - 1)
+                * rowSpacing
                 +
                 20
         )
@@ -131,6 +245,10 @@ struct SuggestionList: View {
         .clipShape(
             RoundedRectangle(cornerRadius: 18)
         )
+        .onChange(of: visibleStartIndex) { _, _ in
+
+            showScrollIndicator()
+        }
     }
 
     // MARK: - Scroll Handling
@@ -140,6 +258,10 @@ struct SuggestionList: View {
         isPrecise: Bool,
         phase: NSEvent.Phase
     ) {
+
+        navigationSource = .scroll
+
+        showScrollIndicator()
 
         if isPrecise {
 
@@ -154,8 +276,6 @@ struct SuggestionList: View {
         }
     }
 
-  
-
     // MARK: - Trackpad
 
     private func handleTrackpadScroll(
@@ -163,15 +283,19 @@ struct SuggestionList: View {
         phase: NSEvent.Phase
     ) {
 
-        // Hard stop at upper boundary
-        if visibleStartIndex == 0 && deltaY > 0 {
+        // MARK: Upper Boundary
+
+        if visibleStartIndex == 0 &&
+            deltaY > 0 {
 
             trackpadOffset = 0
             return
         }
 
-        // Hard stop at lower boundary
-        if visibleStartIndex == maximumStartIndex && deltaY < 0 {
+        // MARK: Lower Boundary
+
+        if visibleStartIndex == maximumStartIndex &&
+            deltaY < 0 {
 
             trackpadOffset = 0
             return
@@ -179,27 +303,36 @@ struct SuggestionList: View {
 
         trackpadOffset += deltaY
 
+        // MARK: Moving Down
+
         while trackpadOffset <= -rowStep {
 
-            guard visibleStartIndex < maximumStartIndex else {
+            guard visibleStartIndex <
+                    maximumStartIndex
+            else {
 
                 trackpadOffset = 0
                 return
             }
 
             visibleStartIndex += 1
+
             trackpadOffset += rowStep
         }
 
+        // MARK: Moving Up
+
         while trackpadOffset >= rowStep {
 
-            guard visibleStartIndex > 0 else {
+            guard visibleStartIndex > 0
+            else {
 
                 trackpadOffset = 0
                 return
             }
 
             visibleStartIndex -= 1
+
             trackpadOffset -= rowStep
         }
 
@@ -210,37 +343,45 @@ struct SuggestionList: View {
         }
     }
 
+    // MARK: - Trackpad Settling
+
     private func settleTrackpad() {
 
-        let threshold = rowStep * 0.35
+        let threshold =
+            rowStep * 0.50
+
+        var targetStartIndex =
+            visibleStartIndex
 
         if trackpadOffset <= -threshold {
 
-            if visibleStartIndex < maximumStartIndex {
-
-                visibleStartIndex += 1
-            }
+            targetStartIndex = min(
+                visibleStartIndex + 1,
+                maximumStartIndex
+            )
 
         } else if trackpadOffset >= threshold {
 
-            if visibleStartIndex > 0 {
-
-                visibleStartIndex -= 1
-            }
+            targetStartIndex = max(
+                visibleStartIndex - 1,
+                0
+            )
         }
 
         withAnimation(
             .interactiveSpring(
-                response: 0.28,
-                dampingFraction: 0.92,
+                response: 0.32,
+                dampingFraction: 0.98,
                 blendDuration: 0.12
             )
         ) {
 
+            visibleStartIndex =
+                targetStartIndex
+
             trackpadOffset = 0
         }
     }
-
 
     // MARK: - Mouse Wheel
 
@@ -252,31 +393,75 @@ struct SuggestionList: View {
             return
         }
 
-        let currentTime = ProcessInfo.processInfo.systemUptime
+        mouseAccumulator += deltaY
 
-        let minimumInterval: TimeInterval = 0.055
+        let threshold: CGFloat = 5
 
-        guard currentTime - lastMouseScrollTime >= minimumInterval else {
-            return
-        }
+        // MARK: Mouse Down
 
-        lastMouseScrollTime = currentTime
+        while mouseAccumulator <= -threshold {
 
-        if deltaY < 0 {
+            guard visibleStartIndex <
+                    maximumStartIndex
+            else {
 
-            guard visibleStartIndex < maximumStartIndex else {
+                mouseAccumulator = 0
                 return
             }
 
             visibleStartIndex += 1
 
-        } else {
+            mouseAccumulator += threshold
+        }
 
-            guard visibleStartIndex > 0 else {
+        // MARK: Mouse Up
+
+        while mouseAccumulator >= threshold {
+
+            guard visibleStartIndex > 0
+            else {
+
+                mouseAccumulator = 0
                 return
             }
 
             visibleStartIndex -= 1
+
+            mouseAccumulator -= threshold
         }
+    }
+
+    // MARK: - Scroll Indicator Visibility
+
+    private func showScrollIndicator() {
+
+        scrollIndicatorHideTask?.cancel()
+
+        if !isScrollIndicatorVisible {
+
+            withAnimation(
+                .easeOut(duration: 0.12)
+            ) {
+
+                isScrollIndicatorVisible = true
+            }
+        }
+
+        let task = DispatchWorkItem {
+
+            withAnimation(
+                .easeOut(duration: 0.30)
+            ) {
+
+                isScrollIndicatorVisible = false
+            }
+        }
+
+        scrollIndicatorHideTask = task
+
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + 0.8,
+            execute: task
+        )
     }
 }

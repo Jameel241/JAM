@@ -1,15 +1,22 @@
 import SwiftUI
 import AppKit
 
+enum NavigationSource {
+    case keyboard
+    case scroll
+    case click
+}
+
 struct JAMSearchView: View {
 
     @State private var searchText = ""
     @State private var suggestions: [Suggestion] = []
-
+   
     @State private var selectedIndex = 0
     @State private var visibleStartIndex = 0
-    @State private var highlightSlot = 0
-
+    @State private var navigationSource: NavigationSource = .keyboard
+    
+    
     private let suggestionEngine = SuggestionEngine()
 
     private let visibleRowCount = 4
@@ -53,28 +60,22 @@ struct JAMSearchView: View {
 
                             SuggestionList(
                                 suggestions: suggestions,
+                                selectedIndex: $selectedIndex,
                                 visibleStartIndex: $visibleStartIndex,
-                                highlightSlot: highlightSlot
+                                navigationSource: $navigationSource,
+                                onOpenSuggestion: openSuggestion
                             )
                         }
-
                     }
 
                     Spacer()
                 }
                 .onChange(of: searchText) { _, value in
 
-                    print("Typed:", value)
-
                     suggestions =
                         suggestionEngine.suggestions(
                             for: value
                         )
-
-                    print(
-                        "Suggestions:",
-                        suggestions.map(\.displayText)
-                    )
 
                     resetNavigation()
                 }
@@ -94,23 +95,24 @@ struct JAMSearchView: View {
             return
         }
 
-        selectedIndex += 1
+        navigationSource = .keyboard
 
-        if highlightSlot < visibleRowCount - 1 {
-
-            highlightSlot += 1
-
-        } else {
-
-            let maximumStartIndex = max(
-                0,
-                suggestions.count - visibleRowCount
+        withAnimation(
+            .interactiveSpring(
+                response: 0.30,
+                dampingFraction: 0.94,
+                blendDuration: 0.12
             )
+        ) {
 
-            visibleStartIndex = min(
-                visibleStartIndex + 1,
-                maximumStartIndex
-            )
+            selectedIndex += 1
+
+            if selectedIndex >=
+                visibleStartIndex + visibleRowCount {
+
+                visibleStartIndex =
+                    selectedIndex - visibleRowCount + 1
+            }
         }
     }
 
@@ -124,18 +126,22 @@ struct JAMSearchView: View {
             return
         }
 
-        selectedIndex -= 1
+        navigationSource = .keyboard
 
-        if highlightSlot > 0 {
-
-            highlightSlot -= 1
-
-        } else {
-
-            visibleStartIndex = max(
-                0,
-                visibleStartIndex - 1
+        withAnimation(
+            .interactiveSpring(
+                response: 0.30,
+                dampingFraction: 0.94,
+                blendDuration: 0.12
             )
+        ) {
+
+            selectedIndex -= 1
+
+            if selectedIndex < visibleStartIndex {
+
+                visibleStartIndex = selectedIndex
+            }
         }
     }
 
@@ -143,10 +149,15 @@ struct JAMSearchView: View {
 
     private func launchSelectedApplication() {
 
-        guard
-            suggestions.indices.contains(selectedIndex),
-            let url = suggestions[selectedIndex].url
-        else {
+        openSuggestion(selectedIndex)
+    }
+
+    private func openSuggestion(
+        _ index: Int
+    ) {
+
+        guard suggestions.indices.contains(index),
+              let url = suggestions[index].url else {
             return
         }
 
@@ -185,9 +196,8 @@ struct JAMSearchView: View {
 
         selectedIndex = 0
         visibleStartIndex = 0
-        highlightSlot = 0
+        navigationSource = .keyboard
     }
-
     // MARK: - Greeting
 
     private var greeting: String {
