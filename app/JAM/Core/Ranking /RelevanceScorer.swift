@@ -97,16 +97,19 @@ struct RelevanceScorer {
         switch kind {
 
         case .application:
-            return 1_500
+            return 100
+
+        case .setting:
+            return 80
 
         case .folder:
-            return 900
+            return 60
 
         case .file:
-            return 400
+            return 30
 
         case .command:
-            return 200
+            return 20
         }
     }
 }

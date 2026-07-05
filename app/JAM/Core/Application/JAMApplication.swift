@@ -10,6 +10,11 @@ final class JAMApplication {
     func start() {
 
         print("🚀 JAM is starting...")
+
+        #if DEBUG
+        SettingsNavigationValidator.run()
+        #endif
+
         _ = LocalIndexRegistry.shared
 
         KeyboardShortcuts.onKeyUp(for: .toggleJAM) {
@@ -19,11 +24,10 @@ final class JAMApplication {
             }
 
             WindowManager.shared.toggleCommandPanel()
-
         }
-        
-        LocalFileMonitor.shared.start();        WindowManager.shared.showCommandPanel()
 
+        LocalFileMonitor.shared.start()
+
+        WindowManager.shared.showCommandPanel()
     }
-
 }

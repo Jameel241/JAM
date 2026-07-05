@@ -76,6 +76,12 @@ struct SuggestionRow: View {
             Image(systemName: "terminal.fill")
                 .font(.title2)
                 .frame(width: 32, height: 32)
+            
+        case .setting:
+
+            Image(systemName: "gearshape.fill")
+                .font(.title2)
+                .frame(width: 32, height: 32)
 
         }
 

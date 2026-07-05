@@ -9,6 +9,7 @@ final class SuggestionEngine {
     init(
         providers: [SuggestionProvider] = [
             ApplicationSuggestionProvider(),
+            SettingsSuggestionProvider(),
             LocalSuggestionProvider()
         ]
     ) {

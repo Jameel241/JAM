@@ -1,5 +1,6 @@
 import Foundation
 
+
 struct Suggestion: Identifiable, Equatable {
 
     let id = UUID()
