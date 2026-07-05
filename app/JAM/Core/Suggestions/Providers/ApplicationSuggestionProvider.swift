@@ -30,7 +30,7 @@ final class ApplicationSuggestionProvider: SuggestionProvider {
                 Suggestion(
                     kind: .application,                    displayText: result.entry.displayName,
                     completion: result.entry.displayName.lowercased(),
-                    confidence: Double(result.score) / 1000.0,
+                    confidence: min(max(Double(result.score) / 1000.0, 0.0), 1.0),
                     url: result.entry.url,
                     subtitle: result.entry.category
                 )

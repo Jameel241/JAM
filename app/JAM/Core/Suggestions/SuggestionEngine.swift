@@ -4,6 +4,8 @@ final class SuggestionEngine {
 
     private let providers: [SuggestionProvider]
 
+    private let ranker = SearchRanker()
+
     init(
         providers: [SuggestionProvider] = [
             ApplicationSuggestionProvider(),
@@ -13,12 +15,18 @@ final class SuggestionEngine {
         self.providers = providers
     }
 
-    func suggestions(for input: String) -> [Suggestion] {
+    func suggestions(
+        for input: String
+    ) -> [Suggestion] {
 
-        providers
-            .flatMap { $0.suggestions(for: input) }
-            .sorted { $0.confidence > $1.confidence }
+        let candidates =
+            providers.flatMap {
+                $0.suggestions(for: input)
+            }
 
+        return ranker.rank(
+            suggestions: candidates,
+            for: input
+        )
     }
-
 }

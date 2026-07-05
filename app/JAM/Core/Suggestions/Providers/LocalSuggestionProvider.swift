@@ -16,7 +16,7 @@ struct LocalSuggestionProvider: SuggestionProvider {
                     kind: suggestionKind(for: entry.kind),
                     displayText: entry.displayName,
                     completion: entry.displayName,
-                    confidence: Double(result.score),
+                    confidence: min(max(Double(result.score) / 1000.0, 0.0), 1.0),
                     url: entry.url,
                     subtitle: subtitle(for: entry)
                 )
