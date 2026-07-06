@@ -6,5 +6,7 @@ enum SuggestionExecution: Equatable {
 
     case quitApplication(String)
 
+    case quitAllApplications
+
     case none
 }

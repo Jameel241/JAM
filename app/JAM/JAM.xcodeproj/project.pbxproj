@@ -139,6 +139,7 @@
 		C2FFD6662FFBCB4600B77899 /* QuitApplicationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FFD6652FFBCB4200B77899 /* QuitApplicationAction.swift */; };
 		C2FFD6682FFBCD2000B77899 /* SuggestionExecution.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FFD6672FFBCD1D00B77899 /* SuggestionExecution.swift */; };
 		C2FFD66A2FFBCEBA00B77899 /* CommandSuggestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FFD6692FFBCEB700B77899 /* CommandSuggestionProvider.swift */; };
+		C2FFD66C2FFBF90A00B77899 /* QuitAllApplicationsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FFD66B2FFBF90600B77899 /* QuitAllApplicationsAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -294,6 +295,7 @@
 		C2FFD6652FFBCB4200B77899 /* QuitApplicationAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitApplicationAction.swift; sourceTree = "<group>"; };
 		C2FFD6672FFBCD1D00B77899 /* SuggestionExecution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionExecution.swift; sourceTree = "<group>"; };
 		C2FFD6692FFBCEB700B77899 /* CommandSuggestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSuggestionProvider.swift; sourceTree = "<group>"; };
+		C2FFD66B2FFBF90600B77899 /* QuitAllApplicationsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitAllApplicationsAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -780,6 +782,7 @@
 		C26E7C152FF410B30001CFFA /* Applications */ = {
 			isa = PBXGroup;
 			children = (
+				C2FFD66B2FFBF90600B77899 /* QuitAllApplicationsAction.swift */,
 				C2FFD6652FFBCB4200B77899 /* QuitApplicationAction.swift */,
 				C26E7C162FF410BD0001CFFA /* OpenApplicationAction.swift */,
 			);
@@ -1137,6 +1140,7 @@
 				C25FA6E42FF8047000A3BC85 /* StatusBadge.swift in Sources */,
 				C266F1212FF83A840025D5DE /* SearchIndex.swift in Sources */,
 				C2D80EA22FF7CEB100926E79 /* JAMWindows.swift in Sources */,
+				C2FFD66C2FFBF90A00B77899 /* QuitAllApplicationsAction.swift in Sources */,
 				C25FA6F52FF80CDF00A3BC85 /* AIConnectionManager.swift in Sources */,
 				C2D80E9F2FF7C9F400926E79 /* LaunchAtLoginManager.swift in Sources */,
 				C22B25C62FF303E90030E98A /* JAMColors.swift in Sources */,

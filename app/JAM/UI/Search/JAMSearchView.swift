@@ -175,6 +175,12 @@ struct JAMSearchView: View {
             )
 
             ActionExecutor().execute(action)
+            
+        case .quitAllApplications:
+
+            let action = QuitAllApplicationsAction()
+
+            ActionExecutor().execute(action)
 
         case .none:
 

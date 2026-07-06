@@ -29,6 +29,31 @@ final class CommandSuggestionProvider: SuggestionProvider {
             return []
         }
 
+        // MARK: - Quit All Applications
+
+        let quitAllQueries = [
+            "all",
+            "all apps",
+            "all applications"
+        ]
+
+        if quitAllQueries.contains(applicationQuery) {
+
+            return [
+                Suggestion(
+                    kind: .command,
+                    displayText: "Quit All Applications",
+                    completion: "quit all applications",
+                    confidence: 1.0,
+                    url: nil,
+                    subtitle: "Application Command",
+                    execution: .quitAllApplications
+                )
+            ]
+        }
+
+        // MARK: - Individual Application
+
         return searchEngine
             .search(applicationQuery)
             .prefix(8)

@@ -68,4 +68,61 @@ final class ApplicationService {
             print("Failed to terminate \(name)")
         }
     }
+    func quitAllApplications() {
+
+        let runningApplications =
+            NSWorkspace.shared.runningApplications
+
+        let jamBundleIdentifier =
+            Bundle.main.bundleIdentifier
+
+        for application in runningApplications {
+
+            // Never quit JAM itself
+            if application.bundleIdentifier ==
+                jamBundleIdentifier {
+                continue
+            }
+
+            // Keep Finder running
+            if application.bundleIdentifier ==
+                "com.apple.finder" {
+                continue
+            }
+            
+#if DEBUG
+
+// Keep Xcode running while JAM is launched from Xcode
+if application.bundleIdentifier == "com.apple.dt.Xcode" {
+    continue
+}
+
+#endif
+
+            // Ignore background processes and agents
+            guard application.activationPolicy == .regular else {
+                continue
+            }
+
+            let applicationName =
+                application.localizedName
+                ?? "Unknown Application"
+
+            let didTerminate =
+                application.terminate()
+
+            if didTerminate {
+
+                print(
+                    "Requested termination of \(applicationName)"
+                )
+
+            } else {
+
+                print(
+                    "Failed to terminate \(applicationName)"
+                )
+            }
+        }
+    }
 }
