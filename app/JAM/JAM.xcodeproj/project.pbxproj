@@ -135,6 +135,7 @@
 		C2F21BC82FFAB1D1008253A6 /* SettingsDestinationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F21BC72FFAB1CE008253A6 /* SettingsDestinationResolver.swift */; };
 		C2F21BC92FFAB1ED008253A6 /* SettingsDestinationVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F21BC62FFAB154008253A6 /* SettingsDestinationVariant.swift */; };
 		C2F21BCB2FFAB3ED008253A6 /* SettingsNavigationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F21BCA2FFAB3E9008253A6 /* SettingsNavigationValidator.swift */; };
+		C2FFD6642FFBC55600B77899 /* SearchQueryNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FFD6632FFBC55400B77899 /* SearchQueryNormalizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,6 +287,7 @@
 		C2F21BC62FFAB154008253A6 /* SettingsDestinationVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDestinationVariant.swift; sourceTree = "<group>"; };
 		C2F21BC72FFAB1CE008253A6 /* SettingsDestinationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDestinationResolver.swift; sourceTree = "<group>"; };
 		C2F21BCA2FFAB3E9008253A6 /* SettingsNavigationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationValidator.swift; sourceTree = "<group>"; };
+		C2FFD6632FFBC55400B77899 /* SearchQueryNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQueryNormalizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -741,6 +743,7 @@
 		C26E7C092FF40F360001CFFA /* Index */ = {
 			isa = PBXGroup;
 			children = (
+				C2FFD6632FFBC55400B77899 /* SearchQueryNormalizer.swift */,
 				C2F21BCA2FFAB3E9008253A6 /* SettingsNavigationValidator.swift */,
 				C2F21BC72FFAB1CE008253A6 /* SettingsDestinationResolver.swift */,
 				C2F21BC62FFAB154008253A6 /* SettingsDestinationVariant.swift */,
@@ -1171,6 +1174,7 @@
 				C2F21BC12FFAAD39008253A6 /* SettingsAvailability.swift in Sources */,
 				C26E7C322FF4477C0001CFFA /* SuggestionRow.swift in Sources */,
 				C22DD20A2FF924BC00FD2986 /* LocalIndexRegistry.swift in Sources */,
+				C2FFD6642FFBC55600B77899 /* SearchQueryNormalizer.swift in Sources */,
 				C26E7C8B2FF5B2370001CFFA /* JAMInteractiveModifier.swift in Sources */,
 				C2F21BB32FFAA210008253A6 /* SettingsEntry.swift in Sources */,
 				C26E7C272FF421930001CFFA /* SuggestionProvider.swift in Sources */,

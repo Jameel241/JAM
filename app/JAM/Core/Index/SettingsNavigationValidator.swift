@@ -7,7 +7,7 @@ enum SettingsNavigationValidator {
 
     // Change only this value when testing a destination.
  
-    static let testSettingID: String? = "game-center"
+    static let testSettingID: String? = nil
     // MARK: - Run
 
     static func run() {

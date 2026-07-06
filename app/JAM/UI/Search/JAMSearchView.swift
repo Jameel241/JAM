@@ -44,7 +44,7 @@ struct JAMSearchView: View {
 
                         JAMSearchBar(
                             text: $searchText,
-                            onSubmit: launchSelectedApplication,
+                            onSubmit: openSelectedSuggestion,
                             onUpArrow: moveSelectionUp,
                             onDownArrow: moveSelectionDown,
                             onTab: autocompleteSelection,
@@ -147,7 +147,7 @@ struct JAMSearchView: View {
 
     // MARK: - Actions
 
-    private func launchSelectedApplication() {
+    private func openSelectedSuggestion() {
 
         openSuggestion(selectedIndex)
     }

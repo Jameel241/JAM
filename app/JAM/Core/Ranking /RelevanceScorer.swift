@@ -22,6 +22,13 @@ struct RelevanceScorer {
 
             score += 10_000
 
+        } else if containsExactWord(
+            text: normalizedText,
+            query: normalizedQuery
+        ) {
+
+            score += 8_000
+
         } else if normalizedText.hasPrefix(normalizedQuery) {
 
             score += 7_000
@@ -37,7 +44,6 @@ struct RelevanceScorer {
 
             score += 2_000
         }
-
         // MARK: - Type Priority
 
         score += typePriority(
@@ -72,7 +78,19 @@ struct RelevanceScorer {
                 in: .whitespacesAndNewlines
             )
     }
+    // MARK: - Exact Word
 
+    private func containsExactWord(
+        text: String,
+        query: String
+    ) -> Bool {
+
+        text
+            .split(separator: " ")
+            .contains {
+                $0 == query
+            }
+    }
     // MARK: - Word Prefix
 
     private func wordStartsWithQuery(

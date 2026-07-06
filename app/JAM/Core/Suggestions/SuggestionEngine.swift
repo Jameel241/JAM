@@ -5,6 +5,7 @@ final class SuggestionEngine {
     private let providers: [SuggestionProvider]
 
     private let ranker = SearchRanker()
+    private let queryNormalizer = SearchQueryNormalizer()
 
     init(
         providers: [SuggestionProvider] = [
@@ -20,14 +21,16 @@ final class SuggestionEngine {
         for input: String
     ) -> [Suggestion] {
 
+        let query = queryNormalizer.normalize(input)
+
         let candidates =
             providers.flatMap {
-                $0.suggestions(for: input)
+                $0.suggestions(for: query)
             }
 
         return ranker.rank(
             suggestions: candidates,
-            for: input
+            for: query
         )
     }
 }
