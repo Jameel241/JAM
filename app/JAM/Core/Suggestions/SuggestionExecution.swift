@@ -8,5 +8,7 @@ enum SuggestionExecution: Equatable {
 
     case quitAllApplications
 
+    case hideAllApplications
+
     case none
 }

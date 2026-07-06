@@ -125,4 +125,53 @@ if application.bundleIdentifier == "com.apple.dt.Xcode" {
             }
         }
     }
+   
+    func hideAllApplications() {
+
+        let runningApplications =
+            NSWorkspace.shared.runningApplications
+
+        let jamBundleIdentifier =
+            Bundle.main.bundleIdentifier
+
+        for application in runningApplications {
+
+            // Never hide JAM itself
+            if application.bundleIdentifier ==
+                jamBundleIdentifier {
+                continue
+            }
+
+            // Keep Finder visible
+            if application.bundleIdentifier ==
+                "com.apple.finder" {
+                continue
+            }
+
+            // Ignore background processes and agents
+            guard application.activationPolicy == .regular else {
+                continue
+            }
+
+            let applicationName =
+                application.localizedName
+                ?? "Unknown Application"
+
+            let didHide =
+                application.hide()
+
+            if didHide {
+
+                print(
+                    "Hid \(applicationName)"
+                )
+
+            } else {
+
+                print(
+                    "Failed to hide \(applicationName)"
+                )
+            }
+        }
+    }
 }

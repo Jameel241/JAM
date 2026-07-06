@@ -5,6 +5,7 @@ enum Verb: String, CaseIterable {
     case open
     case close
     case quit
+    case hide
 
     case create
     case delete

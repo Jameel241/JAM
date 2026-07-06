@@ -14,8 +14,107 @@ final class CommandSuggestionProvider: SuggestionProvider {
             return []
         }
 
+        var suggestions: [Suggestion] = []
+
+        // MARK: - Global Application Commands
+
+        suggestions.append(
+            contentsOf: globalApplicationCommands(
+                matching: trimmed
+            )
+        )
+
+        // MARK: - Parsed Application Commands
+
+        suggestions.append(
+            contentsOf: applicationCommands(
+                for: trimmed
+            )
+        )
+
+        return suggestions
+    }
+
+    // MARK: - Global Application Commands
+
+    private func globalApplicationCommands(
+        matching query: String
+    ) -> [Suggestion] {
+
+        var suggestions: [Suggestion] = []
+
+        // MARK: Hide All Applications
+
+        let hideAllAliases = [
+            "hide all",
+            "hide all apps",
+            "hide all applications"
+        ]
+
+        if matchesCommand(
+            query,
+            aliases: hideAllAliases
+        ) {
+
+            suggestions.append(
+                Suggestion(
+                    kind: .command,
+                    displayText: "Hide All Applications",
+                    completion: "hide all applications",
+                    confidence: commandConfidence(
+                        query,
+                        aliases: hideAllAliases
+                    ),
+                    url: nil,
+                    subtitle: "Application Command",
+                    execution: .hideAllApplications
+                )
+            )
+        }
+
+        // MARK: Quit All Applications
+
+        let quitAllAliases = [
+            "quit all",
+            "quit all apps",
+            "quit all applications",
+            "close all",
+            "close all apps",
+            "close all applications"
+        ]
+
+        if matchesCommand(
+            query,
+            aliases: quitAllAliases
+        ) {
+
+            suggestions.append(
+                Suggestion(
+                    kind: .command,
+                    displayText: "Quit All Applications",
+                    completion: "quit all applications",
+                    confidence: commandConfidence(
+                        query,
+                        aliases: quitAllAliases
+                    ),
+                    url: nil,
+                    subtitle: "Application Command",
+                    execution: .quitAllApplications
+                )
+            )
+        }
+
+        return suggestions
+    }
+
+    // MARK: - Individual Application Commands
+
+    private func applicationCommands(
+        for input: String
+    ) -> [Suggestion] {
+
         let commandParser = CommandParser()
-        let command = commandParser.parse(trimmed)
+        let command = commandParser.parse(input)
 
         guard command.verb == .quit ||
               command.verb == .close else {
@@ -23,36 +122,25 @@ final class CommandSuggestionProvider: SuggestionProvider {
         }
 
         let applicationQuery = command.object
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .trimmingCharacters(
+                in: .whitespacesAndNewlines
+            )
 
         guard !applicationQuery.isEmpty else {
             return []
         }
 
-        // MARK: - Quit All Applications
+        // Global commands are handled separately.
 
-        let quitAllQueries = [
+        let allQueries = [
             "all",
             "all apps",
             "all applications"
         ]
 
-        if quitAllQueries.contains(applicationQuery) {
-
-            return [
-                Suggestion(
-                    kind: .command,
-                    displayText: "Quit All Applications",
-                    completion: "quit all applications",
-                    confidence: 1.0,
-                    url: nil,
-                    subtitle: "Application Command",
-                    execution: .quitAllApplications
-                )
-            ]
+        guard !allQueries.contains(applicationQuery) else {
+            return []
         }
-
-        // MARK: - Individual Application
 
         return searchEngine
             .search(applicationQuery)
@@ -82,5 +170,50 @@ final class CommandSuggestionProvider: SuggestionProvider {
                     )
                 )
             }
+    }
+
+    // MARK: - Command Matching
+
+    private func matchesCommand(
+        _ query: String,
+        aliases: [String]
+    ) -> Bool {
+
+        aliases.contains { alias in
+
+            alias.hasPrefix(query)
+            ||
+            query.hasPrefix(alias)
+        }
+    }
+
+    // MARK: - Command Confidence
+
+    private func commandConfidence(
+        _ query: String,
+        aliases: [String]
+    ) -> Double {
+
+        if aliases.contains(query) {
+            return 1.0
+        }
+
+        let bestCoverage = aliases
+            .filter {
+                $0.hasPrefix(query)
+            }
+            .map {
+
+                Double(query.count)
+                /
+                Double(max($0.count, 1))
+            }
+            .max()
+            ?? 0.0
+
+        return min(
+            max(bestCoverage, 0.0),
+            1.0
+        )
     }
 }
