@@ -115,6 +115,8 @@
 		C26E7CAF2FF6F5320001CFFA /* JAMMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */; };
 		C286C91F2FF96AD800F2DF84 /* JAMScrollEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C286C91E2FF96AD400F2DF84 /* JAMScrollEventMonitor.swift */; };
 		C2C268D72FFC019900F17401 /* HideAllApplicationsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C268D62FFC019600F17401 /* HideAllApplicationsAction.swift */; };
+		C2C268D92FFC08E000F17401 /* QueryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C268D82FFC08DE00F17401 /* QueryIntent.swift */; };
+		C2C268DB2FFC091700F17401 /* QueryIntentDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C268DA2FFC091600F17401 /* QueryIntentDetector.swift */; };
 		C2D80E9A2FF7C23F00926E79 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E992FF7C23D00926E79 /* SettingsManager.swift */; };
 		C2D80E9C2FF7C86000926E79 /* JAMMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E9B2FF7C85E00926E79 /* JAMMenu.swift */; };
 		C2D80E9F2FF7C9F400926E79 /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D80E9E2FF7C9F200926E79 /* LaunchAtLoginManager.swift */; };
@@ -272,6 +274,8 @@
 		C26E7CAE2FF6F5300001CFFA /* JAMMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMenuBar.swift; sourceTree = "<group>"; };
 		C286C91E2FF96AD400F2DF84 /* JAMScrollEventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMScrollEventMonitor.swift; sourceTree = "<group>"; };
 		C2C268D62FFC019600F17401 /* HideAllApplicationsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideAllApplicationsAction.swift; sourceTree = "<group>"; };
+		C2C268D82FFC08DE00F17401 /* QueryIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryIntent.swift; sourceTree = "<group>"; };
+		C2C268DA2FFC091600F17401 /* QueryIntentDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryIntentDetector.swift; sourceTree = "<group>"; };
 		C2D80E992FF7C23D00926E79 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		C2D80E9B2FF7C85E00926E79 /* JAMMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMMenu.swift; sourceTree = "<group>"; };
 		C2D80E9E2FF7C9F200926E79 /* LaunchAtLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginManager.swift; sourceTree = "<group>"; };
@@ -948,6 +952,8 @@
 		C2F21BAD2FFA75E0008253A6 /* Ranking  */ = {
 			isa = PBXGroup;
 			children = (
+				C2C268DA2FFC091600F17401 /* QueryIntentDetector.swift */,
+				C2C268D82FFC08DE00F17401 /* QueryIntent.swift */,
 				C2F21BB02FFA75FB008253A6 /* SearchRanker.swift */,
 				C2F21BAE2FFA75F0008253A6 /* RelevanceScorer.swift */,
 			);
@@ -1140,6 +1146,7 @@
 				C2D80EA82FF7D83D00926E79 /* SearchView.swift in Sources */,
 				C26E7C772FF5AFBF0001CFFA /*     JAMBrandBadge.swift in Sources */,
 				C22B25C32FF303DB0030E98A /* JAMRadius.swift in Sources */,
+				C2C268DB2FFC091700F17401 /* QueryIntentDetector.swift in Sources */,
 				C25FA6E42FF8047000A3BC85 /* StatusBadge.swift in Sources */,
 				C266F1212FF83A840025D5DE /* SearchIndex.swift in Sources */,
 				C2D80EA22FF7CEB100926E79 /* JAMWindows.swift in Sources */,
@@ -1224,6 +1231,7 @@
 				C22B25D82FF30D720030E98A /* PanelContainer.swift in Sources */,
 				C22B25E82FF314350030E98A /* Verb.swift in Sources */,
 				C22DD2042FF9200A00FD2986 /* FolderSearchEngine.swift in Sources */,
+				C2C268D92FFC08E000F17401 /* QueryIntent.swift in Sources */,
 				C25FA6ED2FF808F200A3BC85 /* AIView.swift in Sources */,
 				C26E7C172FF410C10001CFFA /* OpenApplicationAction.swift in Sources */,
 				C26E7C6A2FF5AC830001CFFA /* JAMSearchBar.swift in Sources */,
