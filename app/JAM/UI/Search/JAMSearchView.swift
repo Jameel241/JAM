@@ -156,12 +156,30 @@ struct JAMSearchView: View {
         _ index: Int
     ) {
 
-        guard suggestions.indices.contains(index),
-              let url = suggestions[index].url else {
+        guard suggestions.indices.contains(index) else {
             return
         }
 
-        NSWorkspace.shared.open(url)
+        let suggestion = suggestions[index]
+
+        switch suggestion.execution {
+
+        case .openURL(let url):
+
+            NSWorkspace.shared.open(url)
+
+        case .quitApplication(let applicationName):
+
+            let action = QuitApplicationAction(
+                applicationName: applicationName
+            )
+
+            ActionExecutor().execute(action)
+
+        case .none:
+
+            return
+        }
 
         clearSearch()
 
@@ -172,7 +190,6 @@ struct JAMSearchView: View {
             WindowManager.shared.hideCommandPanel()
         }
     }
-
     private func autocompleteSelection() {
 
         guard suggestions.indices.contains(selectedIndex) else {

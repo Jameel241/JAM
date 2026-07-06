@@ -8,7 +8,6 @@ final class ApplicationService {
 
             print("Application '\(name)' not found.")
             return
-
         }
 
         let configuration = NSWorkspace.OpenConfiguration()
@@ -19,13 +18,54 @@ final class ApplicationService {
         ) { _, error in
 
             if let error {
-                print("Failed to open \(name): \(error.localizedDescription)")
+
+                print(
+                    "Failed to open \(name): \(error.localizedDescription)"
+                )
+
             } else {
+
                 print("Opened \(name)")
             }
-
         }
-
     }
 
+    func quitApplication(named name: String) {
+
+        let normalizedName = name
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+
+        let runningApplications =
+            NSWorkspace.shared.runningApplications
+
+        guard let application =
+                runningApplications.first(where: { application in
+
+                    guard let localizedName =
+                            application.localizedName?
+                                .lowercased()
+                    else {
+                        return false
+                    }
+
+                    return localizedName == normalizedName
+
+                }) else {
+
+            print("Application '\(name)' is not running.")
+            return
+        }
+
+        let didTerminate = application.terminate()
+
+        if didTerminate {
+
+            print("Requested termination of \(name)")
+
+        } else {
+
+            print("Failed to terminate \(name)")
+        }
+    }
 }

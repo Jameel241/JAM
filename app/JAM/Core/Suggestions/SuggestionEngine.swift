@@ -2,19 +2,20 @@ import Foundation
 
 final class SuggestionEngine {
 
-    private let providers: [SuggestionProvider]
+    private let searchProviders: [SuggestionProvider]
+    private let commandProvider = CommandSuggestionProvider()
 
     private let ranker = SearchRanker()
     private let queryNormalizer = SearchQueryNormalizer()
 
     init(
-        providers: [SuggestionProvider] = [
+        searchProviders: [SuggestionProvider] = [
             ApplicationSuggestionProvider(),
             SettingsSuggestionProvider(),
             LocalSuggestionProvider()
         ]
     ) {
-        self.providers = providers
+        self.searchProviders = searchProviders
     }
 
     func suggestions(
@@ -23,10 +24,16 @@ final class SuggestionEngine {
 
         let query = queryNormalizer.normalize(input)
 
-        let candidates =
-            providers.flatMap {
+        let searchCandidates =
+            searchProviders.flatMap {
                 $0.suggestions(for: query)
             }
+
+        let commandCandidates =
+            commandProvider.suggestions(for: input)
+
+        let candidates =
+            searchCandidates + commandCandidates
 
         return ranker.rank(
             suggestions: candidates,

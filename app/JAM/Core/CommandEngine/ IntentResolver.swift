@@ -11,10 +11,12 @@ final class IntentResolver {
                 applicationName: command.object
             )
 
-        default:
+        case .quit, .close:
+            return QuitApplicationAction(
+                applicationName: command.object
+            )
 
-            // If the parser didn't recognize a command,
-            // treat the first word as an application name.
+        default:
 
             let appName = command.verb.rawValue
 
@@ -23,13 +25,9 @@ final class IntentResolver {
                 return OpenApplicationAction(
                     applicationName: appName
                 )
-
             }
 
             return nil
-
         }
-
     }
-
 }
