@@ -1,16 +1,14 @@
 import Foundation
-import AppKit
+import IOKit.ps
+import LocalAuthentication
 
 struct SettingsEnvironment {
 
     static let current = SettingsEnvironment()
 
     let operatingSystemVersion: OperatingSystemVersion
-
     let hasBattery: Bool
-
     let hasTouchID: Bool
-
     let isAppleSilicon: Bool
 
     private init() {
@@ -45,46 +43,36 @@ struct SettingsEnvironment {
 
     private static func detectBattery() -> Bool {
 
-        let task = Process()
+        guard let snapshot =
+            IOPSCopyPowerSourcesInfo()?
+                .takeRetainedValue()
+        else {
+            return false
+        }
 
-        task.executableURL = URL(
-            fileURLWithPath: "/usr/bin/pmset"
-        )
+        guard let sources =
+            IOPSCopyPowerSourcesList(snapshot)?
+                .takeRetainedValue() as? [CFTypeRef]
+        else {
+            return false
+        }
 
-        task.arguments = [
-            "-g",
-            "batt"
-        ]
+        return sources.contains { source in
 
-        let pipe = Pipe()
-
-        task.standardOutput = pipe
-        task.standardError = Pipe()
-
-        do {
-
-            try task.run()
-
-            task.waitUntilExit()
-
-            let data =
-                pipe.fileHandleForReading
-                    .readDataToEndOfFile()
-
-            guard let output = String(
-                data: data,
-                encoding: .utf8
-            ) else {
+            guard let description =
+                IOPSGetPowerSourceDescription(
+                    snapshot,
+                    source
+                )?
+                .takeUnretainedValue()
+                as? [String: Any]
+            else {
                 return false
             }
 
-            return output.localizedCaseInsensitiveContains(
-                "InternalBattery"
-            )
-
-        } catch {
-
-            return false
+            return description[
+                kIOPSTypeKey
+            ] as? String == kIOPSInternalBatteryType
         }
     }
 
@@ -94,51 +82,18 @@ struct SettingsEnvironment {
 
     private static func detectTouchID() -> Bool {
 
-        let task = Process()
+        let context = LAContext()
 
-        task.executableURL = URL(
-            fileURLWithPath: "/usr/sbin/ioreg"
+        var error: NSError?
+
+        _ = context.canEvaluatePolicy(
+            .deviceOwnerAuthenticationWithBiometrics,
+            error: &error
         )
 
-        task.arguments = [
-            "-l",
-            "-r",
-            "-c",
-            "AppleBiometricSensor"
-        ]
-
-        let pipe = Pipe()
-
-        task.standardOutput = pipe
-        task.standardError = Pipe()
-
-        do {
-
-            try task.run()
-            task.waitUntilExit()
-
-            let data =
-                pipe.fileHandleForReading
-                    .readDataToEndOfFile()
-
-            guard let output = String(
-                data: data,
-                encoding: .utf8
-            ) else {
-                return false
-            }
-
-            return !output
-                .trimmingCharacters(
-                    in: .whitespacesAndNewlines
-                )
-                .isEmpty
-
-        } catch {
-
-            return false
-        }
+        return context.biometryType == .touchID
     }
+
 
     // MARK: - Apple Silicon
 
@@ -146,15 +101,13 @@ struct SettingsEnvironment {
     private static func detectAppleSilicon() -> Bool {
 
         #if arch(arm64)
+
         return true
+
         #else
+
         return false
+
         #endif
     }
-}//
-//  SettingsEnvironment.swift
-//  JAM
-//
-//  Created by Jameel Iqbal on 05/07/26.
-//
-
+}
