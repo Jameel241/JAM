@@ -50,6 +50,7 @@ final class AppStateManager: ObservableObject {
     func resetOnboarding() {
 
         hasCompletedOnboarding = false
+        preferredName = ""
 
         UserDefaults.standard.set(
             false,

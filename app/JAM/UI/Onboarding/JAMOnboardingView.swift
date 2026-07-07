@@ -63,6 +63,20 @@ struct JAMOnboardingView: View {
                 .font(.title2)
                 .foregroundStyle(.secondary)
 
+            TextField(
+                "What should JAM call you?",
+                text: Binding(
+                    get: {
+                        AppStateManager.shared.preferredName
+                    },
+                    set: {
+                        AppStateManager.shared.preferredName = $0
+                    }
+                )
+            )
+            .textFieldStyle(.roundedBorder)
+            .frame(maxWidth: 300)
+
             Spacer()
 
         }
