@@ -7,6 +7,7 @@ final class WindowManager {
   
    
     private var appWindow: NSWindow?
+    private var onboardingWindow: NSWindow?
 
     private lazy var commandPanel: JAMPanel = {
        
@@ -27,7 +28,58 @@ final class WindowManager {
         return panel
 
     }()
+    func showOnboardingWindow() {
 
+        NSApp.activate(ignoringOtherApps: true)
+
+        if let window = onboardingWindow {
+
+            window.makeKeyAndOrderFront(nil)
+
+            return
+        }
+
+        let window = NSWindow(
+
+            contentRect: NSRect(
+                x: 0,
+                y: 0,
+                width: 760,
+                height: 520
+            ),
+
+            styleMask: [
+                .titled,
+                .closable,
+                .miniaturizable
+            ],
+
+            backing: .buffered,
+
+            defer: false
+        )
+
+        window.title = "Welcome to JAM"
+
+        window.appearance = AppearanceManager.appearance(
+            for: AppearanceSettingsManager.shared.selectedTheme
+        )
+
+        window.isReleasedWhenClosed = false
+        window.center()
+
+        window.contentView = NSHostingView(
+            rootView: JAMOnboardingView()
+        )
+
+        onboardingWindow = window
+
+        window.makeKeyAndOrderFront(nil)
+    }
+    func closeOnboardingWindow() {
+
+        onboardingWindow?.close()
+    }
     func showCommandPanel() {
 
         NSApp.activate(ignoringOtherApps: true)

@@ -14,6 +14,7 @@ struct GeneralView: View {
                 subtitle: "Manage how JAM behaves.",
                 systemImage: "gearshape"
             )
+            
 
             SettingsCard(
                 title: "Application",
@@ -91,6 +92,22 @@ struct GeneralView: View {
                 }
 
             }
+#if DEBUG
+
+SettingsCard(
+    title: "Developer",
+    systemImage: "hammer"
+) {
+
+    Button("Reset Onboarding") {
+
+        AppStateManager.shared.resetOnboarding()
+
+    }
+
+}
+
+#endif
 
         }
         .formStyle(.grouped)

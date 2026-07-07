@@ -139,6 +139,7 @@
 		C2F21BC92FFAB1ED008253A6 /* SettingsDestinationVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F21BC62FFAB154008253A6 /* SettingsDestinationVariant.swift */; };
 		C2F21BCB2FFAB3ED008253A6 /* SettingsNavigationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F21BCA2FFAB3E9008253A6 /* SettingsNavigationValidator.swift */; };
 		C2F292262FFD124D00A48B65 /* AppStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F292252FFD124A00A48B65 /* AppStateManager.swift */; };
+		C2F292292FFD14A100A48B65 /* JAMOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F292282FFD149E00A48B65 /* JAMOnboardingView.swift */; };
 		C2FFD6642FFBC55600B77899 /* SearchQueryNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FFD6632FFBC55400B77899 /* SearchQueryNormalizer.swift */; };
 		C2FFD6662FFBCB4600B77899 /* QuitApplicationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FFD6652FFBCB4200B77899 /* QuitApplicationAction.swift */; };
 		C2FFD6682FFBCD2000B77899 /* SuggestionExecution.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FFD6672FFBCD1D00B77899 /* SuggestionExecution.swift */; };
@@ -299,6 +300,7 @@
 		C2F21BC72FFAB1CE008253A6 /* SettingsDestinationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDestinationResolver.swift; sourceTree = "<group>"; };
 		C2F21BCA2FFAB3E9008253A6 /* SettingsNavigationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationValidator.swift; sourceTree = "<group>"; };
 		C2F292252FFD124A00A48B65 /* AppStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateManager.swift; sourceTree = "<group>"; };
+		C2F292282FFD149E00A48B65 /* JAMOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JAMOnboardingView.swift; sourceTree = "<group>"; };
 		C2FFD6632FFBC55400B77899 /* SearchQueryNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQueryNormalizer.swift; sourceTree = "<group>"; };
 		C2FFD6652FFBCB4200B77899 /* QuitApplicationAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitApplicationAction.swift; sourceTree = "<group>"; };
 		C2FFD6672FFBCD1D00B77899 /* SuggestionExecution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionExecution.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 		C22B25A92FF2FA0F0030E98A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C2F292272FFD148E00A48B65 /* Onboarding */,
 				C2D80EA02FF7CEA000926E79 /* Windows */,
 				C26E7CAD2FF6F4F80001CFFA /* MenuBar */,
 				C26E7C662FF5AC010001CFFA /* Search */,
@@ -963,6 +966,14 @@
 			path = Ranking;
 			sourceTree = "<group>";
 		};
+		C2F292272FFD148E00A48B65 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C2F292282FFD149E00A48B65 /* JAMOnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1168,6 +1179,7 @@
 				C25FA6E62FF8048C00A3BC85 /* PageHeader.swift in Sources */,
 				C26E7C562FF5997F0001CFFA /* WindowManager.swift in Sources */,
 				C26E7C842FF5B1B90001CFFA /* JAMAnimation.swift in Sources */,
+				C2F292292FFD14A100A48B65 /* JAMOnboardingView.swift in Sources */,
 				C26E7C082FF40B4E0001CFFA /* ApplicationMatcher.swift in Sources */,
 				C26E7C0B2FF40F430001CFFA /* JAMIndex.swift in Sources */,
 				C26E7C582FF59A720001CFFA /* JAMPanel.swift in Sources */,
