@@ -3,6 +3,9 @@ import AppKit
 
 struct SuggestionList: View {
 
+    @Environment(\.colorScheme)
+    private var colorScheme
+
     let suggestions: [Suggestion]
 
     @State private var isScrollIndicatorVisible = false
@@ -74,30 +77,38 @@ struct SuggestionList: View {
 
                     // MARK: Highlight
 
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(
-                            Color.white.opacity(0.17)
-                        )
-                        .overlay {
+                    RoundedRectangle(
+                        cornerRadius: 14,
+                        style: .continuous
+                    )
+                    .fill(
+                        colorScheme == .dark
+                            ? Color.white.opacity(0.17)
+                            : Color.black.opacity(0.12)
+                    )
+                    .overlay {
 
-                            RoundedRectangle(
-                                cornerRadius: 14
-                            )
-                            .stroke(
-                                Color.white.opacity(0.10),
-                                lineWidth: 1
-                            )
-                        }
-                        .frame(height: rowHeight)
-                        .padding(.horizontal, 12)
-                        .offset(
-                            y:
-                                10
-                                +
-                                CGFloat(selectedIndex)
-                                * rowStep
+                        RoundedRectangle(
+                            cornerRadius: 14,
+                            style: .continuous
                         )
-                        .allowsHitTesting(false)
+                        .stroke(
+                            colorScheme == .dark
+                                ? Color.white.opacity(0.10)
+                                : Color.black.opacity(0.10),
+                            lineWidth: 1
+                        )
+                    }
+                    .frame(height: rowHeight)
+                    .padding(.horizontal, 12)
+                    .offset(
+                        y:
+                            10
+                            +
+                            CGFloat(selectedIndex)
+                            * rowStep
+                    )
+                    .allowsHitTesting(false)
 
                     // MARK: Suggestions
 
@@ -193,7 +204,9 @@ struct SuggestionList: View {
 
                     Capsule()
                         .fill(
-                            Color.white.opacity(0.34)
+                            colorScheme == .dark
+                                ? Color.white.opacity(0.34)
+                                : Color.black.opacity(0.28)
                         )
                         .frame(
                             width: 3,
@@ -241,9 +254,30 @@ struct SuggestionList: View {
                 +
                 20
         )
-        .background(.ultraThinMaterial)
+        .background {
+
+            ZStack {
+
+                Color.black.opacity(
+                    colorScheme == .dark
+                        ? 0.05
+                        : 0.10
+                )
+
+                Rectangle()
+                    .fill(.ultraThinMaterial)
+
+                if colorScheme == .light {
+
+                    Color.black.opacity(0.045)
+                }
+            }
+        }
         .clipShape(
-            RoundedRectangle(cornerRadius: 18)
+            RoundedRectangle(
+                cornerRadius: 18,
+                style: .continuous
+            )
         )
         .onChange(of: visibleStartIndex) { _, _ in
 
@@ -283,16 +317,12 @@ struct SuggestionList: View {
         phase: NSEvent.Phase
     ) {
 
-        // MARK: Upper Boundary
-
         if visibleStartIndex == 0 &&
             deltaY > 0 {
 
             trackpadOffset = 0
             return
         }
-
-        // MARK: Lower Boundary
 
         if visibleStartIndex == maximumStartIndex &&
             deltaY < 0 {
@@ -302,8 +332,6 @@ struct SuggestionList: View {
         }
 
         trackpadOffset += deltaY
-
-        // MARK: Moving Down
 
         while trackpadOffset <= -rowStep {
 
@@ -319,8 +347,6 @@ struct SuggestionList: View {
 
             trackpadOffset += rowStep
         }
-
-        // MARK: Moving Up
 
         while trackpadOffset >= rowStep {
 
@@ -397,8 +423,6 @@ struct SuggestionList: View {
 
         let threshold: CGFloat = 5
 
-        // MARK: Mouse Down
-
         while mouseAccumulator <= -threshold {
 
             guard visibleStartIndex <
@@ -413,8 +437,6 @@ struct SuggestionList: View {
 
             mouseAccumulator += threshold
         }
-
-        // MARK: Mouse Up
 
         while mouseAccumulator >= threshold {
 

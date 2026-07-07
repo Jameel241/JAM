@@ -2,6 +2,9 @@ import SwiftUI
 
 struct JAMGreetingCard: View {
 
+    @Environment(\.colorScheme)
+    private var colorScheme
+
     let greeting: String
 
     var body: some View {
@@ -10,11 +13,19 @@ struct JAMGreetingCard: View {
 
             Text(greeting)
                 .font(JAMTypography.title)
-                .foregroundStyle(.white)
+                .foregroundStyle(
+                    colorScheme == .dark
+                        ? Color.white
+                        : Color.black.opacity(0.76)
+                )
 
             Text("What would you like to do?")
                 .font(JAMTypography.body)
-                .foregroundStyle(.white.opacity(0.80))
+                .foregroundStyle(
+                    colorScheme == .dark
+                        ? Color.white.opacity(0.80)
+                        : Color.black.opacity(0.52)
+                )
 
         }
         .padding(.horizontal, 42)
@@ -31,7 +42,11 @@ struct JAMGreetingCard: View {
                 cornerRadius: 30,
                 style: .continuous
             )
-            .fill(Color.black.opacity(0.18))
+            .fill(
+                colorScheme == .dark
+                    ? Color.black.opacity(0.18)
+                    : Color.black.opacity(0.06)
+            )
 
         }
         .overlay {
@@ -41,7 +56,9 @@ struct JAMGreetingCard: View {
                 style: .continuous
             )
             .strokeBorder(
-                Color.white.opacity(0.08),
+                colorScheme == .dark
+                    ? Color.white.opacity(0.08)
+                    : Color.black.opacity(0.08),
                 lineWidth: 0.6
             )
 

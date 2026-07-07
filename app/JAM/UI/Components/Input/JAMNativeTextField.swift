@@ -3,6 +3,9 @@ import AppKit
 
 struct JAMNativeTextField: NSViewRepresentable {
 
+    @Environment(\.colorScheme)
+    private var colorScheme
+
     @Binding var text: String
 
     var onSubmit: () -> Void
@@ -19,8 +22,9 @@ struct JAMNativeTextField: NSViewRepresentable {
     func makeNSView(context: Context) -> NSTextField {
 
         let field = JAMTextField()
+
         SearchFieldRegistry.shared.textField = field
-      
+
         field.delegate = context.coordinator
         field.target = context.coordinator
         field.action = #selector(Coordinator.submit)
@@ -50,8 +54,14 @@ struct JAMNativeTextField: NSViewRepresentable {
         field.drawsBackground = false
         field.focusRingType = .none
 
-        field.font = .systemFont(ofSize: 24, weight: .medium)
-        field.textColor = .white
+        field.font = .systemFont(
+            ofSize: 24,
+            weight: .medium
+        )
+
+        field.textColor = colorScheme == .dark
+            ? .white
+            : NSColor.black.withAlphaComponent(0.78)
 
         return field
     }
@@ -60,6 +70,11 @@ struct JAMNativeTextField: NSViewRepresentable {
         _ nsView: NSTextField,
         context: Context
     ) {
+
+        // Update only the text color for appearance changes.
+        nsView.textColor = colorScheme == .dark
+            ? .white
+            : NSColor.black.withAlphaComponent(0.78)
 
         if nsView.stringValue != text {
 
@@ -76,7 +91,6 @@ struct JAMNativeTextField: NSViewRepresentable {
         }
 
         SearchFieldRegistry.shared.textField = nsView
-
     }
 
     final class Coordinator: NSObject, NSTextFieldDelegate {
@@ -87,15 +101,19 @@ struct JAMNativeTextField: NSViewRepresentable {
             self.parent = parent
         }
 
-        func controlTextDidChange(_ notification: Notification) {
+        func controlTextDidChange(
+            _ notification: Notification
+        ) {
 
-            guard let field = notification.object as? NSTextField else {
+            guard let field =
+                    notification.object as? NSTextField
+            else {
                 return
             }
 
             parent.text = field.stringValue
-
         }
+
         func control(
             _ control: NSControl,
             textView: NSTextView,
@@ -126,19 +144,15 @@ struct JAMNativeTextField: NSViewRepresentable {
 
             default:
                 return false
-
             }
-
         }
+
         @objc
         func submit() {
 
             print("submit action")
 
             parent.onSubmit()
-
         }
-
     }
-
 }

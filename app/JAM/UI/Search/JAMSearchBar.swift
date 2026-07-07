@@ -2,6 +2,9 @@ import SwiftUI
 
 struct JAMSearchBar: View {
 
+    @Environment(\.colorScheme)
+    private var colorScheme
+
     @Binding var text: String
 
     var onSubmit: () -> Void
@@ -22,7 +25,11 @@ struct JAMSearchBar: View {
             JAMSearchBadge()
 
             Rectangle()
-                .fill(Color.white.opacity(0.12))
+                .fill(
+                    colorScheme == .dark
+                        ? Color.white.opacity(0.12)
+                        : Color.black.opacity(0.14)
+                )
                 .frame(width: 1, height: 30)
 
             JAMSearchIcon()
@@ -33,12 +40,13 @@ struct JAMSearchBar: View {
 
                     Text("Search apps, files, or commands...")
                         .foregroundStyle(
-                            Color.white.opacity(0.60)
+                            colorScheme == .dark
+                                ? Color.white.opacity(0.60)
+                                : Color.black.opacity(0.58)
                         )
                         .font(JAMTypography.body)
                         .allowsHitTesting(false)
                         .transition(.opacity)
-
                 }
 
                 JAMNativeTextField(
@@ -49,16 +57,12 @@ struct JAMSearchBar: View {
                     onTab: onTab,
                     onEscape: onEscape
                 )
-
             }
             .frame(maxWidth: .infinity)
-         
 
             JAMShortcutBadge()
         }
         .padding(.horizontal, 18)
         .frame(height: JAMMetrics.searchBarHeight)
-
     }
-
 }

@@ -2,6 +2,9 @@ import SwiftUI
 
 struct JAMSearchSurface<Content: View>: View {
 
+    @Environment(\.colorScheme)
+    private var colorScheme
+
     @Binding var text: String
 
     @ViewBuilder
@@ -23,7 +26,11 @@ struct JAMSearchSurface<Content: View>: View {
                 style: .continuous
             )
             .fill(
-                Color.black.opacity(0.22)
+                Color.black.opacity(
+                    colorScheme == .dark
+                        ? 0.22
+                        : 0.16
+                )
             )
 
             RoundedRectangle(
@@ -38,10 +45,15 @@ struct JAMSearchSurface<Content: View>: View {
             )
             .fill(
                 LinearGradient(
-                    colors: [
-                        Color.white.opacity(0.07),
-                        Color.white.opacity(0.015)
-                    ],
+                    colors: colorScheme == .dark
+                        ? [
+                            Color.white.opacity(0.07),
+                            Color.white.opacity(0.015)
+                        ]
+                        : [
+                            Color.black.opacity(0.055),
+                            Color.black.opacity(0.025)
+                        ],
                     startPoint: .top,
                     endPoint: .bottom
                 )
@@ -55,13 +67,19 @@ struct JAMSearchSurface<Content: View>: View {
                 style: .continuous
             )
             .strokeBorder(
-                Color.white.opacity(0.09),
+                colorScheme == .dark
+                    ? Color.white.opacity(0.09)
+                    : Color.black.opacity(0.14),
                 lineWidth: 0.6
             )
 
         }
         .shadow(
-            color: .black.opacity(0.18),
+            color: .black.opacity(
+                colorScheme == .dark
+                    ? 0.18
+                    : 0.14
+            ),
             radius: 26,
             y: 14
         )

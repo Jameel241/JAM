@@ -4,15 +4,17 @@ import SwiftUI
 final class WindowManager {
 
     static let shared = WindowManager()
-  
-   
+
     private var appWindow: NSWindow?
     private var onboardingWindow: NSWindow?
 
     private lazy var commandPanel: JAMPanel = {
-       
 
         let panel = JAMPanel()
+
+        panel.appearance = AppearanceManager.appearance(
+            for: AppearanceSettingsManager.shared.selectedTheme
+        )
 
         let hostingView = NSHostingView(
             rootView: CommandPanelView()
@@ -28,6 +30,7 @@ final class WindowManager {
         return panel
 
     }()
+
     func showOnboardingWindow() {
 
         NSApp.activate(ignoringOtherApps: true)
@@ -76,10 +79,12 @@ final class WindowManager {
 
         window.makeKeyAndOrderFront(nil)
     }
+
     func closeOnboardingWindow() {
 
         onboardingWindow?.close()
     }
+
     func showCommandPanel() {
 
         NSApp.activate(ignoringOtherApps: true)
@@ -99,8 +104,8 @@ final class WindowManager {
             self.commandPanel.makeFirstResponder(textField)
 
         }
-
     }
+
     func showAppWindow() {
 
         NSApp.activate(ignoringOtherApps: true)
@@ -110,7 +115,6 @@ final class WindowManager {
             window.makeKeyAndOrderFront(nil)
 
             return
-
         }
 
         let window = NSWindow(
@@ -132,7 +136,6 @@ final class WindowManager {
             backing: .buffered,
 
             defer: false
-
         )
 
         window.title = "JAM"
@@ -146,22 +149,18 @@ final class WindowManager {
         window.center()
 
         window.contentView = NSHostingView(
-
             rootView: JAMWindows()
-
         )
 
         self.appWindow = window
 
         window.makeKeyAndOrderFront(nil)
         window.orderFrontRegardless()
-
     }
 
     func hideCommandPanel() {
 
         commandPanel.orderOut(nil)
-
     }
 
     func toggleCommandPanel() {
@@ -171,8 +170,8 @@ final class WindowManager {
         } else {
             showCommandPanel()
         }
-
     }
+
     func updateAppearance() {
 
         let appearance = AppearanceManager.appearance(
@@ -180,7 +179,7 @@ final class WindowManager {
         )
 
         appWindow?.appearance = appearance
-
+        onboardingWindow?.appearance = appearance
+        commandPanel.appearance = appearance
     }
 }
-

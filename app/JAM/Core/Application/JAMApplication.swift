@@ -54,7 +54,15 @@ final class JAMApplication {
                 return
             }
 
-            WindowManager.shared.toggleCommandPanel()
+            if AppStateManager.shared.hasCompletedOnboarding {
+
+                WindowManager.shared.toggleCommandPanel()
+
+            } else {
+
+                WindowManager.shared.showOnboardingWindow()
+
+            }
         }
     }
 
