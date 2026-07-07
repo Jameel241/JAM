@@ -234,20 +234,32 @@ struct JAMSearchView: View {
             from: Date()
         )
 
+        let preferredName =
+            AppStateManager.shared.preferredName
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+
+        let greetingPrefix: String
+
         switch hour {
 
         case 5..<12:
-            return "Good morning, Jameel."
+            greetingPrefix = "Good morning"
 
         case 12..<17:
-            return "Good afternoon, Jameel."
+            greetingPrefix = "Good afternoon"
 
         case 17..<22:
-            return "Good evening, Jameel."
+            greetingPrefix = "Good evening"
 
         default:
-            return "Good night, Jameel."
+            greetingPrefix = "Good night"
         }
+
+        if preferredName.isEmpty {
+            return "\(greetingPrefix)."
+        }
+
+        return "\(greetingPrefix), \(preferredName)."
     }
 }
 
