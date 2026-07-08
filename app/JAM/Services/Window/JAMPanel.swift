@@ -7,7 +7,7 @@ final class JAMPanel: NSPanel {
     }
 
     override var canBecomeMain: Bool {
-        true
+        false
     }
 
     convenience init() {
@@ -21,7 +21,8 @@ final class JAMPanel: NSPanel {
             ),
             styleMask: [
                 .borderless,
-                .fullSizeContentView
+                .fullSizeContentView,
+                .nonactivatingPanel
             ],
             backing: .buffered,
             defer: false
@@ -38,14 +39,13 @@ final class JAMPanel: NSPanel {
         hasShadow = false
 
         backgroundColor = .clear
+        
 
         collectionBehavior = [
-            .fullScreenAuxiliary,
-            .moveToActiveSpace
+            .canJoinAllSpaces,
+            .fullScreenAuxiliary
         ]
 
         animationBehavior = .utilityWindow
-
     }
-
 }

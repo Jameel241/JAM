@@ -87,13 +87,13 @@ final class WindowManager {
 
     func showCommandPanel() {
 
-        NSApp.activate(ignoringOtherApps: true)
-
         if !commandPanel.isVisible {
+
             commandPanel.center()
+
         }
 
-        commandPanel.makeKeyAndOrderFront(nil)
+        commandPanel.orderFrontRegardless()
 
         DispatchQueue.main.async {
 
@@ -101,11 +101,11 @@ final class WindowManager {
                 return
             }
 
-            self.commandPanel.makeFirstResponder(textField)
+            self.commandPanel.makeKey()
 
+            self.commandPanel.makeFirstResponder(textField)
         }
     }
-
     func showAppWindow() {
 
         NSApp.activate(ignoringOtherApps: true)
