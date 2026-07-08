@@ -282,6 +282,12 @@ struct SuggestionList: View {
         .onChange(of: visibleStartIndex) { _, _ in
 
             showScrollIndicator()
+
+            if navigationSource == .keyboard {
+
+                trackpadOffset = 0
+                mouseAccumulator = 0
+            }
         }
     }
 
