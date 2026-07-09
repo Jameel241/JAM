@@ -1,13 +1,18 @@
 import Foundation
+import CoreServices
 
 final class LocalFileMonitor {
 
     static let shared = LocalFileMonitor()
 
-    private var sources: [DispatchSourceFileSystemObject] = []
+    private var eventStream: FSEventStreamRef?
     private var rebuildTask: Task<Void, Never>?
 
     private init() {}
+
+    deinit {
+        stop()
+    }
 
     func start() {
 
@@ -25,22 +30,93 @@ final class LocalFileMonitor {
             homeDirectory.appendingPathComponent("Pictures")
         ]
 
-        for location in locations {
+        let paths = locations
+            .filter {
+                fileManager.fileExists(
+                    atPath: $0.path
+                )
+            }
+            .map(\.path) as CFArray
 
-            guard fileManager.fileExists(
-                atPath: location.path
-            ) else {
-                continue
+        guard CFArrayGetCount(paths) > 0 else {
+
+            print("No local folders available for monitoring.")
+
+            return
+        }
+
+        var context = FSEventStreamContext(
+            version: 0,
+            info: Unmanaged.passUnretained(self).toOpaque(),
+            retain: nil,
+            release: nil,
+            copyDescription: nil
+        )
+
+        let callback: FSEventStreamCallback = {
+            _,
+            clientCallbackInfo,
+            numberOfEvents,
+            _,
+            _,
+            _ in
+
+            guard numberOfEvents > 0,
+                  let clientCallbackInfo
+            else {
+                return
             }
 
-            monitor(location)
+            let monitor =
+                Unmanaged<LocalFileMonitor>
+                    .fromOpaque(clientCallbackInfo)
+                    .takeUnretainedValue()
 
+            monitor.scheduleRebuild()
+        }
+
+        guard let stream = FSEventStreamCreate(
+            nil,
+            callback,
+            &context,
+            paths,
+            FSEventStreamEventId(kFSEventStreamEventIdSinceNow),
+            0.5,
+            FSEventStreamCreateFlags(
+                kFSEventStreamCreateFlagFileEvents |
+                kFSEventStreamCreateFlagNoDefer
+            )
+        ) else {
+
+            print("Failed to create local file event stream.")
+
+            return
+        }
+
+        eventStream = stream
+
+        FSEventStreamSetDispatchQueue(
+            stream,
+            DispatchQueue.global(
+                qos: .utility
+            )
+        )
+
+        guard FSEventStreamStart(stream) else {
+
+            FSEventStreamInvalidate(stream)
+            FSEventStreamRelease(stream)
+
+            eventStream = nil
+
+            print("Failed to start local file event stream.")
+
+            return
         }
 
         print(
-            "👀 Monitoring \(sources.count) local folders."
+            "👀 Monitoring \(CFArrayGetCount(paths)) local folders recursively."
         )
-
     }
 
     func stop() {
@@ -48,63 +124,15 @@ final class LocalFileMonitor {
         rebuildTask?.cancel()
         rebuildTask = nil
 
-        for source in sources {
-            source.cancel()
-        }
-
-        sources.removeAll()
-
-    }
-
-    private func monitor(_ location: URL) {
-
-        let fileDescriptor = open(
-            location.path,
-            O_EVTONLY
-        )
-
-        guard fileDescriptor >= 0 else {
-
-            print(
-                "Failed to monitor:",
-                location.path
-            )
-
+        guard let eventStream else {
             return
-
         }
 
-        let source = DispatchSource.makeFileSystemObjectSource(
-            fileDescriptor: fileDescriptor,
-            eventMask: [
-                .write,
-                .delete,
-                .rename,
-                .extend,
-                .attrib,
-                .link
-            ],
-            queue: DispatchQueue.global(
-                qos: .utility
-            )
-        )
+        FSEventStreamStop(eventStream)
+        FSEventStreamInvalidate(eventStream)
+        FSEventStreamRelease(eventStream)
 
-        source.setEventHandler { [weak self] in
-
-            self?.scheduleRebuild()
-
-        }
-
-        source.setCancelHandler {
-
-            close(fileDescriptor)
-
-        }
-
-        sources.append(source)
-
-        source.resume()
-
+        self.eventStream = nil
     }
 
     private func scheduleRebuild() {
@@ -122,9 +150,6 @@ final class LocalFileMonitor {
             }
 
             await LocalIndexRegistry.shared.rebuild()
-
         }
-
     }
-
 }
