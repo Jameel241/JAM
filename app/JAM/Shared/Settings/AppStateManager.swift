@@ -56,5 +56,9 @@ final class AppStateManager: ObservableObject {
             false,
             forKey: Keys.hasCompletedOnboarding
         )
+
+        UserDefaults.standard.removeObject(
+            forKey: Keys.preferredName
+        )
     }
 }

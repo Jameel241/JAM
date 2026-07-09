@@ -105,15 +105,6 @@ final class ApplicationService {
                 continue
             }
 
-            #if DEBUG
-
-            // Keep Xcode running while JAM is launched from Xcode
-            if application.bundleIdentifier == "com.apple.dt.Xcode" {
-                continue
-            }
-
-            #endif
-
             // Ignore background processes and agents
             guard application.activationPolicy == .regular else {
                 continue
