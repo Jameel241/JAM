@@ -133,13 +133,8 @@ struct PrivacyView: View {
                 Divider()
 
                 Button("Reset Permissions") {
-
-#if DEBUG
-                    print("Permission reset is not implemented yet.")
-#endif
-
                 }
-
+                .disabled(true)
             }
             SettingsCard(
                 title: "Privacy",
