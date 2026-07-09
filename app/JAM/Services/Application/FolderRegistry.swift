@@ -17,7 +17,9 @@ final class FolderRegistry: ObservableObject {
 
     private init() {
 
+#if DEBUG
         print("📁 FolderRegistry initialized")
+#endif
 
         Task {
             await rebuild()
@@ -77,7 +79,9 @@ final class FolderRegistry: ObservableObject {
         lastIndexed = Date()
         isIndexing = false
 
+#if DEBUG
         print("Loaded \(entries.count) folders.")
+#endif
 
     }
 

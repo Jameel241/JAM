@@ -20,7 +20,9 @@ final class ApplicationRegistry: ObservableObject {
 
     private init() {
 
+        #if DEBUG
         print("🚀 ApplicationRegistry initialized")
+        #endif
 
         Task {
 
@@ -30,7 +32,7 @@ final class ApplicationRegistry: ObservableObject {
 
     }
     func rebuild() async {
-        
+
         isIndexing = true
         lastError = nil
 
@@ -48,8 +50,9 @@ final class ApplicationRegistry: ObservableObject {
         ]
 
         for folder in folders {
-
+            #if DEBUG
             print("Scanning:", folder.path)
+            #endif
 
             guard let contents = try? FileManager.default.contentsOfDirectory(
                 at: folder,
@@ -57,8 +60,9 @@ final class ApplicationRegistry: ObservableObject {
             ) else {
                 continue
             }
-
+            #if DEBUG
             print("Found \(contents.count) items in \(folder.lastPathComponent)")
+            #endif
 
             for url in contents where url.pathExtension == "app" {
 
@@ -76,16 +80,21 @@ final class ApplicationRegistry: ObservableObject {
                         category: "Application"
                     )
                 )
+                #if DEBUG
                 print("Indexed:", displayName)
+                #endif
             }
 
         }
+        #if DEBUG
         print("Entries count:", entries.count)
+        #endif
 
         lastIndexed = Date()
         isIndexing = false
-
+        #if DEBUG
         print("Loaded \(entries.count) applications.")
+        #endif
 
     }
 

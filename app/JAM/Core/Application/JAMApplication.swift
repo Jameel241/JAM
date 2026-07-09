@@ -12,7 +12,9 @@ final class JAMApplication {
 
     func start() {
 
+        #if DEBUG
         print("🚀 JAM is starting...")
+        #endif
 
         configureServicesIfNeeded()
 
@@ -22,13 +24,16 @@ final class JAMApplication {
             startFirstLaunchExperience()
         }
     }
+
     func completeOnboarding() {
 
         guard !AppStateManager.shared.hasCompletedOnboarding else {
             return
         }
 
+        #if DEBUG
         print("🎉 Completing JAM onboarding...")
+        #endif
 
         AppStateManager.shared.completeOnboarding()
 
@@ -36,6 +41,7 @@ final class JAMApplication {
 
         startNormalExperience()
     }
+
     private func configureServicesIfNeeded() {
 
         guard !hasConfiguredServices else {
@@ -68,14 +74,18 @@ final class JAMApplication {
 
     private func startFirstLaunchExperience() {
 
+        #if DEBUG
         print("👋 Starting first-launch experience...")
+        #endif
 
         WindowManager.shared.showOnboardingWindow()
     }
 
     private func startNormalExperience() {
 
+        #if DEBUG
         print("✅ Starting normal JAM experience...")
+        #endif
 
         _ = LocalIndexRegistry.shared
 

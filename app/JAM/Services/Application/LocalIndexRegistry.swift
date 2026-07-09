@@ -17,12 +17,14 @@ final class LocalIndexRegistry: ObservableObject {
 
     @Published
     private(set) var lastError: Error?
-    
+
     private var rebuildRequested = false
 
     private init() {
 
+#if DEBUG
         print("🔎 LocalIndexRegistry initialized")
+#endif
 
         Task {
             await rebuild()
@@ -58,18 +60,22 @@ final class LocalIndexRegistry: ObservableObject {
                 entries = discoveredItems
                 lastIndexed = Date()
 
+#if DEBUG
                 print(
                     "Loaded \(entries.count) local files and folders."
                 )
+#endif
 
             } catch {
 
                 lastError = error
 
+#if DEBUG
                 print(
                     "Local indexing failed:",
                     error.localizedDescription
                 )
+#endif
 
             }
 
@@ -84,7 +90,7 @@ final class LocalIndexRegistry: ObservableObject {
         let fileManager = FileManager.default
 
         let homeDirectory =
-            fileManager.homeDirectoryForCurrentUser
+        fileManager.homeDirectoryForCurrentUser
 
         let searchLocations: [URL] = [
 
@@ -150,9 +156,9 @@ final class LocalIndexRegistry: ObservableObject {
             do {
 
                 let resourceValues =
-                    try url.resourceValues(
-                        forKeys: resourceKeys
-                    )
+                try url.resourceValues(
+                    forKeys: resourceKeys
+                )
 
                 guard resourceValues.isHidden != true else {
                     continue
@@ -193,11 +199,13 @@ final class LocalIndexRegistry: ObservableObject {
 
             } catch {
 
+#if DEBUG
                 print(
                     "Failed to index:",
                     url.path,
                     error.localizedDescription
                 )
+#endif
 
             }
 

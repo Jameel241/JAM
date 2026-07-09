@@ -6,7 +6,10 @@ final class ApplicationService {
 
         guard let url = ApplicationRegistry.shared.url(for: name) else {
 
+            #if DEBUG
             print("Application '\(name)' not found.")
+            #endif
+
             return
         }
 
@@ -19,13 +22,17 @@ final class ApplicationService {
 
             if let error {
 
+                #if DEBUG
                 print(
                     "Failed to open \(name): \(error.localizedDescription)"
                 )
+                #endif
 
             } else {
 
+                #if DEBUG
                 print("Opened \(name)")
+                #endif
             }
         }
     }
@@ -53,7 +60,10 @@ final class ApplicationService {
 
                 }) else {
 
+            #if DEBUG
             print("Application '\(name)' is not running.")
+            #endif
+
             return
         }
 
@@ -61,13 +71,18 @@ final class ApplicationService {
 
         if didTerminate {
 
+            #if DEBUG
             print("Requested termination of \(name)")
+            #endif
 
         } else {
 
+            #if DEBUG
             print("Failed to terminate \(name)")
+            #endif
         }
     }
+
     func quitAllApplications() {
 
         let runningApplications =
@@ -89,15 +104,15 @@ final class ApplicationService {
                 "com.apple.finder" {
                 continue
             }
-            
-#if DEBUG
 
-// Keep Xcode running while JAM is launched from Xcode
-if application.bundleIdentifier == "com.apple.dt.Xcode" {
-    continue
-}
+            #if DEBUG
 
-#endif
+            // Keep Xcode running while JAM is launched from Xcode
+            if application.bundleIdentifier == "com.apple.dt.Xcode" {
+                continue
+            }
+
+            #endif
 
             // Ignore background processes and agents
             guard application.activationPolicy == .regular else {
@@ -113,19 +128,23 @@ if application.bundleIdentifier == "com.apple.dt.Xcode" {
 
             if didTerminate {
 
+                #if DEBUG
                 print(
                     "Requested termination of \(applicationName)"
                 )
+                #endif
 
             } else {
 
+                #if DEBUG
                 print(
                     "Failed to terminate \(applicationName)"
                 )
+                #endif
             }
         }
     }
-   
+
     func hideAllApplications() {
 
         let runningApplications =
@@ -162,15 +181,19 @@ if application.bundleIdentifier == "com.apple.dt.Xcode" {
 
             if didHide {
 
+                #if DEBUG
                 print(
                     "Hid \(applicationName)"
                 )
+                #endif
 
             } else {
 
+                #if DEBUG
                 print(
                     "Failed to hide \(applicationName)"
                 )
+                #endif
             }
         }
     }

@@ -121,7 +121,11 @@ struct PrivacyView: View {
 
                     Task {
                         await ApplicationRegistry.shared.rebuild()
+#if DEBUG
+
                         print("Local data cleared.")
+
+#endif
                     }
 
                 }
@@ -130,7 +134,9 @@ struct PrivacyView: View {
 
                 Button("Reset Permissions") {
 
+#if DEBUG
                     print("Permission reset is not implemented yet.")
+#endif
 
                 }
 

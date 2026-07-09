@@ -60,8 +60,8 @@ struct JAMNativeTextField: NSViewRepresentable {
         )
 
         field.textColor = colorScheme == .dark
-            ? .white
-            : NSColor.black.withAlphaComponent(0.78)
+        ? .white
+        : NSColor.black.withAlphaComponent(0.78)
 
         return field
     }
@@ -73,8 +73,8 @@ struct JAMNativeTextField: NSViewRepresentable {
 
         // Update only the text color for appearance changes.
         nsView.textColor = colorScheme == .dark
-            ? .white
-            : NSColor.black.withAlphaComponent(0.78)
+        ? .white
+        : NSColor.black.withAlphaComponent(0.78)
 
         if nsView.stringValue != text {
 
@@ -150,7 +150,11 @@ struct JAMNativeTextField: NSViewRepresentable {
         @objc
         func submit() {
 
+#if DEBUG
+
             print("submit action")
+
+#endif
 
             parent.onSubmit()
         }

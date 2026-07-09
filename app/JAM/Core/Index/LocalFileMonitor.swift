@@ -40,7 +40,9 @@ final class LocalFileMonitor {
 
         guard CFArrayGetCount(paths) > 0 else {
 
+#if DEBUG
             print("No local folders available for monitoring.")
+#endif
 
             return
         }
@@ -68,9 +70,9 @@ final class LocalFileMonitor {
             }
 
             let monitor =
-                Unmanaged<LocalFileMonitor>
-                    .fromOpaque(clientCallbackInfo)
-                    .takeUnretainedValue()
+            Unmanaged<LocalFileMonitor>
+                .fromOpaque(clientCallbackInfo)
+                .takeUnretainedValue()
 
             monitor.scheduleRebuild()
         }
@@ -88,7 +90,9 @@ final class LocalFileMonitor {
             )
         ) else {
 
+#if DEBUG
             print("Failed to create local file event stream.")
+#endif
 
             return
         }
@@ -109,14 +113,18 @@ final class LocalFileMonitor {
 
             eventStream = nil
 
+#if DEBUG
             print("Failed to start local file event stream.")
+#endif
 
             return
         }
 
+#if DEBUG
         print(
             "👀 Monitoring \(CFArrayGetCount(paths)) local folders recursively."
         )
+#endif
     }
 
     func stop() {

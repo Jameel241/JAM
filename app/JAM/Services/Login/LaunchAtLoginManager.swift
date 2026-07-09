@@ -24,7 +24,9 @@ final class LaunchAtLoginManager {
 
         } catch {
 
+            #if DEBUG
             print("Launch at Login error:", error)
+            #endif
 
         }
 

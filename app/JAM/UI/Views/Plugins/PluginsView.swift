@@ -115,7 +115,11 @@ struct PluginsView: View {
 
                 Button("Reload Plugins") {
 
+#if DEBUG
+
                     print("Reloading plugins...")
+
+#endif
 
                 }
 

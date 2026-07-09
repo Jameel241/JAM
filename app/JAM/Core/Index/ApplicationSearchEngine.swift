@@ -4,13 +4,13 @@ final class ApplicationSearchEngine {
 
     func search(_ query: String) -> [AppSearchResult] {
 
+        #if DEBUG
         print("Entries:", ApplicationRegistry.shared.entries.count)
+        #endif
 
         let query = query
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .lowercased()
-
-        
 
         guard !query.isEmpty else {
             return []
@@ -29,8 +29,11 @@ final class ApplicationSearchEngine {
                     score = max(score, 1000)
 
                 } else if alias.hasPrefix(query) {
-                    
-                    score = max(score, 900 - (alias.count - query.count))
+
+                    score = max(
+                        score,
+                        900 - (alias.count - query.count)
+                    )
 
                 } else if alias
                     .split(separator: " ")
@@ -38,21 +41,26 @@ final class ApplicationSearchEngine {
 
                     score = max(score, 800)
 
-                } else if query.count >= 2 && alias.contains(query) {
-                    
+                } else if query.count >= 2 &&
+                            alias.contains(query) {
+
                     score = max(score, 600)
 
                 }
-
             }
 
-            if entry.displayName.lowercased().contains("youtube") {
+            #if DEBUG
+
+            if entry.displayName
+                .lowercased()
+                .contains("youtube") {
 
                 print("-------------")
                 print("DISPLAY:", entry.displayName)
                 print("ALIASES:", entry.aliases)
-
             }
+
+            #endif
 
             if score > 0 {
 
@@ -62,12 +70,13 @@ final class ApplicationSearchEngine {
                         score: score
                     )
                 )
-
             }
-
         }
 
+        #if DEBUG
         print("Results found:", results.count)
+        #endif
+
         return results
             .sorted {
 
@@ -75,12 +84,10 @@ final class ApplicationSearchEngine {
                     return $0.score > $1.score
                 }
 
-                return $0.entry.displayName < $1.entry.displayName
-
+                return $0.entry.displayName <
+                    $1.entry.displayName
             }
             .prefix(20)
             .map { $0 }
-
     }
-
 }
