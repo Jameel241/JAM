@@ -17,6 +17,8 @@ final class LocalIndexRegistry: ObservableObject {
 
     @Published
     private(set) var lastError: Error?
+    
+    private var rebuildRequested = false
 
     private init() {
 
@@ -30,43 +32,50 @@ final class LocalIndexRegistry: ObservableObject {
 
     func rebuild() async {
 
-        guard !isIndexing else {
+        if isIndexing {
+
+            rebuildRequested = true
             return
         }
 
-        isIndexing = true
-        lastError = nil
+        repeat {
 
-        do {
+            rebuildRequested = false
 
-            let discoveredItems = try await Task.detached(
-                priority: .utility
-            ) {
+            isIndexing = true
+            lastError = nil
 
-                try Self.buildIndex()
+            do {
 
-            }.value
+                let discoveredItems = try await Task.detached(
+                    priority: .utility
+                ) {
 
-            entries = discoveredItems
-            lastIndexed = Date()
+                    try Self.buildIndex()
 
-            print(
-                "Loaded \(entries.count) local files and folders."
-            )
+                }.value
 
-        } catch {
+                entries = discoveredItems
+                lastIndexed = Date()
 
-            lastError = error
+                print(
+                    "Loaded \(entries.count) local files and folders."
+                )
 
-            print(
-                "Local indexing failed:",
-                error.localizedDescription
-            )
+            } catch {
 
-        }
+                lastError = error
 
-        isIndexing = false
+                print(
+                    "Local indexing failed:",
+                    error.localizedDescription
+                )
 
+            }
+
+            isIndexing = false
+
+        } while rebuildRequested
     }
 
     nonisolated
