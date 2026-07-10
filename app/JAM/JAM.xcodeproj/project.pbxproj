@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C21E84EC3001118200F33E4F /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E84EB3001118200F33E4F /* KeychainManager.swift */; };
 		C22B25BD2FF2FE9E0030E98A /* JAMApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25BC2FF2FD2E0030E98A /* JAMApplication.swift */; };
 		C22B25C32FF303DB0030E98A /* JAMRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25C22FF3033E0030E98A /* JAMRadius.swift */; };
 		C22B25C42FF303E00030E98A /* JAMSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B25C12FF3032E0030E98A /* JAMSpacing.swift */; };
@@ -165,6 +166,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C21E84EB3001118200F33E4F /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeychainManager.swift; path = Services/Security/KeychainManager.swift; sourceTree = "<group>"; };
 		C22B257D2FF2F9940030E98A /* JAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22B258A2FF2F9950030E98A /* JAMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JAMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22B25942FF2F9950030E98A /* JAMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JAMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -355,6 +357,7 @@
 		C22B25742FF2F9930030E98A = {
 			isa = PBXGroup;
 			children = (
+				C21E84EB3001118200F33E4F /* KeychainManager.swift */,
 				C26E7C542FF598C50001CFFA /* Application */,
 				C22B25CF2FF30B050030E98A /* Shared */,
 				C22B25BA2FF2FC890030E98A /* Services */,
@@ -1199,6 +1202,7 @@
 				C25FA6DC2FF7FC5C00A3BC85 /* AppearanceSettingsManager.swift in Sources */,
 				C26E7C892FF5B22C0001CFFA /* JAMShadowModifier.swift in Sources */,
 				C2F21BC92FFAB1ED008253A6 /* SettingsDestinationVariant.swift in Sources */,
+				C21E84EC3001118200F33E4F /* KeychainManager.swift in Sources */,
 				C266F1322FF853600025D5DE /* UpdatesSettingsManager.swift in Sources */,
 				C22DD2102FF9283000FD2986 /* LocalSearchResult.swift in Sources */,
 				C26E7C242FF41D2A0001CFFA /* JAMWindow.swift in Sources */,
