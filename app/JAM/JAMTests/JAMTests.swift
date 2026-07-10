@@ -255,4 +255,236 @@ struct JAMTests {
 
         #expect(result == .general)
     }
+    // MARK: - Relevance Scorer
+
+    @Test
+    func relevanceScorerReturnsZeroForEmptyQuery() {
+
+        let scorer = RelevanceScorer()
+
+        let suggestion = makeSuggestion(
+            kind: .application,
+            displayText: "Safari"
+        )
+
+        let score = scorer.score(
+            suggestion: suggestion,
+            query: ""
+        )
+
+        #expect(score == 0)
+    }
+
+    @Test
+    func relevanceScorerPrefersExactMatchOverPrefixMatch() {
+
+        let scorer = RelevanceScorer()
+
+        let exactMatch = makeSuggestion(
+            kind: .application,
+            displayText: "Safari"
+        )
+
+        let prefixMatch = makeSuggestion(
+            kind: .application,
+            displayText: "Safari Technology Preview"
+        )
+
+        let exactScore = scorer.score(
+            suggestion: exactMatch,
+            query: "Safari"
+        )
+
+        let prefixScore = scorer.score(
+            suggestion: prefixMatch,
+            query: "Safari"
+        )
+
+        #expect(exactScore > prefixScore)
+    }
+
+    @Test
+    func relevanceScorerPrefersApplicationFinalWordMatch() {
+
+        let scorer = RelevanceScorer()
+
+        let finalWordMatch = makeSuggestion(
+            kind: .application,
+            displayText: "Google Chrome"
+        )
+
+        let exactMatch = makeSuggestion(
+            kind: .application,
+            displayText: "Chrome"
+        )
+
+        let finalWordScore = scorer.score(
+            suggestion: finalWordMatch,
+            query: "Chrome"
+        )
+
+        let exactScore = scorer.score(
+            suggestion: exactMatch,
+            query: "Chrome"
+        )
+
+        #expect(finalWordScore > exactScore)
+    }
+
+
+    @Test
+    func relevanceScorerPrefersExactWordOverWordPrefixMatch() {
+
+        let scorer = RelevanceScorer()
+
+        let exactWordMatch = makeSuggestion(
+            kind: .setting,
+            displayText: "Open Privacy Settings"
+        )
+
+        let wordPrefixMatch = makeSuggestion(
+            kind: .setting,
+            displayText: "Open PrivacyCenter Settings"
+        )
+
+        let exactWordScore = scorer.score(
+            suggestion: exactWordMatch,
+            query: "Privacy"
+        )
+
+        let wordPrefixScore = scorer.score(
+            suggestion: wordPrefixMatch,
+            query: "Privacy"
+        )
+
+        #expect(exactWordScore > wordPrefixScore)
+    }
+
+    @Test
+    func relevanceScorerPrefersWordPrefixOverSubstringMatch() {
+
+        let scorer = RelevanceScorer()
+
+        let wordPrefixMatch = makeSuggestion(
+            kind: .file,
+            displayText: "My Documents"
+        )
+
+        let substringMatch = makeSuggestion(
+            kind: .file,
+            displayText: "Undocumented"
+        )
+
+        let wordPrefixScore = scorer.score(
+            suggestion: wordPrefixMatch,
+            query: "Doc"
+        )
+
+        let substringScore = scorer.score(
+            suggestion: substringMatch,
+            query: "Doc"
+        )
+
+        #expect(wordPrefixScore > substringScore)
+    }
+
+    @Test
+    func relevanceScorerBoostsCommandsForCommandIntent() {
+
+        let scorer = RelevanceScorer()
+
+        let commandSuggestion = makeSuggestion(
+            kind: .command,
+            displayText: "Quit Safari"
+        )
+
+        let applicationSuggestion = makeSuggestion(
+            kind: .application,
+            displayText: "Quit Safari"
+        )
+
+        let commandScore = scorer.score(
+            suggestion: commandSuggestion,
+            query: "quit Safari"
+        )
+
+        let applicationScore = scorer.score(
+            suggestion: applicationSuggestion,
+            query: "quit Safari"
+        )
+
+        #expect(commandScore > applicationScore)
+    }
+
+    @Test
+    func relevanceScorerUsesSuggestionConfidence() {
+
+        let scorer = RelevanceScorer()
+
+        let highConfidence = makeSuggestion(
+            kind: .file,
+            displayText: "Document",
+            confidence: 1.0
+        )
+
+        let lowConfidence = makeSuggestion(
+            kind: .file,
+            displayText: "Document",
+            confidence: 0.0
+        )
+
+        let highScore = scorer.score(
+            suggestion: highConfidence,
+            query: "Document"
+        )
+
+        let lowScore = scorer.score(
+            suggestion: lowConfidence,
+            query: "Document"
+        )
+
+        #expect(highScore > lowScore)
+    }
+
+    @Test
+    func suggestionClampsConfidenceAboveMaximum() {
+
+        let suggestion = makeSuggestion(
+            kind: .application,
+            displayText: "Safari",
+            confidence: 2.0
+        )
+
+        #expect(suggestion.confidence == 1.0)
+    }
+
+    @Test
+    func suggestionClampsConfidenceBelowMinimum() {
+
+        let suggestion = makeSuggestion(
+            kind: .application,
+            displayText: "Safari",
+            confidence: -1.0
+        )
+
+        #expect(suggestion.confidence == 0.0)
+    }
+
+    // MARK: - Test Helpers
+
+    private func makeSuggestion(
+        kind: SuggestionKind,
+        displayText: String,
+        confidence: Double = 0.5
+    ) -> Suggestion {
+
+        Suggestion(
+            kind: kind,
+            displayText: displayText,
+            completion: displayText,
+            confidence: confidence,
+            url: nil,
+            subtitle: "Test"
+        )
+    }
 }
