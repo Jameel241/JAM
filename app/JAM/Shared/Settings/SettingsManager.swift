@@ -8,6 +8,7 @@ final class SettingsManager: ObservableObject {
 
     @Published var launcherShortcutEnabled: Bool {
         didSet {
+
             UserDefaults.standard.set(
                 launcherShortcutEnabled,
                 forKey: "launcherShortcutEnabled"
@@ -18,20 +19,36 @@ final class SettingsManager: ObservableObject {
     @Published var launchAtLogin: Bool {
         didSet {
 
-            UserDefaults.standard.set(
-                launchAtLogin,
-                forKey: "launchAtLogin"
-            )
+            guard !isRestoringLaunchAtLogin else {
+                return
+            }
 
-            LaunchAtLoginManager.shared.update(
-                enabled: launchAtLogin
-            )
+            let previousValue = oldValue
 
+            let didUpdate =
+                LaunchAtLoginManager.shared.update(
+                    enabled: launchAtLogin
+                )
+
+            if didUpdate {
+
+                UserDefaults.standard.set(
+                    launchAtLogin,
+                    forKey: "launchAtLogin"
+                )
+
+            } else {
+
+                isRestoringLaunchAtLogin = true
+                launchAtLogin = previousValue
+                isRestoringLaunchAtLogin = false
+            }
         }
     }
 
     @Published var animationsEnabled: Bool {
         didSet {
+
             UserDefaults.standard.set(
                 animationsEnabled,
                 forKey: "animationsEnabled"
@@ -39,17 +56,23 @@ final class SettingsManager: ObservableObject {
         }
     }
 
+    private var isRestoringLaunchAtLogin = false
+
     private init() {
 
         launcherShortcutEnabled =
-            UserDefaults.standard.object(forKey: "launcherShortcutEnabled") as? Bool ?? true
+            UserDefaults.standard.object(
+                forKey: "launcherShortcutEnabled"
+            ) as? Bool ?? true
 
         launchAtLogin =
-            UserDefaults.standard.object(forKey: "launchAtLogin") as? Bool ?? true
+            UserDefaults.standard.object(
+                forKey: "launchAtLogin"
+            ) as? Bool ?? true
 
         animationsEnabled =
-            UserDefaults.standard.object(forKey: "animationsEnabled") as? Bool ?? true
-
+            UserDefaults.standard.object(
+                forKey: "animationsEnabled"
+            ) as? Bool ?? true
     }
-
 }

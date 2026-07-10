@@ -101,27 +101,30 @@ struct PluginsView: View {
                 Button("Open Plugins Folder") {
 
                     let url = FileManager.default.homeDirectoryForCurrentUser
-                        .appendingPathComponent("Library/Application Support/JAM/Plugins")
+                        .appendingPathComponent(
+                            "Library/Application Support/JAM/Plugins"
+                        )
 
-                    try? FileManager.default.createDirectory(
-                        at: url,
-                        withIntermediateDirectories: true
-                    )
+                    do {
 
-                    NSWorkspace.shared.open(url)
+                        try FileManager.default.createDirectory(
+                            at: url,
+                            withIntermediateDirectories: true
+                        )
 
+                        NSWorkspace.shared.open(url)
+
+                    } catch {
+
+                        #if DEBUG
+                        print(
+                            "Failed to create Plugins folder:",
+                            error.localizedDescription
+                        )
+                        #endif
+                    }
                 }
-                Divider()
 
-                Button("Reload Plugins") {
-
-#if DEBUG
-
-                    print("Reloading plugins...")
-
-#endif
-
-                }
 
             }
 

@@ -8,7 +8,8 @@ final class LaunchAtLoginManager {
 
     private init() { }
 
-    func update(enabled: Bool) {
+    @discardableResult
+    func update(enabled: Bool) -> Bool {
 
         do {
 
@@ -22,14 +23,18 @@ final class LaunchAtLoginManager {
 
             }
 
+            return true
+
         } catch {
 
             #if DEBUG
-            print("Launch at Login error:", error)
+            print(
+                "Launch at Login error:",
+                error.localizedDescription
+            )
             #endif
 
+            return false
         }
-
     }
-
 }
