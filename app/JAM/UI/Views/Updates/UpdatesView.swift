@@ -1,8 +1,8 @@
 import SwiftUI
 import AppKit
+
 struct UpdatesView: View {
-    @StateObject
-    private var settings = UpdatesSettingsManager.shared
+
     var body: some View {
 
         Form {
@@ -21,7 +21,6 @@ struct UpdatesView: View {
                 LabeledContent("Version") {
 
                     Text(AppInfo.version)
-
                 }
 
                 Divider()
@@ -29,7 +28,6 @@ struct UpdatesView: View {
                 LabeledContent("Build") {
 
                     Text(AppInfo.build)
-
                 }
 
                 Divider()
@@ -41,85 +39,50 @@ struct UpdatesView: View {
                         systemImage: "checkmark.circle.fill",
                         color: .green
                     )
-
                 }
-
             }
 
             SettingsCard(
-                title: "Update Settings",
-                systemImage: "gearshape.fill"
+                title: "Automatic Updates",
+                systemImage: "arrow.clockwise.circle.fill"
             ) {
 
-                Toggle(
-                    "Automatically Check for Updates",
-                    isOn: $settings.automaticallyCheckForUpdates
-                )
-                
-                Divider()
-                Toggle(
-                    "Include Beta Releases",
-                    isOn: $settings.includeBetaReleases
-                )
+                HStack {
 
-            }
+                    Image(systemName: "clock.fill")
 
-            SettingsCard(
-                title: "Status",
-                systemImage: "checkmark.shield"
-            ) {
+                    VStack(
+                        alignment: .leading,
+                        spacing: 4
+                    ) {
 
-                LabeledContent("Current Status") {
+                        Text("Coming Soon")
 
-                    StatusBadge(
-                        title: "Up to Date",
-                        systemImage: "checkmark.circle.fill",
-                        color: .green
-                    )
-
-                }
-
-                Divider()
-
-                LabeledContent("Last Checked") {
-
-                    if let lastChecked = settings.lastChecked {
-
-                        Text(lastChecked.formatted())
-
-                    } else {
-
-                        Text("Not yet checked")
-
+                        Text(
+                            "Automatic update checking will be available in a future version of JAM."
+                        )
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                     }
 
+                    Spacer()
                 }
-
             }
 
             SettingsCard(
                 title: "Actions",
-                systemImage: "arrow.clockwise"
+                systemImage: "arrow.up.forward.app"
             ) {
 
-                Button("Check for Updates") {
+                Button("View Releases") {
 
-                    settings.lastChecked = Date()
-
-                }
-
-                Divider()
-
-                Button("View Release Notes") {
-
-                    if let url = URL(string: "https://github.com/Jameel241/JAM/releases") {
+                    if let url = URL(
+                        string: "https://github.com/Jameel241/JAM/releases"
+                    ) {
 
                         NSWorkspace.shared.open(url)
-
                     }
-
                 }
-
             }
 
             SettingsCard(
@@ -128,29 +91,18 @@ struct UpdatesView: View {
             ) {
 
                 Label(
-                    "Updates are verified before installation.",
-                    systemImage: "checkmark.circle.fill"
+                    "New versions of JAM are published on GitHub Releases.",
+                    systemImage: "shippingbox.fill"
                 )
 
                 Divider()
 
                 Label(
-                    "JAM never installs updates without your permission.",
-                    systemImage: "checkmark.circle.fill"
+                    "Release notes and downloads are available from the releases page.",
+                    systemImage: "doc.text.fill"
                 )
-
-                Divider()
-
-                Label(
-                    "Release notes are available for every version.",
-                    systemImage: "checkmark.circle.fill"
-                )
-
             }
-
         }
         .formStyle(.grouped)
-
     }
-
 }

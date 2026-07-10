@@ -54,7 +54,6 @@
 		C266F12B2FF84A4C0025D5DE /* PluginsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C266F12A2FF84A490025D5DE /* PluginsView.swift */; };
 		C266F12E2FF84A710025D5DE /* UpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C266F12D2FF84A6F0025D5DE /* UpdatesView.swift */; };
 		C266F1302FF850750025D5DE /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C266F12F2FF850730025D5DE /* AppInfo.swift */; };
-		C266F1322FF853600025D5DE /* UpdatesSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C266F1312FF8535E0025D5DE /* UpdatesSettingsManager.swift */; };
 		C266F1342FF857900025D5DE /* PluginsSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C266F1332FF8578D0025D5DE /* PluginsSettingsManager.swift */; };
 		C266F13A2FF85E460025D5DE /* NavigationNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C266F1392FF85E440025D5DE /* NavigationNotifications.swift */; };
 		C26E7BFF2FF406280001CFFA /* IntentResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26E7BFE2FF406260001CFFA /* IntentResolver.swift */; };
@@ -220,7 +219,6 @@
 		C266F12A2FF84A490025D5DE /* PluginsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginsView.swift; sourceTree = "<group>"; };
 		C266F12D2FF84A6F0025D5DE /* UpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesView.swift; sourceTree = "<group>"; };
 		C266F12F2FF850730025D5DE /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
-		C266F1312FF8535E0025D5DE /* UpdatesSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesSettingsManager.swift; sourceTree = "<group>"; };
 		C266F1332FF8578D0025D5DE /* PluginsSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginsSettingsManager.swift; sourceTree = "<group>"; };
 		C266F1392FF85E440025D5DE /* NavigationNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationNotifications.swift; sourceTree = "<group>"; };
 		C26E7BFE2FF406260001CFFA /* IntentResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentResolver.swift; sourceTree = "<group>"; };
@@ -928,7 +926,6 @@
 			children = (
 				C2F292252FFD124A00A48B65 /* AppStateManager.swift */,
 				C266F1332FF8578D0025D5DE /* PluginsSettingsManager.swift */,
-				C266F1312FF8535E0025D5DE /* UpdatesSettingsManager.swift */,
 				C266F1272FF849210025D5DE /* PrivacySettingsManager.swift */,
 				C25FA6EE2FF808FE00A3BC85 /* AISettingsManager.swift */,
 				C25FA6DB2FF7FC5A00A3BC85 /* AppearanceSettingsManager.swift */,
@@ -1203,7 +1200,6 @@
 				C26E7C892FF5B22C0001CFFA /* JAMShadowModifier.swift in Sources */,
 				C2F21BC92FFAB1ED008253A6 /* SettingsDestinationVariant.swift in Sources */,
 				C21E84EC3001118200F33E4F /* KeychainManager.swift in Sources */,
-				C266F1322FF853600025D5DE /* UpdatesSettingsManager.swift in Sources */,
 				C22DD2102FF9283000FD2986 /* LocalSearchResult.swift in Sources */,
 				C26E7C242FF41D2A0001CFFA /* JAMWindow.swift in Sources */,
 				C26E7C572FF59A4F0001CFFA /* AppDelegate.swift in Sources */,

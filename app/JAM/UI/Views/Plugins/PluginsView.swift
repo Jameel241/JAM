@@ -68,31 +68,7 @@ struct PluginsView: View {
                 }
 
             }
-            SettingsCard(
-                title: "Security",
-                systemImage: "lock.shield.fill"
-            ) {
 
-                Label(
-                    "Only trusted plugins will be allowed.",
-                    systemImage: "checkmark.shield.fill"
-                )
-
-                Divider()
-
-                Label(
-                    "Plugins run with explicit user permission.",
-                    systemImage: "checkmark.shield.fill"
-                )
-
-                Divider()
-
-                Label(
-                    "Future plugin updates will be verified.",
-                    systemImage: "checkmark.shield.fill"
-                )
-
-            }
             SettingsCard(
                 title: "Actions",
                 systemImage: "gearshape.fill"
